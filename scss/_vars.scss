@@ -52,7 +52,7 @@ $breakpoint-xxl: 1920px;
 }
 
 @mixin title-text($font-size) {      
-	font-size: 38px;
+	font-size: $font-size;
 	font-weight: 600;
 	color: white;
 }
@@ -61,4 +61,9 @@ $breakpoint-xxl: 1920px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+@mixin border-grey($radius) {
+	border: 2px solid $border-grey;
+	border-radius: $radius;
 }

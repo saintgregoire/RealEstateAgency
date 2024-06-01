@@ -1,0 +1,94 @@
+.home_top{
+  padding: 4rem 1rem;
+
+&__img {
+  width: 100%;
+  background: url('../img/AbstractDesign1.png') no-repeat left/cover;
+  border: 1px solid $border-grey;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+
+  & > img{
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+&__paragraph{
+  padding-top: 2rem;
+}
+
+&__btn_container{
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  & > a{
+    text-decoration: none;
+    color: white;
+    padding: 1.5rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+&__btn_learn{
+  @include border-grey($border-radius-sm);
+}
+
+&__btn_browse{ 
+  background: $btn-color;
+  border-radius: $border-radius-sm;
+}
+
+&__statistic{
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 4rem;
+}
+
+&__stat{
+  @include border-grey($border-radius-sm);
+  background-color: $second-bg;
+  text-align: center;
+  padding: 1.5rem 0;
+  flex: 1 1 40%;
+}
+
+&__number{
+  @include title-text(2.4rem);
+  padding-bottom: .5rem;
+}
+
+&__cards{
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  @include border-grey($border-radius-sm);
+  box-shadow: 1px 0px 5px 9px $second-bg;
+-webkit-box-shadow: 1px 0px 5px 9px $second-bg;
+-moz-box-shadow: 1px 0px 5px 9px $second-bg;
+}
+
+&__card{
+  @include border-grey($border-radius-md);
+  position: relative;
+  background-color: $second-bg;
+  text-align: center;
+  padding: 1rem;
+  flex: 1 1 40%;
+  color: white;
+
+  & > img{
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+}
+
+
+}

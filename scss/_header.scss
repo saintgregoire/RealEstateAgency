@@ -97,8 +97,7 @@
     right: 1.5rem;
     background: $main-bg;
     transition: bottom .3s linear;
-    border-radius: $border-radius-lg;
-    border: 2px solid $border-grey;
+    @include border-grey($border-radius-lg);
     
 
     &.active_menu {
@@ -173,15 +172,14 @@
     padding: 1.2rem;
     color: white;
     text-decoration: none;
-    border-radius: $border-radius-md;
-    border: 2px solid $border-grey;
+    @include border-grey($border-radius-md);
 
     @include vieport-lg{
       border: none;
       border-radius: $border-radius-sm;
     }
     &:hover{
-      border: 2px solid $border-grey;
+      @include border-grey($border-radius-sm);
     }
   }
 
@@ -189,7 +187,7 @@
     background: $border-grey;
   
     @include vieport-lg{
-      border: 2px solid $border-grey;
+      @include border-grey($border-radius-sm);
       background: $main-bg;
     }
   }
