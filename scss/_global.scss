@@ -1,0 +1,40 @@
+html{
+  font-size: 62.5%;
+}
+
+body {
+	font-family: 'Urbanist', sans-serif;
+	font-weight: normal;
+	line-height: 1.5;
+  font-size: 1.4rem;
+  background: $main-bg;
+  color: $text-color;
+
+  @include vieport-md{
+    font-size: 1.6rem;
+  }
+
+  @include vieport-xxl{
+    font-size: 1.8rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+
+  @include vieport-md{ 
+    max-width: 710px; 
+  }
+
+  @include vieport-lg{
+    max-width: 924px; 
+  }
+
+  @include vieport-xl{
+    max-width: 1280px;  
+  }
+
+  @include vieport-xxl {
+		max-width: 1600px;
+	}
+}

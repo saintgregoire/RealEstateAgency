@@ -1,0 +1,64 @@
+//!Variables------------------------------------------------------------------------
+
+$main-bg: #141414;
+$second-bg: #191919;
+
+$border-grey: #262626;
+
+$text-color: #999999;
+$btn-color: #703BF7;
+$arrows-color: #808080;
+$input-txt-color: #666666;
+
+$gradient-main: linear-gradient(55deg, #191919 0%, #191919 50%, #2A213F 100% );
+$gradient-cards: linear-gradient(-44deg, #703BF7 0%, #703BF7 36%, #262626 100%);
+$gradient-properties: linear-gradient(-64deg, #262626 0%, #262626 100%, #262626 53%, #262626 0%);
+$gradient-key-li: linear-gradient(-90deg, #1A1A1A 0%, #1A1A1A 100%, #1A1A1A 0%);
+
+$border-radius-sm: 10px;
+$border-radius-md: 12px;
+$border-radius-lg: 28px;
+$border-round: 50%;
+
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+$breakpoint-xxl: 1920px;
+
+// !Mixin----------------------------------------------------------------------------
+
+@mixin vieport-md {
+	@media (min-width: $breakpoint-md) {
+		@content;
+	}
+}
+
+@mixin vieport-lg {
+	@media (min-width: $breakpoint-lg) {
+		@content;
+	}
+}
+
+@mixin vieport-xl {
+	@media (min-width: $breakpoint-xl) {
+		@content;
+	}
+}
+
+@mixin vieport-xxl {
+	@media (min-width: $breakpoint-xxl) {
+		@content;
+	}
+}
+
+@mixin title-text($font-size) {      
+	font-size: 38px;
+	font-weight: 600;
+	color: white;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,211 @@
+.header{
+  background: $second-bg;
+
+  &__discover{
+    font-size: 1.2rem;
+    color: white;
+    background:$second-bg url('../img/Abstraction.png') no-repeat center/cover ;
+
+    @include vieport-md{
+      font-size: 1.4rem;
+    }
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+  }
+
+  &__discover > p {
+    padding: 4rem 0 2rem 1.5rem ;
+    @include vieport-md{
+      padding-left: 3rem;
+    }
+    @include vieport-lg{
+      text-align: center;
+      padding: 2rem 0; 
+    }
+  }
+
+  &__discover a{
+    color:white;
+  }
+
+  &__main{
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid $border-grey;
+    border-bottom: 2px solid $border-grey ;
+  }
+
+  &__burger_menu{
+    width: 21px;
+      height: 14px;
+      position: relative;
+      cursor: pointer;
+
+      &::before,
+      &::after,
+      span {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: white;
+        border-radius: $border-radius-sm;
+      }
+      &::after {
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        width: 50%;
+      }
+
+      span {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      @include vieport-lg{
+        display: none;
+      }
+  }
+
+  &__logo{
+    width: 93px;
+    @include vieport-lg{
+      width: 115px;
+    }
+
+    @include vieport-xxl{
+      width: 160px;
+    }
+  }
+
+  &__logo > img{
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__nav{
+    position: fixed;
+    z-index: 9999;
+    bottom: -200%;
+    left: 1.5rem;
+    right: 1.5rem;
+    background: $main-bg;
+    transition: bottom .3s linear;
+    border-radius: $border-radius-lg;
+    border: 2px solid $border-grey;
+    
+
+    &.active_menu {
+			bottom: 3rem;
+		}
+
+    @include vieport-lg{
+      position: static;
+      border: none;
+      background: none;
+      flex-basis: 75%; 
+    }
+  }
+
+  &__nav_close {
+		width: 15px;
+		height: 15px;
+		position: relative;
+		margin: 2rem 2rem 0 auto;
+
+		&::before, &::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			height: 1.5px;
+			background: white;
+			transform: rotate(45deg);
+		}
+		&::after {
+			transform: rotate(-45deg);
+		}
+    
+    @include vieport-md{
+      width: 25px;
+      height: 25px;
+    }
+
+		@include vieport-lg {
+			display: none;
+		}
+	}
+
+  &__menu{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+
+    @include vieport-lg{
+      display: grid;
+      grid-template-columns: repeat(6,1fr);
+      gap: 1rem;
+      padding: 0;
+    }
+  }
+
+  &__menu > li{
+    width: 100%;
+    text-align: center;
+
+    @include vieport-lg{
+      width: auto;
+    }
+  }
+
+  &__menu  a{
+    display: block;
+    padding: 1.2rem;
+    color: white;
+    text-decoration: none;
+    border-radius: $border-radius-md;
+    border: 2px solid $border-grey;
+
+    @include vieport-lg{
+      border: none;
+      border-radius: $border-radius-sm;
+    }
+    &:hover{
+      border: 2px solid $border-grey;
+    }
+  }
+
+  &__menu a.active {
+    background: $border-grey;
+  
+    @include vieport-lg{
+      border: 2px solid $border-grey;
+      background: $main-bg;
+    }
+  }
+
+  &__contacts{
+    @include vieport-lg{
+      grid-column:6/7;
+      color: white;
+      border-radius: $border-radius-md;
+      border: 1px solid white;
+
+      &:hover{
+        border: none;
+        background: $btn-color;
+      }
+    }
+  }
+
+}
