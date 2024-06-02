@@ -1,13 +1,16 @@
+// ?TOP SECTION---------------------------------------
+
 .home_top{
   padding: 4rem 1rem;
   position: relative;
 @include vieport-md{
-  padding: 2rem 3rem;
+  padding: 4rem 3rem;
 }
 @include vieport-lg{
   display: grid;
   grid-template: auto/repeat(2,1fr);
   padding: 0;
+  padding-bottom: 4rem;
 }
 
 &__img {
@@ -194,7 +197,7 @@
     left: 45%;
   }
   @include vieport-xl{
-    top:12%;
+    top:14%;
     left: 46%;
   }
   @include vieport-xxl{
@@ -240,8 +243,21 @@
     background-color: white;
   }
 
-
 }
 
+// ? FEATURED PROPERTIES
 
+.featured {
+
+  &__title{
+    @include title-text(2.5rem);
+    padding: 1rem 0;
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+}
 

@@ -19,27 +19,34 @@ body {
   }
 }
 
+section{
+  padding-bottom: 4rem;
+}
+
 h1 {
   @include title-text(2.8rem);
 }
 
 .container {
   margin: 0 auto;
+  padding: 0 3rem;
 
   @include vieport-md{ 
-    max-width: 710px; 
+    max-width: 768px; 
   }
 
   @include vieport-lg{
-    max-width: 924px; 
+    padding: 0 4rem;
+    max-width: 1024px; 
   }
 
   @include vieport-xl{
-    max-width: 1280px;  
+    max-width: 1440px;  
   }
 
   @include vieport-xxl {
-		max-width: 1600px;
+		max-width: 1920px;
+    padding: 0 16rem;
 	}
 }
 
@@ -79,5 +86,20 @@ h1 {
     left: 50%;
     right: -3px;
     transform: rotate(-45deg);
+  }
+}
+
+.stars{
+  height: 20px;
+  width: 46px;
+  @include vieport-lg{
+    width: 54px;
+    height: 24px;
+  }
+
+  & > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
