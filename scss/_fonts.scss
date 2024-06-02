@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Urbanist';
-  src: url('./styles/fonts/Urbanist-Regular.woff2') format('woff2'),
-      url('./styles/fonts/Urbanist-Regular.woff') format('woff'),
-      url('./styles/fonts/Urbanist-Regular.ttf') format('truetype');
+  src: url('../fonts/Urbanist-Regular.woff2') format('woff2'),
+      url('../fonts/Urbanist-Regular.woff') format('woff'),
+      url('../fonts/Urbanist-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,9 +10,9 @@
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('./styles/fonts/Urbanist-SemiBold.woff2') format('woff2'),
-      url('./styles/fonts/Urbanist-SemiBold.woff') format('woff'),
-      url('./styles/fonts/Urbanist-SemiBold.ttf') format('truetype');
+  src: url('../fonts/Urbanist-SemiBold.woff2') format('woff2'),
+      url('../fonts/Urbanist-SemiBold.woff') format('woff'),
+      url('../fonts/Urbanist-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -20,9 +20,9 @@
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('./styles/fonts/Urbanist-Medium.woff2') format('woff2'),
-      url('./styles/fonts/Urbanist-Medium.woff') format('woff'),
-      url('./styles/fonts/Urbanist-Medium.ttf') format('truetype');
+  src: url('../fonts/Urbanist-Medium.woff2') format('woff2'),
+      url('../fonts/Urbanist-Medium.woff') format('woff'),
+      url('../fonts/Urbanist-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;

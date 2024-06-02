@@ -186,8 +186,12 @@
       border: none;
       border-radius: $border-radius-sm;
     }
+    
     &:hover{
-      @include border-grey($border-radius-sm);
+      @include vieport-lg{
+        border-radius: $border-radius-sm;
+        border: 2px solid $btn-color;
+      }
     }
   }
 

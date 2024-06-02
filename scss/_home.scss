@@ -102,7 +102,8 @@
   border-radius: $border-radius-sm;
   &:hover{
     @include vieport-lg{
-      background-color: $arrows-color;
+      background-color: transparent;
+      border: 2px solid $btn-color;
     }
   }
 }
@@ -249,6 +250,11 @@
 
 .featured {
 
+  &__swiper{
+    display: flex;
+    justify-content: flex-start;
+  }
+
   &__title{
     @include title-text(2.5rem);
     padding: 1rem 0;
@@ -259,5 +265,153 @@
       font-size: 4.8rem;
     }
   }
+
+  &__paragraph{
+    padding-bottom: 4rem;
+  }
+
+  &__card{
+  @include border-grey($border-radius-md);
+  padding: 2.4rem;
+  flex: 1 0 100%;
+  }
+
+  &__card_img{
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    height: 210px;
+
+    & > img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & h3{
+    @include title-text(1.8rem);
+    padding: 2rem 0 .8rem;
+  }
+
+  &__card_notes{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__card_note{
+    @include border-grey($border-radius-lg);
+    background: $second-bg;
+    color: white;
+    display: flex;
+    gap: .5rem;
+    padding: .5rem 1rem;
+
+    & > img{
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__card_footer{
+    display: grid;
+    grid-template: auto/40% 10% 50%;
+
+    & > a{
+      grid-column: 2/4;
+      grid-row: 1/3;
+      text-decoration: none;
+      color: white;
+      background: $btn-color;
+      border-radius: $border-radius-sm;
+      text-align: center;
+      @include flex-center;
+
+      &:hover{
+        @include vieport-lg{
+          background: transparent;
+          border: 2px solid $btn-color;
+        }
+      }
+    }
+  }
+
+  &__card_value{
+    grid-row: 2/3;
+    @include title-text(1.8rem);
+  }
+
+  &__footer{
+    border-top: 2px solid $border-grey;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    & > a{
+      text-decoration: none;
+      color: white;
+      background-color: $second-bg;
+      @include border-grey($border-radius-sm);
+      padding: 1.4rem 2rem;
+
+      &:hover{
+        border-color: transparent;
+        background: $btn-color;
+      }
+    }
+  }
+
+  &__btn_container{
+    @include flex-center;
+    gap: 1rem;
+  }
+
+  &__btn{
+    cursor: pointer;
+    @include border-grey($border-round);
+    width: 44px;
+    height: 44px;
+    position: relative;
+    &:hover{
+      @include vieport-lg{
+        border-color: $btn-color;
+      }
+    }
+
+    &.right{
+      background-color: $second-bg;
+      & > .arrow{
+        top: -10%;
+        right: 18%;
+        transform: rotate(0);
+        & > span, &::before, &::after{
+          background-color: white;
+        }
+      }
+    }
+
+    &.left{
+      & > .arrow{
+        top: 48%;
+        right: 18%;
+        transform: rotate(180deg);
+      }
+
+      &.onClick{
+        background-color: $second-bg;
+        &> .arrow{
+          & > span, &::before, &::after{
+            background-color: white;
+          }
+        }
+      } 
+    }
+  }
+
+
+
 }
 
