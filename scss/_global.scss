@@ -57,13 +57,13 @@ h1 {
     left: 0;
     width: 100%;
     height: 1.5px;
-    background: $input-txt-color;
+    background: $arrows-color;
   }
 
   &::before, &::after{
     content: '';
     position: absolute;
-    background: $input-txt-color;
+    background: $arrows-color;
     height: 1.5px;
   }
 

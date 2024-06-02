@@ -36,6 +36,14 @@
     align-items: center;
     border-top: 2px solid $border-grey;
     border-bottom: 2px solid $border-grey ;
+    @include vieport-lg{
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    @include vieport-xxl{
+      padding-left: 16rem;
+      padding-right: 16rem;
+    }
   }
 
   &__burger_menu{
