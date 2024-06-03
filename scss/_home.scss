@@ -253,6 +253,10 @@
   &__swiper{
     display: flex;
     justify-content: flex-start;
+    overflow: hidden;
+    @include vieport-lg{
+      gap: 2rem;
+    }
   }
 
   &__title{
@@ -273,13 +277,23 @@
   &__card{
   @include border-grey($border-radius-md);
   padding: 2.4rem;
-  flex: 1 0 100%;
+  flex: 0 0 100%;
+  @include vieport-lg{
+    flex-basis:49%;
   }
+  @include vieport-xl{
+    flex-basis: 32%;
+  }
+  }
+  
 
   &__card_img{
     border-radius: $border-radius-sm;
     overflow: hidden;
     height: 210px;
+    @include vieport-md{
+      height: 240px;
+    }
 
     & > img{
       width: 100%;
@@ -291,6 +305,9 @@
   & h3{
     @include title-text(1.8rem);
     padding: 2rem 0 .8rem;
+    @include vieport-md{
+      font-size: 2rem;
+    }
   }
 
   &__card_notes{
@@ -328,6 +345,7 @@
       border-radius: $border-radius-sm;
       text-align: center;
       @include flex-center;
+      
 
       &:hover{
         @include vieport-lg{

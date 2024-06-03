@@ -24,44 +24,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 	let counter = 0;
 	
-	btnRight.addEventListener('click', () => {
-		counter++;
-		btnLeft.classList.add('onClick');
-		
-		if (counter >= 6){
+
+	btnRight.addEventListener('click', ()=>{
+		if(counter === 4){
+			for(let i = 0; i<cards.length; i++){
+				cards[i].classList.remove('hidden');
+			}
 			counter = 0;
 			btnLeft.classList.remove('onClick');
 		}
-		
-		for(let i=0; i < cards.length; i++){
-			if(i !== counter){
-				cards[i].classList.add('hidden');
-			}
-			else{
-				cards[i].classList.remove('hidden');
-			}
+		else{
+		cards[counter].classList.toggle('hidden');
+		counter++;
+		btnLeft.classList.add('onClick');
 		}
-		
-	});
+	})
 
 	btnLeft.addEventListener('click', () => {
-
-		if(counter !== 0){
+		console.log(counter)
+		if(counter > 0){
+			cards[counter-1].classList.remove('hidden');
 			counter--;
-			
-			for(let i=0; i < cards.length; i++){
-				if(i !== counter ){
-					cards[i].classList.add('hidden');
-				}
-				else{
-					cards[i].classList.remove('hidden');
-				}
-			}
-			if(counter === 0){
-				btnLeft.classList.remove('onClick');
-			}
+		}
+		if(!cards[0].classList.contains('hidden')){
+			btnLeft.classList.remove('onClick');
 		}
 	});
+	
 
 
 
