@@ -404,6 +404,10 @@
     gap: 1rem;
     grid-column: 3/5;
     justify-content: end;
+    @include vieport-lg{
+      justify-content: center;
+      grid-column: 1/5;
+    }
   }
 
   &__btn{
@@ -447,8 +451,212 @@
       } 
     }
   }
+}
 
 
+// ? REWIEWS
 
+.reviews {
+padding-top: 4rem;
+padding-bottom: 4rem;;
+  &__swiper{
+    grid-column: 1/5;
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid $border-grey;
+    @include vieport-lg{
+      gap: 2rem;
+    }
+  }
+
+  &__title{
+    grid-column: 1/5;
+    @include title-text(2.5rem);
+    padding: 1rem 0;
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__paragraph{
+    padding-bottom: 4rem;
+    grid-column: 1/5;
+    grid-row: 3/4;
+    @include vieport-lg{
+      grid-column: 1/4;
+    }
+  }
+
+  &__card{
+  @include border-grey($border-radius-md);
+  padding: 2.4rem;
+  flex: 0 0 100%;
+  @include vieport-lg{
+    flex-basis:49%;
+  }
+  @include vieport-xl{
+    flex-basis: 32%;
+  }
+  }
+  
+
+  &__card_img{
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    height: 210px;
+    @include vieport-md{
+      height: 240px;
+    }
+
+    & > img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & h3{
+    @include title-text(1.8rem);
+    padding: 2rem 0 .8rem;
+    @include vieport-md{
+      font-size: 2rem;
+    }
+  }
+
+  &__card_notes{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__card_note{
+    @include border-grey($border-radius-lg);
+    background: $second-bg;
+    color: white;
+    display: flex;
+    gap: .5rem;
+    padding: .5rem 1rem;
+
+    & > img{
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__card_footer{
+    display: grid;
+    grid-template: auto/40% 10% 50%;
+
+    & > a{
+      grid-column: 2/4;
+      grid-row: 1/3;
+      text-decoration: none;
+      color: white;
+      background: $btn-color;
+      border-radius: $border-radius-sm;
+      text-align: center;
+      @include flex-center;
+      
+
+      &:hover{
+        @include vieport-lg{
+          background: transparent;
+          border: 2px solid $btn-color;
+        }
+      }
+    }
+  }
+
+  &__card_value{
+    grid-row: 2/3;
+    @include title-text(1.8rem);
+  }
+
+  &__link{
+    @include flex-center;
+    width: 155px;
+    height: 50px;
+    padding: 0 1rem;
+    text-decoration: none;
+    color: white;
+    background-color: $second-bg;
+    @include border-grey($border-radius-sm);
+    grid-column: 1/3;
+    @include vieport-lg{
+      grid-row: 3/4;
+      grid-column: 4/5;
+      justify-self: end;
+      width: 165px;
+    }
+    @include vieport-xxl{
+      width: 180px;
+    }
+
+    &:hover{
+      border-color: transparent;
+      background: $btn-color;
+    }
+  }
+
+  &__btn_container{
+    @include flex-center;
+    gap: 1rem;
+    grid-column: 3/5;
+    justify-content: end;
+    @include vieport-lg{
+      justify-content: center;
+      grid-column: 1/5;
+    }
+  }
+
+  &__btn{
+    cursor: pointer;
+    @include border-grey($border-round);
+    width: 44px;
+    height: 44px;
+    position: relative;
+    &:hover{
+      @include vieport-lg{
+        border-color: $btn-color;
+      }
+    }
+
+    &.right{
+      background-color: $second-bg;
+      & > .arrow{
+        top: -10%;
+        right: 18%;
+        transform: rotate(0);
+        & > span, &::before, &::after{
+          background-color: white;
+        }
+      }
+    }
+
+    &.left{
+      & > .arrow{
+        top: 48%;
+        right: 18%;
+        transform: rotate(180deg);
+      }
+
+      &.onClick{
+        background-color: $second-bg;
+        &> .arrow{
+          & > span, &::before, &::after{
+            background-color: white;
+          }
+        }
+      } 
+    }
+  }
 }
 
