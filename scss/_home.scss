@@ -491,11 +491,17 @@ padding-bottom: 4rem;
     @include border-grey($border-radius-md);
     padding: 4rem;
     flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
     @include vieport-lg{
       flex-basis:31.5%;
     }
     @include vieport-xl{
       flex-basis: 32%;
+    }
+
+    &.hidden {
+      display: none;
     }
   }
 
@@ -513,7 +519,6 @@ padding-bottom: 4rem;
 
     & > img{
       width: 100%;
-      height: 100%;
       object-fit: cover;
     }
   }
@@ -531,6 +536,7 @@ padding-bottom: 4rem;
 
   &__card_text{
     color: white;
+    flex-grow: 1;
   }
 
   &__card_footer{
