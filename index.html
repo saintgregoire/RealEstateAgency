@@ -457,27 +457,29 @@
 
     <footer class="footer">
       <section class="footer__info">
-        <div class="footer__info_box">
-          <h2 class="footer__info_title">
-            Start Your Real Estate Journey Today
-          </h2>
-          <p class="footer__info_paragraph">
-            Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.
-          </p>
+        <div class="footer__info_box container">
+          <div class="footer__info_wrapper">
+            <h2 class="footer__info_title">
+              Start Your Real Estate Journey Today
+            </h2>
+            <p class="footer__info_paragraph">
+              Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.
+            </p>
+          </div>
+          <a class="footer__info_link" href="./pages/properties.html">
+            <p>Explore Properties</p>
+          </a>
         </div>
-        <a class="footer__info_link" href="./pages/properties.html">
-          <p>Explore Properties</p>
-        </a>
       </section>
 
-      <section class="footer__email">
+      <section class="footer__email container">
         <h4 class="sr-only">Our team will contact you ASAP</h4>
         <div class="footer__email_logo">
           <img src="./img/Logo.png" alt="Estatein agency logo">
         </div>
         <form action="" method="POST" class="footer__email_form">
           <label class="sr-only" for="email_footer">Email</label>
-          <input type="email" name="emailFooter" id="email_footer" placeholder="Email" required>
+          <input type="email" name="emailFooterInput" class="footer__email_input" id="email_footer_input" placeholder="📧 Enter Your Email" required>
           <button class="footer__email_btn" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
         </form>
       </section>

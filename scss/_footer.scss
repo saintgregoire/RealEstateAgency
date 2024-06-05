@@ -1,0 +1,122 @@
+.footer{
+// ?-----------------INFO SECTION------------------------------
+
+  &__info{
+    padding: 5rem 0;
+    background-image: url('../img/Abstract\ Design_2.png');
+    background-position: top -25% left -40%;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    @include vieport-lg{
+      padding: 6rem 0;
+    }
+    @include vieport-xl{
+      background-position: top 40% left -15%;
+      background-size: 50%;
+    }
+    @include vieport-xxl{
+      padding: 10rem 0;
+    }
+  }
+
+  &__info_box{
+    @include vieport-lg {
+      display: grid;
+      grid-template-columns: 65% 17% 18%;
+    }
+  }
+
+  &__info_wrapper{
+    grid-column: 1/2; 
+  }
+
+  &__info_title{
+    @include title-text(2.8rem);
+    padding-bottom: 1rem;
+    @include vieport-lg{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__info_link{
+    margin-top: 3rem;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    background: $btn-color;
+    display: block;
+    border-radius: $border-radius-sm;
+    @include vieport-lg{
+      grid-column: 3/4;
+      height: 50px;
+      width: 152px;
+      align-self: center;
+      justify-self: end;
+      margin: 0;
+      @include flex-center;
+    }
+    @include vieport-xxl{
+      width: 192px;
+      height: 63px;
+    }
+  }
+
+
+// ? -----------------EMAIL SECTION----------------------------
+
+&__email{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  @include vieport-lg{
+    padding: 8rem 0;
+  }
+  @include vieport-xxl{
+    padding: 3rem 0;
+  }
+}
+
+  &__email_logo{
+    width: 115px;
+    margin-bottom: 2rem;
+    & > img{
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & form{
+    position: relative;
+  }
+
+  &__email_input{
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: $second-bg;
+    @include border-grey($border-radius-sm);
+    color: white;
+
+    &:focus-visible{
+      outline: 2px solid white;
+    }
+  }
+
+  &__email_btn{
+    background: none;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+  }
+
+
+
+
+
+
+
+}
