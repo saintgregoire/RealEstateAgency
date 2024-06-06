@@ -1,0 +1,10 @@
+.journey{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @include vieport-xl{
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  
+}
