@@ -1,36 +1,36 @@
-.footer{
+
 // ?-----------------INFO SECTION------------------------------
 
-  &__info{
-    padding: 5rem 0;
-    background-image: url('../img/Abstract\ Design_2.png');
-    background-position: top -25% left -40%;
-    background-repeat: no-repeat;
-    background-size: 90%;
-    @include vieport-lg{
-      padding: 6rem 0;
-    }
-    @include vieport-xl{
-      background-position: top 40% left -15%;
-      background-size: 50%;
-    }
-    @include vieport-xxl{
-      padding: 10rem 0;
-    }
+.info{
+  padding: 5rem 0;
+  background-image: url('../img/Abstract\ Design_2.png');
+  background-position: top -25% left -40%;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  @include vieport-lg{
+    padding: 6rem 0;
   }
+  @include vieport-xl{
+    background-position: top 40% left -15%;
+    background-size: 50%;
+  }
+  @include vieport-xxl{
+    padding: 10rem 0;
+  }
+  
 
-  &__info_box{
+  &__box{
     @include vieport-lg {
       display: grid;
       grid-template-columns: 65% 17% 18%;
     }
   }
 
-  &__info_wrapper{
+  &__wrapper{
     grid-column: 1/2; 
   }
 
-  &__info_title{
+  &__title{
     @include title-text(2.8rem);
     padding-bottom: 1rem;
     @include vieport-lg{
@@ -41,7 +41,7 @@
     }
   }
 
-  &__info_link{
+  &__link{
     margin-top: 3rem;
     padding: 1rem 0;
     text-decoration: none;
@@ -64,24 +64,35 @@
       height: 63px;
     }
   }
+}
 
 
 // ? -----------------EMAIL SECTION----------------------------
 
-&__email{
+.email{
   padding-top: 5rem;
   padding-bottom: 5rem;
   @include vieport-lg{
-    padding: 8rem 0;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    display: flex;
+    justify-content: space-between;
   }
   @include vieport-xxl{
-    padding: 3rem 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
-}
 
-  &__email_logo{
+
+  &__logo{
     width: 115px;
     margin-bottom: 2rem;
+    @include vieport-lg{
+      margin: 0;
+    }
+    @include vieport-xxl{
+      width: 160px;
+    }
     & > img{
       width: 100%;
       object-fit: cover;
@@ -90,33 +101,111 @@
 
   & form{
     position: relative;
+    @include vieport-lg{
+      width: 305px;
+    }
+    @include vieport-xxl{
+      width: 423px;
+    }
   }
 
-  &__email_input{
+  &__input{
     width: 100%;
     padding: 1.5rem 2rem;
     background: $second-bg;
     @include border-grey($border-radius-sm);
     color: white;
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
 
     &:focus-visible{
       outline: 2px solid white;
     }
   }
 
-  &__email_btn{
+  &__btn{
     background: none;
     color: white;
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 2rem;
+    cursor: pointer;
+    &:hover {
+      color: $btn-color;
+    }
+  }
+}
+
+
+// ?---------------------SOCIAL SECTION-------------------
+
+.social {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: $second-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  @include vieport-lg{
+    flex-direction: row;
+    justify-content: space-between;
   }
 
+  &__box{
+    @include flex-center;
+    gap: .8rem;
+    @include vieport-lg{
+      order: 2;
+    }
 
+    & > a{
+      text-decoration: none;
+      color: white;
+      background: $main-bg;
+      height: 60px;
+      width: 60px;
+      border-radius: $border-round;
+      @include flex-center;
+      font-size: 2rem;
+      @include vieport-xxl{
+        font-size: 2.4rem;
+      }
+      &:hover {
+        background-color: $btn-color;
+      }
+    }
+  }
 
+  &__txt_box{
+    text-align: center;
+    @include vieport-lg{
+      @include flex-center;
+      gap: 2rem;
+    }
+  }
 
+  &__text{
+    color: white;
+    padding-bottom: 2rem;
+    @include vieport-lg{
+      padding-bottom: 0;
+    }
+  }
 
-
+  &__terms{
+    & > a{
+      text-decoration: none;
+      color: white;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
 
 }
+
+
+
