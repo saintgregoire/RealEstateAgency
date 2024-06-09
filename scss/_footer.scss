@@ -63,6 +63,12 @@
       width: 192px;
       height: 63px;
     }
+    &:hover{
+      color: $btn-color;
+      border: 2px solid $btn-color;
+      background: white;
+      font-weight: 500;
+    }
   }
 }
 

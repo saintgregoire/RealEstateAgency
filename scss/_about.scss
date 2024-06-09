@@ -469,3 +469,142 @@
     }
   }
 }
+
+// ?--------------------CLIENTS SECTION-------------------
+
+.clients{
+
+  & > h2{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__cards{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    @include vieport-md{
+      gap: 4rem;
+    }
+    @include vieport-lg{
+      flex-direction: row;
+    }
+  }
+
+  &__card{
+    padding: 2.4rem;
+    border-radius: $border-radius-sm;
+    box-shadow: 0px 0px 2px 8px $second-bg;
+    -webkit-box-shadow: 0px 0px 2px 8px $second-bg;
+    -moz-box-shadow: 0px 0px 2px 8px $second-bg;
+    @include vieport-lg{
+      padding: 4rem;
+    }
+    @include vieport-xxl{
+      padding: 5rem;
+    }
+
+    & h3{
+      @include title-text(2rem);
+      padding-top: 1rem;
+      @include vieport-lg{
+        font-size: 2.4rem;
+      }
+      @include vieport-xxl{
+        font-size: 3rem;
+      }
+    }
+  }
+
+  &__card_top{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include vieport-lg{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__card_btn{
+    text-decoration: none;
+    color: white;
+    background: $second-bg;
+    padding: 1.4rem 2rem;
+    text-align: center;
+    border-radius: $border-radius-sm;
+    white-space: nowrap;
+
+    &:hover{
+      color: $btn-color;
+      border: 2px solid $btn-color;
+    }
+  }
+
+  &__card_middle{
+    margin: 3rem 0;
+    display: flex;
+  }
+
+  &__card_block{
+    flex: 1 1 50%;
+  }
+
+  &__card_block.first{
+    padding-right: 1.6rem;
+  }
+
+  &__card_block.second{
+    padding-left: 1.6rem;
+    border-left: 1px solid $border-grey;
+  }
+
+  &__card_sub{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    margin-bottom: .5rem;
+    @include vieport-lg{
+      font-size: 1.4rem;
+    }
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+
+    & > img{
+      width: 18px;
+      height: 18px;
+      @include vieport-xxl{
+        width: 2.4rem;
+        height:2.4rem;
+      }
+    }
+  }
+
+  &__card_desc{
+    color: white;
+    font-weight: 500;
+  }
+
+  &__card_footer{
+    padding: 2rem;
+    @include border-grey($border-radius-md);
+    font-weight: 500;
+  }
+
+  &__card_comment{
+    color: white;
+    margin-top: 1rem;
+  }
+
+}
