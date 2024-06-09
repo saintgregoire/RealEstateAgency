@@ -11,78 +11,193 @@
   }
   
 
-&__img{
-  width: 100%;
-  @include border-grey($border-radius-md);
-  overflow: hidden;
-  background: url('../img/AbstractDesign1.png') no-repeat center/cover;
-  margin-bottom: 2rem;
-  @include vieport-lg{
-    margin-bottom: 0;
-    order: 2;
-    flex: 0 0 45%;
-  }
-
-  & > img {
+  &__img{
     width: 100%;
-    object-fit: cover;
-    vertical-align: bottom;
-    height: 100%;
+    @include border-grey($border-radius-md);
+    overflow: hidden;
+    background: url('../img/AbstractDesign1.png') no-repeat center/cover;
+    margin-bottom: 2rem;
+    @include vieport-lg{
+      margin-bottom: 0;
+      order: 2;
+      flex: 0 0 45%;
+    }
+
+    & > img {
+      width: 100%;
+      object-fit: cover;
+      vertical-align: bottom;
+      height: 100%;
+    }
+  }
+
+
+  &__main{
+    @include vieport-lg{
+      flex: 0 0 45%;
+    }
+  }
+
+  &  h2{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__stats_container{
+    padding-top: 4rem;
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    @include vieport-lg{
+      padding-top: 5rem;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__stat{
+    border-radius: $border-radius-sm;
+    background: $second-bg;
+    padding: 1.8rem 0;
+    text-align: center;
+    flex: 1 1 45%;
+    @include vieport-lg{
+      flex-basis: 33%;
+      text-align: start;
+      padding: 2rem;
+    }
+  }
+
+  &__number{
+    @include title-text(2.4rem);
+    padding-bottom: .5rem;
+    @include vieport-md{
+      font-size: 3rem;
+    }
+    @include vieport-xxl{
+      font-size: 4rem;
+    }
   }
 }
 
+// ?----------------------------VALUES SECTION----------------
 
-&__main{
-  @include vieport-lg{
-    flex: 0 0 45%;
+.values{
+  @include vieport-xl{
+    display: flex;
+    gap: 6rem;
+    align-items: center;
   }
-}
 
-&  h2{
-  padding : 1rem 0;
-  @include title-text(2.8rem);
-  @include vieport-md{
-    font-size: 3.8rem;
+  &  h2{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
   }
-  @include vieport-xxl{
-    font-size: 4.8rem;
-  }
-}
 
-&__stats_container{
-  padding-top: 4rem;
-  @include flex-center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  @include vieport-lg{
-    padding-top: 5rem;
-    flex-wrap: nowrap;
-  }
-}
 
-&__stat{
-  border-radius: $border-radius-sm;
-  background: $second-bg;
-  padding: 1.8rem 0;
-  text-align: center;
-  flex: 1 1 45%;
-  @include vieport-lg{
-    flex-basis: 33%;
-    text-align: start;
-    padding: 2rem;
+  &__cards{
+    margin-top: 4rem;
+    border-radius: $border-radius-md;
+    box-shadow: 0px 0px 2px 8px $second-bg;
+    -webkit-box-shadow: 0px 0px 2px 8px $second-bg;
+    -moz-box-shadow: 0px 0px 2px 8px $second-bg;
+    padding: 2.4rem;
+    @include vieport-lg{
+    @include flex-center;
+    flex-wrap: wrap;
+    }
   }
-}
 
-&__number{
-  @include title-text(2.4rem);
-  padding-bottom: .5rem;
-  @include vieport-md{
-    font-size: 3rem;
+  &__card{
+    @include vieport-lg{
+      flex: 1 1 50%;
+    }
   }
-  @include vieport-xxl{
-    font-size: 4rem;
-  }
-}
 
+  &__card:not(:last-of-type){
+    border-bottom: 1px solid $border-grey;
+    padding-bottom: 2rem;
+    @include vieport-lg {
+      padding-bottom: 0;
+      border: none;
+    }
+    }
+  &__card:not(:first-of-type){
+    padding-top: 2rem;
+    @include vieport-lg{
+      padding-top: 0;
+    }
+  }
+
+  &__card:first-child, &__card:nth-child(2){
+    @include vieport-lg{
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid $border-grey;
+    }
+  }
+
+  &__card:last-child, &__card:nth-child(3){
+    @include vieport-lg{
+      padding-top: 2.4rem;
+    }
+  }
+
+  &__card:first-child, &__card:nth-child(3){
+    @include vieport-lg{
+      padding-right: 2.4rem;
+    }
+  }
+
+  &__card:last-child, &__card:nth-child(2){
+    @include vieport-lg{
+      padding-left: 2.4rem;
+      border-left: 1px solid $border-grey;
+    }
+  }
+
+  &__card_head{
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding-bottom: 1.5rem;
+    @include vieport-lg{
+      gap: 1rem;
+    }
+    @include vieport-xxl{
+      gap: 1.4rem;
+    }
+
+    & > img{
+      width: 52px;
+      height: 52px;
+      @include vieport-lg{
+        width: 60px;
+        height: 60px; 
+      }
+      @include vieport-xxl{
+        width: 74px;
+        height: 74px;
+      }
+    }
+  }
+
+  &__card_title{
+    @include title-text(2rem);
+    @include vieport-xxl{
+      font-size: 2.4rem;
+    }
+  }
+  
 
 }
