@@ -201,3 +201,62 @@
   
 
 }
+
+// ?-----------------ACHIEVEMENTS SECTION---------------------
+
+.achieve{
+
+  &  h2{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__cards{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 4rem;
+    @include vieport-lg{
+      margin-top: 6rem;
+      flex-direction: row;
+      gap: 3rem;
+    }
+    @include vieport-xxl{
+      margin-top: 8rem;
+    }
+  }
+
+  &__card{
+    padding: 3rem;
+    border-radius: $border-radius-sm;
+    box-shadow: 0px 0px 2px 6px $second-bg;
+    -webkit-box-shadow: 0px 0px 2px 6px $second-bg;
+    -moz-box-shadow: 0px 0px 2px 6px $second-bg;
+    @include vieport-lg{
+      flex: 1 1 33.3%;
+      padding: 4rem;
+    }
+    @include vieport-xxl{
+      padding: 5rem;
+    }
+  }
+
+  &__card_title{
+    padding-bottom: 1rem;
+    @include title-text(2rem);
+    @include vieport-lg{
+      font-size: 2.4rem;
+    }
+    @include vieport-xxl{
+      font-size: 3rem;
+    }
+  }
+
+
+}
