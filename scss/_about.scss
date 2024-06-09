@@ -1,10 +1,88 @@
 .journey{
   padding-top: 4rem;
   padding-bottom: 4rem;
+  @include vieport-lg{
+    display: flex;
+    justify-content: space-between;
+  }
   @include vieport-xl{
     padding-top: 7rem;
     padding-bottom: 7rem;
   }
-
   
+
+&__img{
+  width: 100%;
+  @include border-grey($border-radius-md);
+  overflow: hidden;
+  background: url('../img/AbstractDesign1.png') no-repeat center/cover;
+  margin-bottom: 2rem;
+  @include vieport-lg{
+    margin-bottom: 0;
+    order: 2;
+    flex: 0 0 45%;
+  }
+
+  & > img {
+    width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+    height: 100%;
+  }
+}
+
+
+&__main{
+  @include vieport-lg{
+    flex: 0 0 45%;
+  }
+}
+
+&  h2{
+  padding : 1rem 0;
+  @include title-text(2.8rem);
+  @include vieport-md{
+    font-size: 3.8rem;
+  }
+  @include vieport-xxl{
+    font-size: 4.8rem;
+  }
+}
+
+&__stats_container{
+  padding-top: 4rem;
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  @include vieport-lg{
+    padding-top: 5rem;
+    flex-wrap: nowrap;
+  }
+}
+
+&__stat{
+  border-radius: $border-radius-sm;
+  background: $second-bg;
+  padding: 1.8rem 0;
+  text-align: center;
+  flex: 1 1 45%;
+  @include vieport-lg{
+    flex-basis: 33%;
+    text-align: start;
+    padding: 2rem;
+  }
+}
+
+&__number{
+  @include title-text(2.4rem);
+  padding-bottom: .5rem;
+  @include vieport-md{
+    font-size: 3rem;
+  }
+  @include vieport-xxl{
+    font-size: 4rem;
+  }
+}
+
+
 }
