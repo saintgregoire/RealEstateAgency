@@ -260,3 +260,212 @@
 
 
 }
+
+// ?-----------------NAVIGATING SECTION-------------------
+
+.navigating{
+  
+
+  &  h2{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__cards{
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    height: 850px;
+    overflow-y: scroll;
+    @include vieport-md{
+      height: 700px;
+    }
+    @include vieport-lg{
+      height: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow-y: unset;
+      row-gap: 4rem;
+    }
+  }
+
+  &__card{
+    border-left: 2px solid;
+    border-image: linear-gradient(131deg, #703BF7 4%, #703BF7 -87%, #262626 33%) 1;
+    border-bottom: 2px solid $border-grey;
+    @include vieport-lg{
+      flex: 1 1 30%;
+      align-self: flex-start;
+    }
+    @include vieport-xl {
+      align-self: stretch;
+    }
+  }
+
+
+  &__step{
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 1.4rem 1.6rem;
+    @include vieport-xxl{
+      font-size: 2rem;
+    }
+  }
+
+  & h3{
+    @include title-text(1.8rem);
+    padding-bottom: 1.4rem;
+    @include vieport-lg{
+      font-size: 2rem;
+    }
+    @include vieport-xxl{
+      font-size: 2.6rem;
+    }
+  }
+
+  &__card_container{
+    padding: 3rem;
+    background-image: $gradient-cards;  
+    border-top: 2px solid;
+    border-image: linear-gradient(131deg, #703BF7 4%, #703BF7 -87%, #262626 33%) 1;  
+    border-right: 2px solid $border-grey;
+    @include vieport-lg{
+      padding: 4rem;
+    }
+    @include vieport-xxl{
+      padding: 5rem;
+    }
+  }
+
+  &__card:nth-of-type(3) &__card_container{
+    @include vieport-xl{
+      padding-bottom: 6.5rem;
+    }
+    @include vieport-xxl{
+      padding-bottom: 7.6rem;
+    }
+  }
+
+  &__card:nth-of-type(6) &__card_container{
+    @include vieport-xxl{
+      padding-bottom: 7.6rem;
+    }
+  }
+
+}
+
+// ?--------------------TEAM SECTION-----------------------
+
+.team{
+
+  &__title{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__cards{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 4rem;
+    @include vieport-md{
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 3rem;
+      row-gap: 4.5rem;
+    }
+    @include vieport-lg{
+      flex-wrap: nowrap;
+      gap: 2rem;
+    }
+    @include vieport-xxl{
+      gap: 3rem;
+    }
+  }
+
+  &__card{
+    padding: 2rem;
+    @include border-grey($border-radius-md);
+    position: relative;
+    text-align: center;
+    @include vieport-md{
+      flex: 1 1 45%;
+    }
+    @include vieport-xxl{
+      padding: 3rem;
+    }
+  }
+
+  &__card_photo{
+    border-radius: $border-radius-sm;
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    @include vieport-lg {
+      height: 220px;
+    }
+    @include vieport-xxl{
+      height: 253px;
+    }
+
+    & > img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__card_btn{
+    text-decoration: none;
+    color: white;
+    background: $btn-color;
+    font-size: 2rem;
+    padding: .5rem 2rem;
+    border-radius: $border-radius-lg;
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    transform: translateX(-50%);
+    @include vieport-lg{
+      top: 58%;
+    }
+    @include vieport-xl{
+      top: 62%;
+    }
+    @include vieport-xxl{
+      font-size: 2.4rem;
+    }
+
+    &:hover{
+      color: $btn-color;
+      background: white;
+      border: 2px solid $btn-color;
+    }
+  }
+
+  & h3{
+    @include title-text(1.8rem);
+    margin-bottom: 1rem;
+    @include vieport-lg{
+      font-size: 2rem;
+    }
+    @include vieport-xxl{
+      font-size: 2.4rem;
+    }
+  }
+}
