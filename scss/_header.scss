@@ -27,6 +27,10 @@
 
   &__discover a{
     color:white;
+    &:hover{
+      font-weight: 500;
+      color: $btn-color;
+    }
   }
 
   &__main{

@@ -162,6 +162,10 @@
     padding-left: 4rem;
     padding-right: 4rem;
   }
+  @include vieport-xl{
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
   @include vieport-xxl{
     padding-left: 16rem;
     padding-right: 16rem;
