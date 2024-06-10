@@ -159,6 +159,12 @@
   @include vieport-lg{
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  @include vieport-xxl{
+    padding-left: 16rem;
+    padding-right: 16rem;
   }
 
   &__box{
