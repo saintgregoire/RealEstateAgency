@@ -1,0 +1,37 @@
+.terms {
+  color: white;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  & h1{
+    font-size: 3rem;
+  }
+
+  &  h2{
+    padding : 3rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  & ul{
+    list-style: circle;
+  }
+
+  &__small{
+    padding-top: 2rem;
+    font-size: 1.2rem;
+  }
+
+  & a{
+    color: $btn-color;
+  }
+
+  & li{
+    padding-top: 1rem;
+  }
+}
