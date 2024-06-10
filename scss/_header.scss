@@ -125,6 +125,7 @@
 		height: 15px;
 		position: relative;
 		margin: 2rem 2rem 0 auto;
+    cursor: pointer;
 
 		&::before, &::after {
 			content: '';
@@ -188,15 +189,13 @@
     }
     
     &:hover{
-      @include vieport-lg{
-        border-radius: $border-radius-sm;
-        border: 2px solid $btn-color;
-      }
+      border-radius: $border-radius-sm;
+      border: 2px solid $btn-color;
     }
   }
 
   &__menu a.active {
-    background: $border-grey;
+    background: $btn-color;
   
     @include vieport-lg{
       @include border-grey($border-radius-sm);

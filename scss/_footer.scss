@@ -91,6 +91,7 @@
 
 
   &__logo{
+    display: block;
     width: 115px;
     margin-bottom: 2rem;
     @include vieport-lg{

@@ -91,9 +91,7 @@
   @include border-grey($border-radius-sm);
   
   &:hover{
-    @include vieport-lg{
-      background-color: $btn-color;
-    }
+    background-color: $btn-color;
   }
 }
 
@@ -101,10 +99,8 @@
   background: $btn-color;
   border-radius: $border-radius-sm;
   &:hover{
-    @include vieport-lg{
-      background-color: transparent;
-      border: 2px solid $btn-color;
-    }
+    background-color: transparent;
+    border: 2px solid $btn-color;
   }
 }
 
@@ -360,10 +356,8 @@
       
 
       &:hover{
-        @include vieport-lg{
-          background: transparent;
-          border: 2px solid $btn-color;
-        }
+        background: transparent;
+        border: 2px solid $btn-color;
       }
     }
   }
@@ -417,9 +411,7 @@
     height: 44px;
     position: relative;
     &:hover{
-      @include vieport-lg{
-        border-color: $btn-color;
-      }
+      border-color: $btn-color;
     }
 
     &.right{
@@ -583,9 +575,7 @@ padding-top: 4rem;
     height: 44px;
     position: relative;
     &:hover{
-      @include vieport-lg{
-        border-color: $btn-color;
-      }
+      border-color: $btn-color;
     }
 
     &.right{
