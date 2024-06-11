@@ -64,10 +64,8 @@
       height: 63px;
     }
     &:hover{
-      color: $btn-color;
       border: 2px solid $btn-color;
-      background: white;
-      font-weight: 500;
+      background: transparent;
     }
   }
 }
@@ -127,7 +125,7 @@
     }
 
     &:focus-visible{
-      outline: 2px solid white;
+      outline: 2px solid $btn-color;
     }
   }
 
