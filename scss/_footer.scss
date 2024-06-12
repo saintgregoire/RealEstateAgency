@@ -32,7 +32,7 @@
 
   &__title{
     @include title-text(2.8rem);
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     @include vieport-lg{
       font-size: 3.8rem;
     }
@@ -204,9 +204,9 @@
 
   &__text{
     color: white;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
     @include vieport-lg{
-      padding-bottom: 0;
+      margin-bottom: 0;
     }
   }
 

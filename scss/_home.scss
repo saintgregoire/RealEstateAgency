@@ -45,21 +45,21 @@
 }
 
 &__title{
-  padding-top: 4rem;
+  margin-top: 4rem;
   @include vieport-md{
     font-size: 4.6rem;
   }
   @include vieport-xl{
-    padding-top: 9rem;
+    margin-top: 9rem;
   }
   @include vieport-xxl{
     font-size: 6rem;
-    padding-top: 15rem;
+    margin-top: 15rem;
   }
 }
 
 &__paragraph{
-  padding-top: 2rem;
+  margin-top: 2rem;
 }
 
 &__btn_container{
@@ -108,7 +108,7 @@
   @include flex-center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding-bottom: 4rem;
+  margin-bottom: 4rem;
   @include vieport-lg{
     flex-wrap: nowrap;
     gap: 1.5rem;
@@ -128,7 +128,7 @@
 
 &__number{
   @include title-text(2.4rem);
-  padding-bottom: .5rem;
+  margin-bottom: .5rem;
   @include vieport-md{
     font-size: 3rem;
   }
@@ -264,7 +264,7 @@
   &__title{
     grid-column: 1/5;
     @include title-text(2.5rem);
-    padding: 1rem 0;
+    margin: 1rem 0;
     @include vieport-md{
       font-size: 3.8rem;
     }
@@ -274,7 +274,7 @@
   }
 
   &__paragraph{
-    padding-bottom: 4rem;
+    margin-bottom: 4rem;
     grid-column: 1/5;
     grid-row: 3/4;
     @include vieport-lg{
@@ -312,15 +312,15 @@
 
   & h3{
     @include title-text(1.8rem);
-    padding: 2rem 0 .8rem;
+    margin: 2rem 0 .8rem;
     @include vieport-md{
       font-size: 2rem;
     }
   }
 
   &__card_notes{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -465,7 +465,7 @@ padding-top: 4rem;
 
   &__title{
     @include title-text(2.5rem);
-    padding: 1rem 0;
+    margin: 1rem 0;
     @include vieport-md{
       font-size: 3.8rem;
     }
@@ -475,7 +475,7 @@ padding-top: 4rem;
   }
 
   &__paragraph{
-    padding-bottom: 4rem;
+    margin-bottom: 4rem;
   }
 
   &__card{
@@ -516,7 +516,7 @@ padding-top: 4rem;
 
   & h3{
     @include title-text(1.8rem);
-    padding: 2rem 0 .8rem;
+    margin: 2rem 0 .8rem;
     @include vieport-md{
       font-size: 2rem;
     }

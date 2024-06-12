@@ -39,14 +39,7 @@
   }
 
   &  h2{
-    padding : 1rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
+    @include h2;
   }
 
   &__stats_container{
@@ -95,14 +88,7 @@
   }
 
   &  h2{
-    padding : 1rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
+    @include h2;
   }
 
 
@@ -207,14 +193,7 @@
 .achieve{
 
   &  h2{
-    padding : 1rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
+    @include h2;
   }
 
   &__cards{
@@ -267,14 +246,7 @@
   
 
   &  h2{
-    padding : 1rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
+    @include h2;
   }
 
   &__cards{
@@ -475,14 +447,7 @@
 .clients{
 
   & > h2{
-    padding : 1rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
+    @include h2;
   }
 
   &__cards{

@@ -8,14 +8,8 @@
   }
 
   &  h2{
+    @include h2;
     padding : 3rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
   }
 
   & ul{

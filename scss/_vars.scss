@@ -68,3 +68,14 @@ $breakpoint-xxl: 1920px;
 	border-radius: $radius;
 }
 
+@mixin h2{
+	margin : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+}
+

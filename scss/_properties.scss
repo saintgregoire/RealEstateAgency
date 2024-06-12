@@ -20,7 +20,7 @@
   }
 
   & h1{
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     font-size: 2.7rem;
     @include vieport-md{
       font-size: 3.8rem;
@@ -109,7 +109,7 @@
 
   & h3{
     @include title-text(1.8rem);
-    padding: 2rem 0 .8rem;
+    margin: 2rem 0 .8rem;
     @include vieport-md{
       font-size: 2rem;
     }
@@ -131,14 +131,7 @@
   }
 
   & h2{
-    padding : 1rem 0;
-    @include title-text(2.8rem);
-    @include vieport-md{
-      font-size: 3.8rem;
-    }
-    @include vieport-xxl{
-      font-size: 4.8rem;
-    }
+    @include h2;
   }
 
   &__paragraph{
@@ -178,7 +171,7 @@
 
   &__label {
     @include title-text(1.6rem);
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     @include vieport-xxl{
       font-size: 2rem;
     }
@@ -252,7 +245,7 @@
       font-size: 1.3rem;
       font-weight: 500;
       color: $text-color;
-      padding-bottom: 0;
+      margin-bottom: 0;
       padding-left: 2.7rem;
       position: relative;
       cursor: pointer;
