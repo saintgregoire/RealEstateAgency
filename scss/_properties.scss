@@ -119,3 +119,236 @@
     justify-content: center;
   }
 }
+
+// ?---------------------------HAPPEN(form)SECTION-------------
+
+.happen {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @include vieport-xl{
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  & h2{
+    padding : 1rem 0;
+    @include title-text(2.8rem);
+    @include vieport-md{
+      font-size: 3.8rem;
+    }
+    @include vieport-xxl{
+      font-size: 4.8rem;
+    }
+  }
+
+  &__paragraph{
+    margin-bottom: 4rem;
+    @include vieport-md{
+      margin-bottom: 6rem;
+    }
+    @include vieport-xxl{
+      margin-bottom: 8rem;
+    }
+  }
+
+  & form {
+    border: 3px solid $border-grey;
+    border-radius: $border-radius-md;
+    padding: 2rem;
+    @include vieport-lg{
+      padding: 5rem;
+      display: grid;
+      grid-template: auto/repeat(4, 1fr);
+      gap: 3rem;
+    }
+    @include vieport-xxl{
+      padding: 10rem;
+      gap: 5rem;
+    }
+  }
+
+  &__fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    @include vieport-lg{
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    @include title-text(1.6rem);
+    padding-bottom: 1rem;
+    @include vieport-xxl{
+      font-size: 2rem;
+    }
+  }
+
+  &__input, &__select {
+    background: $second-bg;
+    padding: 1.6rem 2rem;
+    border-radius: $border-radius-sm;
+    border: 1px solid $border-grey;
+    color: $input-txt-color;
+    font-size: 1.4rem;
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+
+    &:focus-visible{
+      outline: 2px solid $btn-color;
+    }
+  }
+
+  &__input, &__select:not(.happen__budget_select){
+    @include vieport-lg{
+      width: 183px;
+      white-space: normal;
+    }
+    @include vieport-xl{
+      width: auto;
+    }
+  }
+
+  &__select:not(.happen__budget_select){
+    @include vieport-lg{
+      height: 72px;
+    }
+    @include vieport-xl{
+      height: auto;
+    }
+  }
+
+
+  &__textarea {
+    background: $second-bg;
+    padding: 1.6rem 2rem;
+    border-radius: $border-radius-sm;
+    border: 1px solid $border-grey;
+    color: $input-txt-color;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+    resize: none;
+    margin-bottom: 1rem;
+    @include vieport-lg{
+      font-size: 1.6rem;
+    }
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+
+    &:focus-visible{
+      outline: 2px solid $btn-color;
+    }
+  }
+
+  &__check{
+    flex-direction: row;
+    @include vieport-lg{
+      grid-column: 1/4;
+    }
+
+    & label{
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: $text-color;
+      padding-bottom: 0;
+      padding-left: 2.7rem;
+      position: relative;
+      cursor: pointer;
+      @include vieport-lg{
+        font-size: 1.4rem;
+      }
+      @include vieport-xxl{
+        font-size: 1.8rem;
+        padding-left: 3.7rem;
+      }
+
+      & > a{
+        color: $text-color;
+        &:hover{
+          color: $btn-color;
+        }
+      }
+
+      &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid $border-grey;
+        background-color: $second-bg;
+        @include vieport-xxl{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    z-index: -10;
+    opacity: 0;
+
+    &:checked + .happen__agree::before{
+      border: 2px solid $btn-color;
+    }
+
+    &:checked + .happen__agree::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 8px;
+      width: 6px;
+      height: 15px;
+      border-bottom: 2px solid $btn-color;
+      border-right: 2px solid $btn-color;
+      transform: rotate(38deg);
+      @include vieport-xxl{
+        width: 9px;
+        height: 18px;
+      }
+    }
+  }
+
+  & button{
+    width: 100%;
+    color: white;
+    background-color: $btn-color;
+    padding: 1.4rem 3.4rem;
+    border-radius: $border-radius-sm;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+
+    &:hover{
+      background: $main-bg;
+      border: 2px solid $btn-color;
+    }
+  }
+
+  &__budget{
+    @include vieport-lg{
+      grid-column: 1/5;
+    }
+  }
+
+  &__message{
+    @include vieport-lg{
+      grid-column: 1/5;
+    }
+  }
+
+
+
+
+
+
+
+
+}

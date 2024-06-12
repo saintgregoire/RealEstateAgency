@@ -262,31 +262,32 @@
         <img src="../icons/star.png" alt="stars icon">
       </div>
       <h2>Let's Make it Happen</h2>
-      <p>Ready to take the first step toward your dream property? Fill out the form below, and our real estate wizards will work their magic to find your perfect match. Don't wait; let's embark on this exciting journey together.</p>
+      <p class="happen__paragraph">Ready to take the first step toward your dream property? Fill out the form below, and our real estate wizards will work their magic to find your perfect match. Don't wait; let's embark on this exciting journey together.</p>
       <form action="" method="post">
-        <fieldset class="happen__first_name">
-          <label for="first_name">First Name</label>
-          <input type="text" name="first_name" id="first_name" required>
+        <fieldset class="happen__first_name happen__fieldset">
+          <label for="first_name" class="happen__label">First Name</label>
+          <input type="text" name="first_name" id="first_name" class="happen__input" placeholder="Enter First Name" required>
         </fieldset>
         
-        <fieldset class="happen__last_name">
-          <label for="last_name">Last Name</label>
-          <input type="text" name="last_name" id="last_name" required>
+        <fieldset class="happen__last_name happen__fieldset">
+          <label for="last_name" class="happen__label">Last Name</label>
+          <input type="text" name="last_name" id="last_name"  class="happen__input" placeholder="Enter Last Name" required>
         </fieldset>
 
-        <fieldset class="happen__email">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" required>
+        <fieldset class="happen__email happen__fieldset">
+          <label for="email" class="happen__label">Email</label>
+          <input type="email" name="email" id="email"  class="happen__input" placeholder="Enter your Email" required>
         </fieldset>
 
-        <fieldset class="happen__phone">
-          <label for="phone">Phone</label>
-          <input type="tel" name="phone" id="phone" required>
+        <fieldset class="happen__phone happen__fieldset">
+          <label for="phone" class="happen__label">Phone</label>
+          <input type="tel" name="phone" id="phone" class="happen__input" placeholder="Enter Phone Number" required>
         </fieldset>
 
-        <fieldset class="happen__location">
-          <label for="location">Preferred Location</label>
-          <select id="location" name="location">
+        <fieldset class="happen__location happen__fieldset">
+          <label for="location" class="happen__label">Preferred Location</label>
+          <select id="location" name="location" class="happen__select">
+            <option value="null" disabled selected hidden>Select Location</option>
             <option value="California">California</option>
             <option value="Dubai">Dubai</option>
             <option value="Paris">Paris</option>
@@ -294,26 +295,29 @@
           </select>
         </fieldset>
 
-        <fieldset class="happen__type">
-          <label for="type">Property Type</label>
-          <select id="type" name="type">
+        <fieldset class="happen__type happen__fieldset">
+          <label for="type" class="happen__label">Property Type</label>
+          <select id="type" name="type" class="happen__select">
+            <option value="null" disabled selected hidden>Select Property Type</option>
             <option value="villa">Villa</option>
             <option value="apartments">Apartments</option>
           </select>
         </fieldset>
 
-        <fieldset class="happen__bathrooms">
-          <label for="bathrooms">No. of Bathrooms</label>
-          <select id="bathrooms" name="bathrooms">
+        <fieldset class="happen__bathrooms happen__fieldset">
+          <label for="bathrooms" class="happen__label">No. of Bathrooms</label>
+          <select id="bathrooms" name="bathrooms" class="happen__select">
+            <option value="null" disabled selected hidden>Select no. of Bathrooms</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="2+">2+</option>
           </select>
         </fieldset>
 
-        <fieldset class="happen__bedrooms">
-          <label for="bedrooms">No. of Bedrooms</label>
-          <select id="bedrooms" name="bedrooms">
+        <fieldset class="happen__bedrooms happen__fieldset">
+          <label for="bedrooms" class="happen__label">No. of Bedrooms</label>
+          <select id="bedrooms" name="bedrooms" class="happen__select">
+            <option value="null" disabled selected hidden>Select no. of Bedrooms</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -321,23 +325,24 @@
           </select>
         </fieldset>
 
-        <fieldset class="happen__budget">
-          <label for="budget">Budget</label>
-          <select id="budget" name="budget">
+        <fieldset class="happen__budget happen__fieldset">
+          <label for="budget" class="happen__label">Budget</label>
+          <select id="budget" name="budget" class="happen__budget_select happen__select">
+            <option value="null" disabled selected hidden>Select Budget</option>
             <option value="200K">200K+</option>
             <option value="500K">500K+</option>
             <option value="1M">1M</option>
           </select>
         </fieldset>
 
-        <fieldset class="happen__message">
-          <label for="message">Message</label>
-          <textarea name="message" id="message"></textarea>
+        <fieldset class="happen__message happen__fieldset">
+          <label for="message" class="happen__label">Message</label>
+          <textarea name="message" id="message" placeholder="Enter your Message here.." rows="4" class="happen__textarea"></textarea>
         </fieldset>
 
-        <fieldset class="Happen__check">
-          <input type="checkbox" id="agree" name="agree" required>
-          <label for="agree">I agree with <a href="terms.html">Terms of Use and Privacy Policy</a></label>
+        <fieldset class="happen__check happen__fieldset">
+          <input type="checkbox" id="agree" name="agree" class="happen__checkbox" required>
+          <label for="agree" class="happen__agree happen__label">I agree with <a href="terms.html">Terms of Use & Privacy Policy</a></label>
         </fieldset>
 
         <button type="submit">Send Your Message</button>
