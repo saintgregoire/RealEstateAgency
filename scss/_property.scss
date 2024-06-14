@@ -1,0 +1,76 @@
+.property{
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  @include vieport-lg{
+    padding-top: 6rem;;
+  }
+
+&__top{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  @include vieport-lg{
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+}
+
+& h1{
+  flex-basis: 100%;
+  @include h2;
+  @include vieport-lg{
+    font-size: 2.8rem;
+    flex-basis: auto;
+  }
+  @include vieport-xxl{
+    font-size: 3rem;
+  }
+}
+
+&__info{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+  @include vieport-lg{
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+}
+
+&__geo{
+  color: white;
+  padding: .8rem;
+  @include border-grey(6px);
+
+  & > i{
+    padding-right: .3rem;
+    font-size: 1.5rem;
+  }
+}
+
+&__price{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: .5rem;
+  @include vieport-lg{
+    flex-direction: column;
+    align-items: start;
+  }
+  & > span{
+    @include title-text(1.8rem);
+    @include vieport-md{
+      font-size: 2rem;
+    }
+    @include vieport-xxl{
+      font-size: 2.4rem;
+    }
+  }
+}
+
+
+
+
+}

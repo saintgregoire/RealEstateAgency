@@ -1,37 +1,40 @@
 
-function Swiper(btnRight, btnLeft, cards) {
+function mySwiper(btnRight, btnLeft, cards) {
 	let counter = 0;
 
-
-	btnRight.addEventListener('click', ()=>{
-		if(counter === 4){
-			for(let i = 0; i<cards.length; i++){
-				cards[i].classList.remove('hidden');
+	if (btnRight && btnLeft && cards) {
+		btnRight.addEventListener('click', ()=>{
+			if(counter === 4){
+				for(let i = 0; i<cards.length; i++){
+					cards[i].classList.remove('hidden');
+				}
+				counter = 0;
+				btnLeft.classList.remove('onClick');
 			}
-			counter = 0;
-			btnLeft.classList.remove('onClick');
-		}
-		else{
-		cards[counter].classList.toggle('hidden');
-		counter++;
-		btnLeft.classList.add('onClick');
-		}
-	})
+			else{
+			cards[counter].classList.toggle('hidden');
+			counter++;
+			btnLeft.classList.add('onClick');
+			}
+		})
 
-	btnLeft.addEventListener('click', () => {
-		console.log(counter)
-		if(counter > 0){
-			cards[counter-1].classList.remove('hidden');
-			counter--;
-		}
-		if(!cards[0].classList.contains('hidden')){
-			btnLeft.classList.remove('onClick');
-		}
-	});
+		btnLeft.addEventListener('click', () => {
+			console.log(counter)
+			if(counter > 0){
+				cards[counter-1].classList.remove('hidden');
+				counter--;
+			}
+			if(!cards[0].classList.contains('hidden')){
+				btnLeft.classList.remove('onClick');
+			}
+		});
+	}
 }
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
+
+
 
 		// !Burger menu-----------------------------
 
@@ -60,11 +63,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	const cardsReviews = document.querySelectorAll('.reviews__card');
 
 
-	Swiper(btnRight, btnLeft, cards);
-	Swiper(btnRightReviews, btnLeftReviews, cardsReviews);
+	mySwiper(btnRight, btnLeft, cards);
+	mySwiper(btnRightReviews, btnLeftReviews, cardsReviews);
 
 
+	// !SWIPER SECOND----------------------------
 
+	
 
 });
 
