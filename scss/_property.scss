@@ -171,14 +171,186 @@
 // !-----------DESCRIPTION SECTION-----------------
 
 .description{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @include vieport-lg{
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  @include vieport-xxl{
+    gap: 3rem;
+  }
+
+&__desc{
+  padding: 2rem;
+  @include border-grey($border-radius-sm);
+  @include vieport-lg{
+    padding: 4rem;
+    flex: 1 1 50%;
+  }
+  @include vieport-xxl{
+    padding: 5rem;
+  }
+}
+
+&__title{
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 600;
+  @include vieport-lg{
+    font-size: 2rem;
+  }
+  @include vieport-xxl{
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+&__text{
+  padding-bottom: 2rem;
+  border-bottom: 2px solid $border-grey;
+  @include vieport-xxl{
+    padding-bottom: 5rem;
+  }
+}
+
+&__cards{
+  @include flex-center;
+  flex-wrap: wrap;
+  @include vieport-lg{
+    align-items: stretch;
+  }
+}
+
+&__card:not(:last-of-type){
+  margin: 2rem 0;
+  flex: 1 1 50%;
+  @include vieport-lg{
+    flex-basis: 33%;
+    margin-bottom: 0;
+  }
+}
+
+&__card:nth-child(2){
+  padding-left: 2rem;
+  border-left: 2px solid $border-grey;
+  @include vieport-lg{
+    padding-left: 1rem;
+  }
+  @include vieport-xxl{
+    padding-left: 2rem;
+  }
+}
+
+&__card:last-child{
+  padding-top: 2rem;
+  border-top: 2px solid $border-grey;
+  flex-basis: 100%;
+  @include vieport-lg{
+    flex: 1 1 33%;
+    border-top: none;
+    padding-top: 0;
+    border-left: 2px solid $border-grey;
+    padding-left: 1rem;
+    margin-top: 2rem;
+  }
+  @include vieport-xxl{
+    padding-left: 2rem;
+  }
+}
+
+&__name{
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .5rem;
+  @include vieport-xxl{
+    font-size: 1.8rem;
+  }
 
 
+  & > img{
+    width: 20px;
+    height: 20px;
+    @include vieport-xxl{
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
 
+&__value{
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  @include vieport-lg{
+    font-size: 2rem;
+  }
+  @include vieport-xxl{
+    font-size: 2.4rem;
+  }
+}
 
+  &__second {
+    padding: 2rem;
+    @include border-grey($border-radius-md);
+    @include vieport-lg{
+      flex: 1 1 50%;
+      padding: 4rem;
+    }
+    @include vieport-xxl{
+      padding: 5rem;
+    }
 
+    &_title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: white;
+      font-weight: 600;
+      @include vieport-lg{
+        font-size: 2rem;
+        margin-bottom: 4rem;
+      }
+      @include vieport-xxl{
+        font-size: 2.4rem;
+        margin-bottom: 5rem;
+      }
+    }
 
+    &_keys {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      @include vieport-xxl{
+        gap: 3rem;
+      }
+    }
 
+    &_key {
+      padding: 1rem 1.2rem;
+      border-left: 2px solid $btn-color;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-image: $gradient-properties;
 
-
+      & > img{
+        width: 18px;
+        height: 18px;
+        @include vieport-xxl{
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
   
+}
+
+
+
+
+
 }
