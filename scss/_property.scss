@@ -71,6 +71,114 @@
 }
 
 
+&__wrapper{
+  margin-top: 3rem;
+  padding: 2rem;
+  background: $second-bg;
+  @include border-grey($border-radius-md);
+  @include vieport-lg{
+    padding: 4rem;
+  }
+  @include vieport-xxl{
+    padding: 5rem;
+  }
+}
+
+  &__swiper {
+    width: 100%;
+    height: 250px;
+    position: static;
+    border-radius: $border-radius-sm;
+    margin-bottom: 2rem;
+    @include vieport-lg{
+      height: 505px;
+    }
+    @include vieport-xxl{
+      margin-bottom: 3rem;
+      height: 580px;
+    }
+  }
+
+  &__swiper-slide {
+    width: 100%;
+
+    & > img {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  &__swiper-pagination{
+    position: static;
+  }
+
+  &__swiper-button-prev, &__swiper-button-next {
+    margin: 0;
+    position: static;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    @include border-grey($border-round);
+  }
+
+  &__swiper-button-prev::after, &__swiper-button-next::after{
+    font-size: 2rem;
+    color: $btn-color;
+    font-weight: 700;
+  }
+
+  &__swiper-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $main-bg;
+    padding: .8rem;
+    @include border-grey(6rem);
+    @include vieport-lg{
+      width: 28%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 
 
+
+}
+
+// ?------SWIPER FOOTER---------------------
+
+.swiper-pagination-bullet{
+  border-radius: $border-radius-sm;
+  width: 12px;
+  height: 3px;
+  background: #4d4d4d;
+  opacity: 1;
+  
+}
+
+.swiper-pagination-bullet-active{
+  background: $btn-color;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal{
+  width: auto;
+}
+
+
+
+// !-----------DESCRIPTION SECTION-----------------
+
+.description{
+
+
+
+
+
+
+
+
+
+  
 }
