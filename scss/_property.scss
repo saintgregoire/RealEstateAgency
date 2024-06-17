@@ -355,7 +355,6 @@
 
 .inquire{
   padding-top: 4rem;
-  padding-bottom: 4rem;
   @include vieport-lg{
     display: flex;
     align-items: start;
@@ -476,6 +475,198 @@
   &__fieldset:nth-child(-n+4){
     @include vieport-lg{
       flex: 1 1 30%;
+    }
+  }
+
+}
+
+// !-------PRICING SECTION--------------
+
+.pricing{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @include vieport-xl{
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  &__title{
+    @include h2;
+  }
+
+  &__note{
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    padding: 2.4rem 2rem;
+    background: $second-bg;
+    @include border-grey($border-radius-sm);
+    @include vieport-lg{
+      padding: 2rem 4rem;
+      margin-top: 6rem;
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    @include vieport-xxl{
+      margin-top: 8rem;
+      margin-bottom: 5rem;
+      padding: 3rem 5rem;
+    }
+
+    & > h3{
+      padding-bottom: 1rem;
+      border-bottom: 2px solid $border-grey;
+      @include title-text(1.8rem);
+      @include vieport-lg{
+        font-size: 2rem;
+        border: none;
+        padding: 0;
+      }
+      @include vieport-xxl{
+        font-size: 2.4rem;
+      }
+    }
+    & > p{
+      padding-top: 1rem;
+      @include vieport-lg{
+        padding: 0;
+      }
+    }
+  }
+
+  &__wrapper{
+    @include vieport-lg{
+      display: grid;
+      grid-template-columns: 21% 75%;
+      gap: 4rem;
+    }
+    @include vieport-xl{
+      grid-template-columns: 15% 82%;
+    }
+  }
+
+  &__listing_price{
+    & > p:nth-child(2){
+      @include title-text(2.4rem);
+      @include vieport-lg{
+        font-size: 3rem;
+      }
+      @include vieport-xxl{
+        font-size: 4rem;
+      }
+    }
+  }
+
+  &__card{
+    padding: 2rem;
+    @include border-grey($border-radius-md);
+    margin-top: 2rem;
+    @include vieport-lg{
+      margin-top: 0;
+      grid-column: 2/3;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include vieport-xxl{
+      padding: 5rem;
+    }
+
+    &.monthly{
+      @include vieport-lg{
+        display: block;
+      }
+
+      & > .pricing__card_section{
+        border-left: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__card_title{
+    @include title-text(1.8rem);
+    padding-bottom: 2rem;
+    flex: 1 1 100%;
+    @include vieport-lg{
+      font-size: 2rem;
+      padding-bottom: 3rem;
+    }
+    @include vieport-xxl{
+      font-size: 2.4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  &__card_section{
+    padding: 2rem 0;
+    border-top: 2px solid $border-grey;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+    @include vieport-lg{
+      flex: 1 1 50%;
+      padding: 3rem 2rem;
+    }
+    @include vieport-xxl{
+      padding: 4rem 2rem;
+    }
+
+  }
+
+  &__card_section:nth-child(odd){
+    @include vieport-lg{
+      border-left: 2px solid $border-grey;
+    }
+    
+  }
+
+  &__small{
+    flex: 1 1 100%;
+  }
+
+  &__value{
+    @include title-text(1.8rem);
+    flex: 1 1 25%;
+    @include vieport-xxl{
+      font-size: 2rem;
+    }
+
+    &.down{
+      flex-grow: 0;
+      padding-right: 1.5rem;
+    }
+
+    &.million{
+      flex-grow: 0;
+      padding-right: 1.5rem;
+    }
+  }
+
+  &__desc{
+    flex: 1 1 70%;
+    background: $second-bg;
+    padding: 1rem;
+    @include border-grey(6px);
+
+    &.persent{
+      flex: 0 1 10%;
+      border-radius: $border-radius-lg;
+    }
+
+    &.applic{
+      flex: 0 1 37%;
+      border-radius: $border-radius-lg;
+      @include vieport-lg{
+        flex-grow: 1;
+      }
+    }
+
+    &.cost{
+      border-radius: $border-radius-lg;
     }
   }
 
