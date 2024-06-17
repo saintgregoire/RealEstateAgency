@@ -167,6 +167,59 @@
       </div>
     </article>
   </section>
+<!-- ! INQUIRE SECTION -->
+  <section class="inquire container">
+    <h2 class="sr-only">Interested in this property? Fill out the form below</h2>
+    <article class="inquire__container">
+      <div class="stars">
+        <img src="../icons/star.png" alt="stars icon">
+      </div>
+      <h2 class="inquire__title">Inquire About Seaside Serenity Villa</h2>
+      <p>Interested in this property? Fill out the form below, and our real estate experts will get back to you with more details, including scheduling a viewing and answering any questions you may have.</p>
+    </article>
+
+    <form action="" method="post" class="inquire__form">
+      <fieldset class="inquire__fieldset">
+        <label class="inquire__label" for="inquire__first_name">First Name</label>
+          <input type="text" name="inquire__first_name" id="inquire__first_name" class="inquire__input" placeholder="Enter First Name" required>
+      </fieldset>
+
+      <fieldset class="inquire__fieldset">
+        <label class="inquire__label" for="inquire__last_name">Last Name</label>
+          <input type="text" name="inquire__last_name" id="inquire__last_name" class="inquire__input" placeholder="Enter Last Name" required>
+      </fieldset>
+
+      <fieldset class="inquire__fieldset">
+        <label class="inquire__label" for="inquire__email">Email</label>
+          <input type="email" name="inquire__email" id="inquire__email" class="inquire__input" placeholder="Enter your Email" required>
+      </fieldset>
+
+      <fieldset class="inquire__fieldset">
+        <label class="inquire__label" for="inquire__tel">Phone</label>
+          <input type="tel" name="inquire__tel" id="inquire__tel" class="inquire__input" placeholder="Enter Phone Number" required>
+      </fieldset>
+
+      <fieldset class="inquire__fieldset inquire__fieldset_selected">
+        <label class="inquire__label" for="inquire__selected">Selected Property</label>
+          <input type="text" name="inquire__selected" id="inquire__selected" class="inquire__input inquire__selected" value="Seaside Serenity Villa, Malibu, CA" readonly>
+          <p class="inquire__geo">
+            <i class="fa-solid fa-location-dot"></i>
+          </p>
+      </fieldset>
+
+      <fieldset class="inquire__fieldset">
+        <label class="inquire__label" for="inquire__textarea">Message</label>
+          <textarea name="inquire__textarea" id="inquire__textarea" class="inquire__textarea" placeholder="Enter your Message here.." rows="4"></textarea>
+      </fieldset>
+      
+      <fieldset class="happen__check inquire__check happen__fieldset">
+        <input type="checkbox" id="inquire__agree" name="inquire__agree" class="happen__checkbox" required>
+        <label for="inquire__agree" class="happen__agree happen__label">I agree with <a href="terms.html">Terms of Use & Privacy Policy</a></label>
+      </fieldset>
+
+      <button type="submit" class="inquire__submit">Send Your Message</button>
+    </form>
+  </section>
 </main>
 
   <footer>

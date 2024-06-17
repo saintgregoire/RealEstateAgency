@@ -347,10 +347,136 @@
       }
     }
   
+  }
+
 }
 
+// !-------------INQUIRE SECTION-----------------
+
+.inquire{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @include vieport-lg{
+    display: flex;
+    align-items: start;
+    gap: 8rem;
+  }
+  @include vieport-xl{
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  @include vieport-xxl{
+    gap: 10rem;
+  }
+
+  &__container{
+    @include vieport-lg{
+      flex: 1 1 49%;
+    }
+  }
+
+  &__title{
+    @include h2;
+  }
+
+  &__form{
+    margin-top: 4rem;
+    padding: 2rem;
+    @include flex-center;
+    flex-direction: column;
+    gap: 2rem;
+    @include border-grey($border-radius-md);
+    @include vieport-lg{
+      flex: 1 1 80%;
+      padding: 4rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 3rem;
+    }
+    @include vieport-xxl{
+      padding: 5rem;
+    }
+  }
+
+  &__fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
 
 
+  &__label{
+    @include title-text(1.6rem);
+    @include vieport-xxl{
+      font-size: 2rem;
+    }
+  }
 
+  &__input, &__textarea{
+    background: $second-bg;
+    padding: 1.6rem 2rem;
+    border-radius: $border-radius-sm;
+    border: 1px solid $border-grey;
+    color: $input-txt-color;
+    font-size: 1.4rem;
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+
+    &:focus-visible{
+      outline: 2px solid $btn-color;
+    }
+  }
+
+  &__fieldset_selected{
+    position: relative;
+  }
+
+  &__selected{
+    color: white;
+  }
+
+  &__geo{
+    color: white;
+    position: absolute;
+    bottom: 16%;
+    right: 4%;
+    font-size: 1.8rem;
+  }
+
+  &__textarea{
+    resize: none;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+  }
+
+  &__check{
+    width: 100%;
+  }
+
+  &__submit{
+    width: 100%;
+    color: white;
+    background-color: $btn-color;
+    padding: 1.4rem 3.4rem;
+    border-radius: $border-radius-sm;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    @include vieport-xxl{
+      font-size: 1.8rem;
+    }
+
+    &:hover{
+      background: $main-bg;
+      border: 2px solid $btn-color;
+    }
+  }
+
+  &__fieldset:nth-child(-n+4){
+    @include vieport-lg{
+      flex: 1 1 30%;
+    }
+  }
 
 }
