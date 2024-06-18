@@ -116,3 +116,31 @@ h1 {
   height:1px;
   overflow:hidden;
   }
+
+  .go_top{
+    width: 30px;
+    height: 30px;
+    border-radius: $border-round;
+    background: $btn-color;
+    overflow: hidden;
+    border: 2px solid white;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    opacity: .5;
+    &:hover{
+      scale: 1.5;
+      border-color: $btn-color;
+      opacity: 1;
+      background: rgba(112, 59, 247, .6);
+    }
+
+    & > a{
+      text-decoration: none;
+      color: white;
+      height: 100%;
+      width: 100%;
+      @include flex-center;
+      }
+    }
+  
