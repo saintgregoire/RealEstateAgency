@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacts page Estatein Real Estate Agency.">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/icon16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/icon32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="../icons/icon48.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.min.css" />
+  <title>Estatein - Real Estate Agency. Contact page.</title>
+</head>
+
+<body>
+  <header class='header'>
+    <div class="header__discover">
+      <p>✨Discover Your Dream Property with Estatein.  <a href="contact.html">Learn more</a>
+      </p>
+    </div>
+
+    <div class=" header__main">
+
+      <a href="../index.html">
+        <div class="header__logo">
+          <img src="../img/Logo.png" alt="Logo of Estatein" />
+        </div>
+      </a>
+
+      <div class="header__burger_menu">
+        <span></span>
+      </div>
+
+      <nav class="header__nav">
+
+      <div class="header__nav_close"></div>
+
+        <ul class='header__menu'>
+          <li>
+            <a href="../index.html">Home</a>
+          </li>
+          <li>
+            <a href="#">About Us</a>
+          </li>
+          <li>
+            <a href="properties.html">Properties</a>
+          </li>
+          <li>
+            <a href="services.html">Services</a>
+          </li>
+          <li class='header__contacts active'>
+            <a href="contact.html">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- ******SECTION TAKEN FROM PROPERTIES PAGE -->
+    <section class="dream dream_contact">
+      <h2 class="sr-only">Contact us</h2>
+      <div class="dream__txt dream_contact__txt">
+        <div class="container">
+          <h1>Get in Touch with Estatein</h1>
+        <p>Welcome to Estatein's Contact Us page. We're here to assist you with any inquiries, requests, or feedback you may have.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- *********SECTION TAKEN FROM HOME PAGE -->
+    <section class="services__blocks">
+      <div class="home_top__cards contact__cards">
+        <div class="home_top__card contact__card">
+          <img src="../icons/message.png" alt="message icon">
+          <p class="home_top__card_desc contact__card_desc">
+            <a href="mailto:info@estatein.com">info@estatein.com</a>
+          </p>
+
+          <div class="arrow">
+            <span></span>
+          </div>
+          
+        </div>
+
+        <div class="home_top__card contact__card">
+          <img src="../icons/phone.png" alt="Phone icon">
+          <p class="home_top__card_desc contact__card_desc">
+            <a href="tel:+11234567890">+1 (123) 456-7890</a>
+          </p>
+          <div class="arrow">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="home_top__card contact__card">
+          <img src="../icons/position.png" alt="Geo icon">
+          <p class="home_top__card_desc contact__card_desc">
+            <a href="https://maps.app.goo.gl/EwnGb4CFdnhXRG5Z6" target="_blank">Main Headquarters</a>
+          </p>
+          <div class="arrow">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="home_top__card contact__card">
+          <img src="../icons/fire.png" alt="Fire icon">
+          <p class="home_top__card_desc contact__card_desc contact__social">
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/maksym-voznichka/" target="_blank">LinkedIn</a>
+            <a href="https://fr-fr.facebook.com/" target="_blank">Facebook</a>
+          </p>
+          <div class="arrow">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- !-------------------SECTION CONNECT -->
+    <section class="connect container">
+      <div class="stars">
+        <img src="../icons/star.png" alt="stars icon">
+      </div>
+      <h2 class="connect__title">Let's Connect</h2>
+      <p>We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein.</p>
+
+      <form action="" method="POST" class="connect__form">
+        <fieldset class="connect__fieldset">
+          <label for="first_name_conn" class="connect__label">First Name</label>
+          <input type="text" class="connect__input" name="first_name_conn" id="first_name_conn" placeholder="Enter First Name" required>
+        </fieldset>
+
+        <fieldset class="connect__fieldset">
+          <label for="last_name_conn" class="connect__label">Last Name</label>
+          <input type="text" class="connect__input" name="last_name_conn" id="last_name_conn" placeholder="Enter Last Name" required>
+        </fieldset>
+
+        <fieldset class="connect__fieldset">
+          <label for="email_conn" class="connect__label">Email</label>
+          <input type="email" class="connect__input" name="email_conn" id="email_conn" placeholder="Enter your Email" required>
+        </fieldset>
+
+        <fieldset class="connect__fieldset">
+          <label for="phone_conn" class="connect__label">Phone</label>
+          <input type="tel" class="connect__input" name="phone_conn" id="phone_conn" placeholder="Enter Phone Number" required>
+        </fieldset>
+
+        <fieldset class="connect__fieldset">
+          <label for="inquiry_conn" class="connect__label">Inquiry Type</label>
+          <select class="connect__select" name="inquiry_conn" id="inquiry_conn" required>
+            <option value="null" disabled selected hidden>Select Inquiry Type</option>
+            <option value="Sell">Sell</option>
+            <option value="Buy">Buy</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="connect__fieldset">
+          <label for="hear_conn" class="connect__label">How Did You Hear About Us?</label>
+          <select type="text" class="connect__select" name="hear_conn" id="hear_conn">
+            <option value="null" disabled selected hidden>Select</option>
+            <option value="recommendation">By recommendation</option>
+            <option value="google">Google Ads</option>
+            <option value="fb">Fb/Inst Ads</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="connect__fieldset">
+          <label for="message_conn" class="connect__label">Message</label>
+          <textarea class="connect__textarea" name="message_conn" id="message_conn" placeholder="Enter your Message here.." rows="4">
+          </textarea>
+        </fieldset>
+        <!-- ****BLOCK TAKEN FROM PROPERTY DETAILS PAGE -->
+        <fieldset class="happen__check happen__fieldset connect__check">
+          <input type="checkbox" id="agree_conn" name="agree_conn" class="happen__checkbox" required>
+          <label for="agree_conn" class="happen__agree happen__label">I agree with <a href="terms.html">Terms of Use & Privacy Policy</a></label>
+        </fieldset>
+
+        <button type="submit" class="connect__submit">Send Your Message</button>
+      </form>
+    </section>
+
+    <!-- !--------------------SECTION LOCATION -->
+    <section class="location container">
+      <div class="stars">
+        <img src="../icons/star.png" alt="stars icon">
+      </div>
+      <h2 class="location__title">Discover Our Office Locations</h2>
+      <p>Estatein is here to serve you across multiple locations. Whether you're looking to meet our team.</p>
+
+      <div class="location__cards">
+        <article class="location__card">
+          <h3>Main Headquarters</h3>
+          <p class="location__adress">123 Estatein Plaza, City Center, Metropolis</p>
+          <p class="location__text">Our main headquarters serve as the heart of Estatein. Located in the bustling city center, this is where our core team of experts operates, driving the excellence and innovation that define us.</p>
+          <div class="location__notes_container">
+            <div class="location__note">
+              <a href="mailto:info@estatein.com">
+                <i class="fa-solid fa-envelope"></i>
+                info@estatein.com
+              </a>
+            </div>
+            <div class="location__note">
+              <a href="tel:+1 (123) 456-7890">
+                <i class="fa-solid fa-phone"></i>
+                +1 (123) 456-7890
+              </a>
+            </div>
+            <div class="location__note">
+              <a href="https://maps.app.goo.gl/EwnGb4CFdnhXRG5Z6" target="_blank">
+                <i class="fa-solid fa-location-dot"></i>
+                Metropolis
+              </a>
+            </div>
+          </div>
+          <div class="location__btn">
+            <a href="https://maps.app.goo.gl/EwnGb4CFdnhXRG5Z6" target="_blank">Get Direction</a>
+          </div>
+        </article>
+
+        <article class="location__card">
+          <h3>Regional Offices</h3>
+          <p class="location__adress">456 Urban Avenue, Downtown District, Metropolis</p>
+          <p class="location__text">Estatein's presence extends to multiple regions, each with its own dynamic real estate landscape. Discover our regional offices, staffed by local experts who understand the nuances of their respective markets.</p>
+          <div class="location__notes_container">
+            <div class="location__note">
+              <a href="mailto:info@estatein.com">
+                <i class="fa-solid fa-envelope"></i> 
+                info@estatein.com
+              </a>
+            </div>
+            <div class="location__note">
+              <a href="tel:+1 (123) 456-7890">
+                <i class="fa-solid fa-phone"></i>
+                +1 (123) 456-7890
+              </a>
+            </div>
+            <div class="location__note">
+              <a href="https://maps.app.goo.gl/EwnGb4CFdnhXRG5Z6" target="_blank">
+                <i class="fa-solid fa-location-dot"></i>
+                Metropolis
+              </a>
+            </div>
+          </div>
+          <div class="location__btn">
+            <a href="https://maps.app.goo.gl/EwnGb4CFdnhXRG5Z6" target="_blank">Get Direction</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- !--------------------WORLD SECTION -->
+    <section class="world">
+      <h2 class="sr-only">Our life</h2>
+    </section>
+  </main>
+  <footer>
+    <section class="info">
+      <div class="info__box container">
+        <div class="info__wrapper">
+          <h2 class="info__title">
+            Start Your Real Estate Journey Today
+          </h2>
+          <p class="info__paragraph">
+            Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.
+          </p>
+        </div>
+        <a class="info__link" href="properties.html">
+          <p>Explore Properties</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="email container">
+      <h4 class="sr-only">Our team will contact you ASAP</h4>
+      <a class="email__logo" href="../index.html">
+        <img src="../img/Logo.png" alt="Estatein agency logo">
+      </a>
+      <form action="" method="POST" class="email__form">
+        <label class="sr-only" for="email_footer_input">Email</label>
+        <input type="email" name="emailFooterInput" class="email__input" id="email_footer_input" placeholder="📧 Enter Your Email" required>
+        <button class="email__btn" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </section>
+
+    <section class="social">
+      <h4 class="sr-only">You can find us in social media</h4>
+      <div class="social__box">
+        <a href="https://www.facebook.com/" target="_blank">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/maksym-voznichka/" target="_blank">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://x.com/?lang=fr" target="_blank">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+      <div class="social__txt_box">
+        <p class="social__text">@2023 Estatein. All Rights Reserved.</p>
+        <p class="social__terms"><a href="terms.html">Terms & Conditions</a></p>
+      </div>
+    </section>
+  </footer>
+
+  <div class="go_top">
+    <a href="#">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

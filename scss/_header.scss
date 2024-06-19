@@ -188,7 +188,7 @@
     @include border-grey($border-radius-md);
 
     @include vieport-lg{
-      border: none;
+      border: 2px solid transparent;
       border-radius: $border-radius-sm;
     }
     
@@ -215,9 +215,14 @@
       border: 1px solid white;
 
       &:hover{
-        border: none;
+        border-color: transparent;
         background: $btn-color;
       }
+    }
+
+    &.active{
+      background: $btn-color;
+      border: none;
     }
   }
 
