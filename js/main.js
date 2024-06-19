@@ -67,24 +67,26 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	mySwiper(btnRightReviews, btnLeftReviews, cardsReviews);
 
 
-	// !SWIPER SECOND----------------------------
+	// !ZOOM IMG----------------------------------
 
-	const swiper = new Swiper('.property__swiper', {
-		// Optional parameters
-		direction: 'horizontal',
-		loop: true,
-	
-		// If we need pagination
-		pagination: {
-			el: '.swiper-pagination',
-		},
-	
-		// Navigation arrows
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-		},
+	const zoomableImage = document.querySelectorAll('.featured__card_img > img');
+	const overlay = document.querySelector('.js-overlay');
+
+	zoomableImage.forEach(image => {
+		image.addEventListener('click', function() {
+			overlay.style.display = "flex";
+			const imgClone = image.cloneNode();
+			overlay.innerHTML = '';
+			overlay.appendChild(imgClone);
+		});
 	});
+
+	overlay.addEventListener('click', function(event){
+		if(event.target === overlay){
+			overlay.style.display = 'none';
+		}
+	});
+
 
 });
 
