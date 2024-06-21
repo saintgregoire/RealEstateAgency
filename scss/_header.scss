@@ -79,8 +79,7 @@
         top: 50%;
         transform: translateY(-50%);
       }
-
-      @include vieport-lg{
+      @include vieport-md{
         display: none;
       }
   }
@@ -115,8 +114,7 @@
     &.active_menu {
 			bottom: 0;
 		}
-
-    @include vieport-lg{
+    @include vieport-md{
       position: static;
       border: none;
       background: none;
@@ -149,8 +147,7 @@
       width: 25px;
       height: 25px;
     }
-
-		@include vieport-lg {
+		@include vieport-md {
 			display: none;
 		}
 	}
@@ -162,8 +159,7 @@
     align-items: center;
     gap: 2rem;
     padding: 2rem;
-
-    @include vieport-lg{
+    @include vieport-md{
       display: grid;
       grid-template-columns: repeat(6,1fr);
       gap: 1rem;
@@ -186,10 +182,10 @@
     color: white;
     text-decoration: none;
     @include border-grey($border-radius-md);
-
-    @include vieport-lg{
+    @include vieport-md{
       border: 2px solid transparent;
       border-radius: $border-radius-sm;
+      white-space: nowrap;
     }
     
     &:hover{
@@ -200,15 +196,13 @@
 
   &__menu a.active {
     background: $btn-color;
-  
-    @include vieport-lg{
+    @include vieport-md{
       @include border-grey($border-radius-sm);
       background: $main-bg;
     }
   }
-
   &__contacts{
-    @include vieport-lg{
+    @include vieport-md{
       grid-column:6/7;
       color: white;
       border-radius: $border-radius-md;
