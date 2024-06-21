@@ -26,6 +26,7 @@
 
   & > img{
     width: 100%;
+    height: auto;
     object-fit: cover;
     @include vieport-lg{
       height: 100%;
@@ -511,6 +512,7 @@ padding-top: 4rem;
 
     & > img{
       width: 100%;
+      height: auto;
       object-fit: cover;
     }
   }
