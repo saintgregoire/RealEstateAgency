@@ -1,10 +1,36 @@
 
-function mySwiper(btnRight, btnLeft, cards) {
+function mySwiper(
+	btnRight, 
+	btnLeft, 
+	cards, 
+	clicksSmMd = 5, 
+	clicksLg = clicksSmMd, 
+	clicksXl=clicksLg, 
+	clicksXxl=clicksXl ) {
 	let counter = 0;
 
 	if (btnRight && btnLeft && cards) {
+		const viewportWidth = window.innerWidth;
+		let clicksNumber = 0;
+		
+			if(viewportWidth < 768){
+				clicksNumber = clicksSmMd;
+			}
+			else if(viewportWidth < 1024){
+				clicksNumber = clicksLg;
+			}
+			else if(viewportWidth < 1440){
+				clicksNumber = clicksXl;
+			}
+			else{
+				clicksNumber = clicksXxl;
+			}
+
+
 		btnRight.addEventListener('click', ()=>{
-			if(counter === 4){
+			console.log(viewportWidth);
+			console.log(counter)
+			if(counter === clicksNumber){
 				for(let i = 0; i<cards.length; i++){
 					cards[i].classList.remove('hidden');
 				}
@@ -19,7 +45,7 @@ function mySwiper(btnRight, btnLeft, cards) {
 		})
 
 		btnLeft.addEventListener('click', () => {
-			console.log(counter)
+			
 			if(counter > 0){
 				cards[counter-1].classList.remove('hidden');
 				counter--;
@@ -28,6 +54,7 @@ function mySwiper(btnRight, btnLeft, cards) {
 				btnLeft.classList.remove('onClick');
 			}
 		});
+
 	}
 }
 
@@ -52,19 +79,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		})
 	})();
 
-	// !SWIPER-------------------------------------
+	// !SWIPER PROPERTIES----------------------------------
 
 	const btnRight = document.querySelector('.featured__btn.right');
 	const btnLeft = document.querySelector('.featured__btn.left');
 	const cards = document.querySelectorAll('.featured__card');
 
+	mySwiper(btnRight, btnLeft, cards, 5, 5, 4, 3);
+
+
+	// !SWIPER REVIEWS-------------------------------------
 	const btnRightReviews = document.querySelector('.reviews__btn.right');
 	const btnLeftReviews = document.querySelector('.reviews__btn.left');
 	const cardsReviews = document.querySelectorAll('.reviews__card');
 
-
-	mySwiper(btnRight, btnLeft, cards);
-	mySwiper(btnRightReviews, btnLeftReviews, cardsReviews);
+	mySwiper(btnRightReviews, btnLeftReviews, cardsReviews, 4, 4, 2);
 
 
 	// !ZOOM IMG----------------------------------
@@ -92,6 +121,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	}
 	
 
+	// ! POP_UP---------------------------------
 
 });
 

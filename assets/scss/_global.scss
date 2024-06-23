@@ -104,10 +104,6 @@ h1 {
   }
 }
 
-.hidden {
-  display: none;
-}
-
 .sr-only {
   position:absolute;
   left:-10000px;
@@ -173,3 +169,105 @@ h1 {
       }
     }
 
+    .pop-up{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      @include flex-center;
+      background: rgba(0, 0, 0, .8);
+
+      &__article{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        color: white;
+        padding: 5rem 2rem;
+        width: 80%;
+        height: 70%;
+        background: $main-bg;
+        @include border-grey($border-radius-lg);
+        @include vieport-lg{
+          width: 50%;
+        }
+
+        & h2{
+          font-size: 2rem;
+          font-weight: 600;
+          @include vieport-lg{
+            font-size: 2.5rem;
+          }
+          @include vieport-xl{
+            font-size: 3rem;
+          }
+          @include vieport-xxl{
+            font-size: 3.8rem;
+          }
+        }
+
+        & p{
+          @include vieport-xxl{
+            font-size: 1.8rem;
+          }
+        }
+      }
+
+      &__logo{
+        width: 93px;
+        height: 28px;
+        @include vieport-md{
+          width: 113px;
+          height: auto;
+        }
+        @include vieport-xl{
+          width: 140px;
+        }
+        @include vieport-xxl{
+          width: 170px;
+        }
+
+        & > img{
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+
+      &__close{
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 2rem 2rem 0 auto;
+        cursor: pointer;
+    
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 1.5px;
+          background: white;
+          transform: rotate(45deg);
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+        
+        @include vieport-md{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+
+    .hidden {
+      display: none;
+    }
