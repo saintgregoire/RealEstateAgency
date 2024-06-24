@@ -1,3 +1,4 @@
+// *SWIPER *FUNCTION-----------------------------------
 
 function mySwiper(
 	btnRight, 
@@ -58,6 +59,32 @@ function mySwiper(
 	}
 }
 
+
+// * SHOW ERROR MESSAGE FOR INPUT *FUNCTION
+
+function errorMessageInput(fieldset, errorMessage, form){
+	if(!form.querySelector('#js-form-error')){
+		const formPar = document.createElement('p');
+		formPar.id = 'js-form-error';
+		formPar.innerText = "* Some fields are not filled in correctly.";
+		formPar.classList.add('js-error-input');
+		form.appendChild(formPar);
+	}
+
+	if(!fieldset.querySelector('.js-error-input')){
+		const inputWithError = fieldset.querySelector('input');
+		const par = document.createElement('p');
+		par.innerText = errorMessage;
+		par.classList.add('js-error-input');
+		fieldset.appendChild(par);
+		inputWithError.style.border = '1px solid red';
+	}
+}
+
+
+
+
+// ? MAIN CODE ----------------------------
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
