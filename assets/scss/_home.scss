@@ -186,62 +186,33 @@
   position: absolute;
   top: 20%;
   left: 2%;
+  width: 117px;
   @include vieport-md{
     top:34%;
     left: 3%;
   }
   @include vieport-lg{
-    top:6%;
-    left: 45%;
+    top:15%;
+    left: 43%;
+    width: 130px;
   }
   @include vieport-xl{
     top:14%;
     left: 46%;
   }
   @include vieport-xxl{
+    width: 175px;
     top:16%;
-    left: 47%;
+    left: 46%;
+  }
+
+  & > img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
 
-.circle > svg {
-  display: block;
-  overflow: visible;
-  width: 120px;
-  font-size: 1rem;
-  fill: white;
-  @include border-grey($border-round);
-  padding: 1.5rem;
-  background: $main-bg;
-}
-
-.circle path {
-  fill: none;
-}
-
-.circle text{
-  letter-spacing: .5rem;
-}
-
-.arrow_box{
-  @include border-grey($border-round);
-  position: absolute;
-  top: 21.8%;
-  left: 20.7%;
-  width: 70px;
-  height: 70px;
-  background-color: $second-bg;
-}
-
-.arrow_box .arrow{
-  top: 20%;
-  left: 16%;
-
-  & > span, &::before, &::after{
-    background-color: white;
-  }
-
-}
 
 // ? FEATURED PROPERTIES
 
@@ -377,6 +348,7 @@
     text-decoration: none;
     color: white;
     background-color: $second-bg;
+    white-space: nowrap;
     @include border-grey($border-radius-sm);
     grid-column: 1/3;
     @include vieport-lg{
