@@ -1,4 +1,4 @@
-// *SWIPER *FUNCTION-----------------------------------
+// *SWIPER -----------------------------------
 
 function mySwiper(
 	btnRight, 
@@ -60,9 +60,9 @@ function mySwiper(
 }
 
 
-// * SHOW ERROR MESSAGE FOR INPUT *FUNCTION
+// * SHOW ERROR MESSAGE FOR INPUT ----------------------
 
-function errorMessageInput(fieldset, errorMessage, form){
+function displayErrorMessageInput(fieldset, errorMessage, form){
 	if(!form.querySelector('#js-form-error')){
 		const formPar = document.createElement('p');
 		formPar.id = 'js-form-error';
@@ -80,6 +80,76 @@ function errorMessageInput(fieldset, errorMessage, form){
 		inputWithError.style.border = '1px solid red';
 	}
 }
+
+// * CHECK THAT INPUT IS NOT EMPTY ----------------------
+
+function isNotEmpty(input, form){
+	if(input.value.trim() === ""){
+		displayErrorMessageInput(input.parentElement, "* Field required", form);
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+// * FRONTEND EMAIL VERIFICATION ------------------------
+
+function emailVerification(email, form){
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	if(!isNotEmpty(email, form)){
+		return false;
+	} 
+	else if(!emailPattern.test(email.value)){
+		displayErrorMessageInput(email.parentElement, "* Invalid data format", form);
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+// *FRONTEND PHONE NUMBER CHECK -----------------------
+
+function phoneVerification(phone, form){
+	const phonePattern = /^\+?[78][-(]?\d{3}\)?[-]?\d{3}[-]?\d{2}[-]?\d{2}$/;
+
+	if(!isNotEmpty(phone, form)){
+		return false;
+	}
+	else if(!phonePattern.test(phone.value)){
+		displayErrorMessageInput(phone.parentElement, "* Invalid data format", form);
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+// * FRONTEND CHECKBOX CHECK ---------------------------
+
+function checkboxVerification(input, form){
+	if(!input.checked){
+		displayErrorMessageInput(input.parentElement, "* Field required", form);
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+// *FORM VALIDATION ------------------------------
+
+function formValidation(validationInputArray){
+	if (validationInputArray.includes(false)){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
 
 
 
@@ -148,7 +218,50 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	}
 	
 
-	// ! POP_UP---------------------------------
+	// !VALIDATION PROPERTIES FORM------------------------------
+
+	const propertiesForm = document.querySelector('.js-properties-form');
+	const propertiesTxtInputs = propertiesForm.querySelectorAll('input[type="text"]');
+	const propertiesEmail = document.querySelector('#email');
+	const propertiesPhone = document.querySelector('#phone');
+	const propertiesCheckbox = document.querySelector('#agree');
+
+
+	propertiesForm.addEventListener('submit', function(event) {
+			event.preventDefault();
+			let propertiesCheckArray = [];
+
+			propertiesTxtInputs.forEach(item => {
+				const result = isNotEmpty(item, propertiesForm);
+				propertiesCheckArray.push(result);
+			});
+
+			const isEmailCorrect = emailVerification(propertiesEmail, propertiesForm);
+			propertiesCheckArray.push(isEmailCorrect);
+
+			const isNumberCorrect = phoneVerification(propertiesPhone, propertiesForm);
+			propertiesCheckArray.push(isNumberCorrect);
+
+			const isChecked = checkboxVerification(propertiesCheckbox, propertiesForm);
+			propertiesCheckArray.push(isChecked);
+			
+			// const isFormValid = formValidation(propertiesCheckArray, event);
+
+			// if(isFormValid){
+			// 	this.submit();
+			// }
+		});
+
+	
+
+
+
+
+
+
+
+
+
 
 });
 
