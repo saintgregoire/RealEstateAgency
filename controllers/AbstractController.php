@@ -4,7 +4,7 @@ abstract class AbstractController{
   private \Twig\Environment $twig;
     public function __construct()
     {
-        $loader = new \Twig\Loader\FilesystemLoader('templates');
+        $loader = new \Twig\Loader\FilesystemLoader('pages');
         $twig = new \Twig\Environment($loader,[
             'debug' => true,
         ]);
@@ -21,4 +21,3 @@ abstract class AbstractController{
 
 }
 
-?>

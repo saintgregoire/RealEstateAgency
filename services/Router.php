@@ -1,35 +1,35 @@
 <?php
 
 class Router{
-
+    private  PageController $pc;
   public function __construct(){
-
+      $this->pc = new PageController();
   }
   public function handleRequest(array $get) : void
   {
      if(isset($get['route']) && $get['route'] == 'home'){
-         echo "homePage";
+         $this->pc->home();
      }
      else if(isset($get['route']) && $get['route'] == 'about'){
-         echo "aboutPage";
+         $this->pc->about();
      }
      else if(isset($get['route']) && $get['route'] == 'contact'){
-         echo "contactPage";
+         $this->pc->contact();
      }
      else if(isset($get['route']) && $get['route'] == 'properties'){
-         echo "propertiesPage";
+         $this->pc->properties();
      }
      else if (isset($get['route']) && $get['route'] == 'propertyDetails'){
-         echo "propertyDetailsPage";
+         $this->pc->propertyDetails();
      }
      else if (isset($get['route']) && $get['route'] == 'services'){
-         echo "servicesPage";
+         $this->pc->services();
      }
      else if (isset($get['route']) && $get['route'] == 'terms'){
-         echo "termsPage";
+         $this->pc->terms();
      }
      else{
-         echo 'home';
+         $this->pc->home();
      }
   }
 
