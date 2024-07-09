@@ -1,61 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="On  this page it's all information about global agency for the selection and sale of real estate.">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/icon16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon48.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.min.css" />
-  <title>Estatein - Real Estate Agency. About page.</title>
-</head>
-<body>
-  <header class='header'>
-    <div class="header__discover">
-      <p>✨Discover Your Dream Property with Estatein.  <a href="contact.html.twig" aria-label="Сontact us and we will provide you with all the detailed information on your request">Learn more</a>
-      </p>
-    </div>
+{% extends 'layout.html.twig' %}
 
-    <div class=" header__main">
+{% block description %}
+  On  this page it's all information about global agency for the selection and sale of real estate.
+{% endblock %}
 
-      <a href="home.html.twig">
-        <div class="header__logo">
-          <img src="../assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28.5"/>
-        </div>
-      </a>
+{% block title %}
+  About us.
+  {{ parent() }}
+{% endblock %}
 
-      <div class="header__burger_menu">
-        <span></span>
-      </div>
-
-      <nav class="header__nav">
-
-      <div class="header__nav_close"></div>
-
-        <ul class='header__menu'>
-          <li>
-            <a href="home.html.twig">Home</a>
-          </li>
-          <li>
-            <a class="active" href="#">About Us</a>
-          </li>
-          <li>
-            <a href="properties.html.twig">Properties</a>
-          </li>
-          <li>
-            <a href="services.html.twig">Services</a>
-          </li>
-          <li class='header__contacts'>
-            <a href="contact.html.twig">Contact Us</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-  </header>
-
+{% block content %}
   <main class="container">
     <section class="journey">
       <h1 class="sr-only">All important information about us</h1>
@@ -340,65 +294,4 @@
     </section>
 
   </main>
-
-  <footer>
-    <section class="info">
-      <div class="info__box container">
-        <div class="info__wrapper">
-          <h2 class="info__title">
-            Start Your Real Estate Journey Today
-          </h2>
-          <p class="info__paragraph">
-            Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.
-          </p>
-        </div>
-        <a class="info__link" href="properties.html.twig">
-          <p>Explore Properties</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="email container">
-      <h3 class="sr-only">Our team will contact you ASAP</h3>
-      <a class="email__logo" href="home.html.twig">
-        <img src="../assets/img/Logo.png" alt="Estatein agency logo" width="115" height="35">
-      </a>
-      <form action="" method="POST" class="email__form">
-        <label class="sr-only" for="email_footer_input">Email</label>
-        <input type="email" name="emailFooterInput" class="email__input" id="email_footer_input" placeholder="📧 Enter Your Email" required>
-        <button class="email__btn" type="submit"><i class="fa-solid fa-paper-plane" aria-label="send your email"></i></button>
-      </form>
-    </section>
-
-    <section class="social">
-      <h3 class="sr-only">You can find us in social media</h3>
-      <div class="social__box">
-        <a href="https://www.facebook.com/" target="_blank" aria-label="our facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/maksym-voznichka/" target="_blank" aria-label="our linkedin">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://x.com/?lang=fr" target="_blank" aria-label="our twitter">
-          <i class="fa-brands fa-twitter"></i>
-        </a>
-        <a href="https://www.youtube.com/" target="_blank" aria-label="our youtube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-      </div>
-      <div class="social__txt_box">
-        <p class="social__text">@2023 Estatein. All Rights Reserved.</p>
-        <p class="social__terms"><a href="terms.html.twig">Terms & Conditions</a></p>
-      </div>
-    </section>
-  </footer>
-
-  <div class="go_top" tabindex="0">
-    <a href="#" aria-label="go to the top of the page">
-      <i class="fa-solid fa-arrow-up"></i>
-    </a>
-  </div>
-
-  <script src="../assets/js/main.js"></script>
-</body>
-</html>
+{% endblock %}

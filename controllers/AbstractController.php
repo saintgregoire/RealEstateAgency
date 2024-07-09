@@ -14,8 +14,14 @@ abstract class AbstractController{
         $this->twig = $twig;
     }
 
-    protected function render(string $template, array $data) : void
+    protected function getCurrentPage(): string
     {
+        return '';
+    }
+
+    protected function render(string $template, array $data = []) : void
+    {
+        $data['current_page'] = $this->getCurrentPage();
         echo $this->twig->render($template, $data);
     }
 
