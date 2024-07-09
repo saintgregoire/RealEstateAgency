@@ -29,6 +29,9 @@ class Router{
      else if (isset($get['route']) && $get['route'] === 'terms'){
          $this->pc->terms();
      }
+     else if (isset($get['route']) && $get['route'] === 'admin_of_estatein_2024'){
+         $this->pc->admin();
+     }
      else{
          $this->pc->home();
      }

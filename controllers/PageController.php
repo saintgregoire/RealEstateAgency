@@ -53,4 +53,9 @@ class PageController extends AbstractController
         $this->currentPage = 'terms';
         $this->render('terms.html.twig', []);
     }
+
+    public function admin() : void
+    {
+        $this->render('admin_of_estatein_2024.html.twig', []);
+    }
 }
