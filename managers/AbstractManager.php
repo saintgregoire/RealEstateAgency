@@ -13,11 +13,6 @@ abstract class AbstractManager
             $_ENV["DB_PASSWORD"]
         );
     }
-
-    protected function render(string $template, array $data) : void
-    {
-        echo $this->twig->render($template, $data);
-    }
 }
 
 

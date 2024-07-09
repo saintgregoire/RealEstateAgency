@@ -14,6 +14,11 @@ abstract class AbstractController{
         $this->twig = $twig;
     }
 
+    protected function render(string $template, array $data) : void
+    {
+        echo $this->twig->render($template, $data);
+    }
+
 }
 
 ?>
