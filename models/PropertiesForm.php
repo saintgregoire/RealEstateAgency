@@ -7,7 +7,7 @@ class PropertiesForm
     private bool $status = false;
     private DateTime $created_at;
 
-    public function __construct(private string $first_name, private string $last_name, private Email $email_id, private string $phone, private string $location, private string $property_type, private ?int $no_bathroom, private ?int $no_bedroom, private string $budget, private ?string $message)
+    public function __construct(private string $first_name, private string $last_name, private int $email_id, private string $phone, private string $location, private string $property_type, private ?int $no_bathroom, private ?int $no_bedroom, private string $budget, private ?string $message)
     {
         $this->created_at = new DateTime();
     }
@@ -72,12 +72,12 @@ class PropertiesForm
         $this->last_name = $last_name;
     }
 
-    public function getEmailId(): Email
+    public function getEmailId(): int
     {
         return $this->email_id;
     }
 
-    public function setEmailId(Email $email_id): void
+    public function setEmailId(int $email_id): void
     {
         $this->email_id = $email_id;
     }
