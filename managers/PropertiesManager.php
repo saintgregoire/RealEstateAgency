@@ -17,7 +17,7 @@ class PropertiesManager extends AbstractManager
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         $properties = [];
             foreach ($result as $property){
-                $properties[] = new Properties(
+                $item = new Properties(
                     $property['name'],
                     $property['description_for_card'],
                     $property['location'],
@@ -39,6 +39,8 @@ class PropertiesManager extends AbstractManager
                     $property['mortg_pay'],
                     $property['prop_insurance_month']
                 );
+                $item->setId($property['id']);
+                $properties[] = $item;
             }
             return $properties;
     }
