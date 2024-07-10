@@ -77,7 +77,16 @@ class PageController extends AbstractController
     public function propertyDetails() : void
     {
         $this->currentPage = 'propertyDetails';
-        $this->render('propertyDetails.html.twig', []);
+        $pm = new PropertiesManager();
+        $mm = new MediaManager();
+        $property = $pm->findById($_GET['property']);
+        $propertyName = $property->getName();
+        $allImages = $mm->findAllWhere($propertyName);
+        $imgUrls = [];
+        foreach ($allImages as $image) {
+            $imgUrls[] = $image->getUrl();
+        }
+        $this->render('propertyDetails.html.twig', ['property' => $property, 'imgUrls' => $imgUrls] );
     }
 
     public function services() : void

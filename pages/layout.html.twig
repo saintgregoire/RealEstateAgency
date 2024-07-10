@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon48.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    {% block swiperlink %}{% endblock %}
     <link rel="stylesheet" href="../assets/css/style.min.css" />
     <title>{% block title %}Estatein - Real Estate Agency.{% endblock %}</title>
 </head>
@@ -116,7 +117,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 </div>
-
+{% block swiperjs %}{% endblock %}
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

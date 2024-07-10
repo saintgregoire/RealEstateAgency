@@ -1,75 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Seaside Serenity Villa.Estatein - Real Estate Agency.">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/icon16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon48.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+{% extends 'layout.html.twig' %}
+
+{% block description %}
+  {{ property.getName() }}. Estatein - Real Estate Agency.
+{% endblock %}
+
+{% block swiperlink %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="../assets/css/style.min.css" />
-  <title>Seaside Serenity Villa. Estatein - Real Estate Agency.</title>
-</head>
-<body>
-  <header class='header'>
-    <div class="header__discover">
-      <p>✨Discover Your Dream Property with Estatein.  <a href="contact.html.twig" aria-label="Сontact us and we will provide you with all the detailed information on your request">Learn more</a>
-      </p>
-    </div>
+{% endblock %}
 
-    <div class=" header__main">
+{% block title %}
+  {{ property.getName() }}.
+  {{ parent() }}
+{% endblock %}
 
-      <a href="home.html.twig">
-        <div class="header__logo">
-          <img src="../assets/img/Logo.png" alt="Logo of Estatein"  width="93" height="28.5"/>
-        </div>
-      </a>
-
-      <div class="header__burger_menu">
-        <span></span>
-      </div>
-
-      <nav class="header__nav">
-
-      <div class="header__nav_close"></div>
-
-        <ul class='header__menu'>
-          <li>
-            <a href="home.html.twig">Home</a>
-          </li>
-          <li>
-            <a href="about.html.twig">About Us</a>
-          </li>
-          <li>
-            <a class="active" href="properties.html.twig">Properties</a>
-          </li>
-          <li>
-            <a href="services.html.twig">Services</a>
-          </li>
-          <li class='header__contacts'>
-            <a href="contact.html.twig">Contact Us</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-  </header>
-
-<main>
+{% block content %}
   <!-- !PROPERTY SECTION -->
   <section class="property container">
     <div class="property__top">
-      <h1>Seaside Serenity Villa</h1>
+      <h1>{{ property.getName() }}</h1>
       <div class="property__info">
         <p class="property__geo">
           <i class="fa-solid fa-location-dot"></i>
-          Malibu, California
+          {{ property.getLocation() }}
         </p>
         <p class="property__price">
           Price
-          <span>$1,250,000</span>
+          <span>{{ property.getListingPrice() }}</span>
         </p>
       </div>
     </div>
@@ -80,24 +36,12 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper property__swiper-wrapper">
           <!-- Slides -->
+          {% for img in imgUrls %}
           <div class="swiper-slide property__swiper-slide">
-            <img src="../assets/img/SeasideVilla.png" alt="Seaside Serenity Villa"  width="272" height="250">
+            <img src="{{ img }}" alt="{{ property.getName() }}"  width="272" height="250">
           </div>
-          <div class="swiper-slide property__swiper-slide">
-            <img src="../assets/img/SeasideVillaBedroom.png" alt="Bedroom of seaside Serenity villa"  width="272" height="250">
-          </div>
-          <div class="swiper-slide property__swiper-slide">
-            <img src="../assets/img/SeasideVillaBedroom2.png" alt="Second bedroom of seaside Serenity villa"  width="272" height="250">
-          </div>
-          <div class="swiper-slide property__swiper-slide">
-            <img src="../assets/img/SeasideVillaBedroomChill.png" alt="Swimming pool near seaside Serenity villa"  width="272" height="250">
-          </div>
-          <div class="swiper-slide property__swiper-slide">
-            <img src="../assets/img/SeasideVillaStreet.png" alt="Seaside Serenity villa outside"  width="272" height="250">
-          </div>
-          <div class="swiper-slide property__swiper-slide">
-            <img src="../assets/img/SeasideVillaSwimmingPool.png" alt="Big swimming pool Seaside Serenity villa"  width="272" height="250">
-          </div>
+          {% endfor %}
+
         </div>
       </div>
         <!-- If we need navigation buttons -->
@@ -114,21 +58,21 @@
     <h2 class="sr-only">Property description</h2>
     <article class="description__desc">
       <h3 class="description__title">Description</h3>
-      <p class="description__text">Discover your own piece of paradise with the Seaside Serenity Villa. T With an open floor plan, breathtaking ocean views from every room, and direct access to a pristine sandy beach, this property is the epitome of coastal living.</p>
+      <p class="description__text">Discover your own piece of paradise with the {{ property.getName() }}. With an open floor plan, breathtaking ocean views from every room, and direct access to a pristine sandy beach, this property is the epitome of coastal living.</p>
       <div class="description__cards">
         <div class="description__card">
           <p class="description__name">
             <img src="../assets/icons/bedroom.svg" alt="Bedroom icon" width="20" height="20">
             Bedrooms
           </p>
-          <p class="description__value">04</p>
+          <p class="description__value">0{{ property.getNoBedrooms() }}</p>
         </div>
         <div class="description__card">
           <p class="description__name">
             <img src="../assets/icons/Bathroom.svg" alt="Bathroom icon" width="20" height="20">
             Bathrooms
           </p>
-          <p class="description__value">03</p>
+          <p class="description__value">0{{ property.getNoBathrooms() }}</p>
         </div>
         <div class="description__card">
           <p class="description__name">
@@ -136,7 +80,7 @@
             Area
             </svg>
           </p>
-          <p class="description__value">2,500 Square Feet</p>
+          <p class="description__value">{{ property.getSqFeet() }}</p>
         </div>
       </div>
     </article>
@@ -174,7 +118,7 @@
       <div class="stars">
         <img src="../assets/icons/star.png" alt="stars icon" width="46" height="20">
       </div>
-      <h2 class="inquire__title">Inquire About Seaside Serenity Villa</h2>
+      <h2 class="inquire__title">Inquire About {{ property.getName() }}</h2>
       <p>Interested in this property? Fill out the form below, and our real estate experts will get back to you with more details, including scheduling a viewing and answering any questions you may have.</p>
     </article>
 
@@ -227,7 +171,8 @@
       <img src="../assets/icons/star.png" alt="stars icon" width="46" height="20">
     </div>
     <h2 class="pricing__title">Comprehensive Pricing Details</h2>
-    <p>At Estatein, transparency is key. We want you to have a clear understanding of all costs associated with your property investment. Below, we break down the pricing for Seaside Serenity Villa to help you make an informed decision</p>
+    <p>At Estatein, transparency is key. We want you to have a clear understanding of all costs associated with your property investment. Below, we break down the pricing for
+      {{ property.getName() }} to help you make an informed decision</p>
 
     <article class="pricing__note">
       <h3>Note</h3>
@@ -237,7 +182,7 @@
     <div class="pricing__wrapper">
       <div class="pricing__listing_price">
         <p>Listing Price</p>
-        <p>$1,250,000</p>
+        <p>{{ property.getListingPrice() }}</p>
       </div>
 
       <article class="pricing__card">
@@ -246,7 +191,7 @@
           <p class="pricing__small">
             Property Transfer Tax
           </p>
-          <p class="pricing__value">$25,000</p>
+          <p class="pricing__value">{{ property.getTransferTax() }}</p>
           <p class="pricing__desc">
             Based on the sale price and local regulations
           </p>
@@ -256,7 +201,7 @@
           <p class="pricing__small">
             Legal Fees
           </p>
-          <p class="pricing__value">$3,000</p>
+          <p class="pricing__value">{{ property.getLegalFees() }}</p>
           <p class="pricing__desc">
             Approximate cost for legal services, including title transfer
           </p>
@@ -266,7 +211,7 @@
           <p class="pricing__small">
             Home Inspection
           </p>
-          <p class="pricing__value">$500</p>
+          <p class="pricing__value">{{ property.getHomeInspection() }}</p>
           <p class="pricing__desc">
             Recommended for due diligence
           </p>
@@ -276,7 +221,7 @@
           <p class="pricing__small">
             Property Insurance
           </p>
-          <p class="pricing__value">$1,200</p>
+          <p class="pricing__value">{{ property.getInsurance() }}</p>
           <p class="pricing__desc">
             Annual cost for comprehensive property insurance
           </p>
@@ -286,7 +231,7 @@
           <p class="pricing__small">
             Mortgage Fees
           </p>
-          <p class="pricing__value">Varies</p>
+          <p class="pricing__value">{{ property.getMortgFees() }}</p>
           <p class="pricing__desc">
             If applicable, consult with your lender for specific details
           </p>
@@ -299,7 +244,7 @@
           <p class="pricing__small">
             Property Taxes
           </p>
-          <p class="pricing__value">$1,250</p>
+          <p class="pricing__value">{{ property.getPropertyTax() }}</p>
           <p class="pricing__desc">
             Approximate monthly property tax based on the sale price and local rates
           </p>
@@ -309,7 +254,7 @@
           <p class="pricing__small">
             Homeowners' Association Fee
           </p>
-          <p class="pricing__value">$300</p>
+          <p class="pricing__value">{{ property.getAssosFee() }}</p>
           <p class="pricing__desc">
             Monthly fee for common area maintenance and security
           </p>
@@ -322,14 +267,14 @@
           <p class="pricing__small">
             Listing Price
           </p>
-          <p class="pricing__value">$1,250,000</p>
+          <p class="pricing__value">{{ property.getListingPrice() }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Additional Fees
           </p>
-          <p class="pricing__value">$29,700</p>
+          <p class="pricing__value">{{ property.getAdditFee() }}</p>
           <p class="pricing__desc">
             Property transfer tax, legal fees, inspection, insurance
           </p>
@@ -339,7 +284,7 @@
           <p class="pricing__small">
             Down Payment
           </p>
-          <p class="pricing__value down">$250,000</p>
+          <p class="pricing__value down">{{ property.getDownPayment() }}</p>
           <p class="pricing__desc persent">
             20%
           </p>
@@ -349,7 +294,7 @@
           <p class="pricing__small">
             Mortgage Amount
           </p>
-          <p class="pricing__value million">$1,000,000</p>
+          <p class="pricing__value million">{{ property.getMortgAmount() }}</p>
           <p class="pricing__desc applic">
             If applicable
           </p>
@@ -362,28 +307,28 @@
           <p class="pricing__small">
             Property Taxes
           </p>
-          <p class="pricing__value">$1,250</p>
+          <p class="pricing__value">{{ property.getPropertyTax() }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Homeowners' Association Fee
           </p>
-          <p class="pricing__value">$300</p>
+          <p class="pricing__value">{{ property.getAssosFee() }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Mortgage Payment
           </p>
-          <p class="pricing__value">Varies based on terms and interest rate</p>
+          <p class="pricing__value">{{ property.getMortgPay() }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Property Insurance
           </p>
-          <p class="pricing__value">$100</p>
+          <p class="pricing__value">{{ property.getPropInsuranceMonth() }}</p>
           <p class="pricing__desc cost">
             Approximate monthly cost
           </p>
@@ -392,80 +337,9 @@
       
     </div>
   </section>
-</main>
+{% endblock %}
 
-  <footer>
-    <section class="info">
-      <div class="info__box container">
-        <div class="info__wrapper">
-          <h2 class="info__title">
-            Start Your Real Estate Journey Today
-          </h2>
-          <p class="info__paragraph">
-            Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.
-          </p>
-        </div>
-        <a class="info__link" href="properties.html.twig">
-          <p>Explore Properties</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="email container">
-      <h3 class="sr-only">Our team will contact you ASAP</h3>
-      <a class="email__logo" href="home.html.twig">
-        <img src="../assets/img/Logo.png" alt="Estatein agency logo" width="115" height="35">
-      </a>
-      <form action="" method="POST" class="email__form">
-        <label class="sr-only" for="email_footer_input">Email</label>
-        <input type="email" name="emailFooterInput" class="email__input" id="email_footer_input" placeholder="📧 Enter Your Email" required>
-        <button class="email__btn" type="submit"><i class="fa-solid fa-paper-plane" aria-label="send your email"></i></button>
-      </form>
-    </section>
-
-    <section class="social">
-      <h3 class="sr-only">You can find us in social media</h3>
-      <div class="social__box">
-        <a href="https://www.facebook.com/" target="_blank" aria-label="our facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/maksym-voznichka/" target="_blank" aria-label="our linkedin">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://x.com/?lang=fr" target="_blank" aria-label="our twitter">
-          <i class="fa-brands fa-twitter"></i>
-        </a>
-        <a href="https://www.youtube.com/" target="_blank" aria-label="our youtube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-      </div>
-      <div class="social__txt_box">
-        <p class="social__text">@2023 Estatein. All Rights Reserved.</p>
-        <p class="social__terms"><a href="terms.html.twig">Terms & Conditions</a></p>
-      </div>
-    </section>
-  </footer>
-
-  <!-- ? TOP BUTTON -->
-  <div class="go_top" tabindex="0">
-    <a href="#" aria-label="go to the top of the page">
-      <i class="fa-solid fa-arrow-up"></i>
-    </a>
-  </div>
-
-  <!-- ? POP_UP FORM SUCCESS -->
-  <div class="pop-up hidden">
-    <article class="pop-up__article">
-      <div class="pop-up__logo">
-        <img src="../assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28">
-      </div>
-      <h2>Thank you for your submission!</h2>
-      <p>Our team at Estatein will review your information and get back to you shortly. </p>
-      <p>Have a great day!</p>
-      <div class="pop-up__close" tabindex="0" aria-label="Close pop-up"></div>
-    </article>
-  </div>
-
+{% block swiperjs %}
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- !SWIPER SECOND---------------------------- -->
   <script>
@@ -486,7 +360,4 @@
       },
     });
     </script>
-  <script src="../assets/js/main.js"></script>
-
-</body>
-</html>
+{% endblock %}

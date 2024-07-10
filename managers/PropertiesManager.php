@@ -139,6 +139,48 @@ class PropertiesManager extends AbstractManager
         $query->execute($parameters);
     }
 
+    public function findById(int $id) : ?Properties
+    {
+        $query = $this->db->prepare("
+        SELECT *
+        FROM properties
+        WHERE id = :id
+        ");
+        $parameters = [
+            'id' => $id
+        ];
+        $query->execute($parameters);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        if ($result){
+            $property = new Properties(
+                $result['name'],
+                $result['description_for_card'],
+                $result['location'],
+                $result['no_bedrooms'],
+                $result['no_bathrooms'],
+                $result['type'],
+                $result['sq_feet'],
+                $result['listing_price'],
+                $result['transfer_tax'],
+                $result['legal_fees'],
+                $result['home_inspection'],
+                $result['insurance'],
+                $result['mortg_fees'],
+                $result['property_tax'],
+                $result['assos_fee'],
+                $result['addit_fee'],
+                $result['down_payment'],
+                $result['mortg_amount'],
+                $result['mortg_pay'],
+                $result['prop_insurance_month']
+            );
+            return $property;
+        }
+        else{
+            return null;
+        }
+    }
+
 
     public  function deleteOne(int $id) : void
     {
