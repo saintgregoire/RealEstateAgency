@@ -42,8 +42,7 @@ class EmailManager extends AbstractManager
        ];
        $query->execute($parameters);
        $result = $query->fetch(PDO::FETCH_ASSOC);
-        $email = new Email($result['email']);
-        return $email;
+        
     }
 
 

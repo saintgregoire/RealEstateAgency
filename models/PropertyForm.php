@@ -7,7 +7,7 @@ class PropertyForm
     private bool $status = false;
     private DateTime $created_at;
 
-    public function __construct(private string $fisrt_name, private string $last_name, private Email $emial_id, private string $phone, private Properties $property_id, private ?string $message)
+    public function __construct(private string $first_name, private string $last_name, private int $email_id, private string $phone, private int $property_id, private ?string $message)
     {
         $this->created_at = new DateTime();
     }
@@ -52,14 +52,14 @@ class PropertyForm
         $this->created_at = $created_at;
     }
 
-    public function getFisrtName(): string
+    public function getFirstName(): string
     {
-        return $this->fisrt_name;
+        return $this->first_name;
     }
 
-    public function setFisrtName(string $fisrt_name): void
+    public function setFirstName(string $first_name): void
     {
-        $this->fisrt_name = $fisrt_name;
+        $this->first_name = $first_name;
     }
 
     public function getLastName(): string
@@ -72,14 +72,14 @@ class PropertyForm
         $this->last_name = $last_name;
     }
 
-    public function getEmialId(): Email
+    public function getEmailId(): int
     {
-        return $this->emial_id;
+        return $this->email_id;
     }
 
-    public function setEmialId(Email $emial_id): void
+    public function setEmailId(int $email_id): void
     {
-        $this->emial_id = $emial_id;
+        $this->email_id = $email_id;
     }
 
     public function getPhone(): string
@@ -92,12 +92,12 @@ class PropertyForm
         $this->phone = $phone;
     }
 
-    public function getPropertyId(): Properties
+    public function getPropertyId(): int
     {
         return $this->property_id;
     }
 
-    public function setPropertyId(Properties $property_id): void
+    public function setPropertyId(int $property_id): void
     {
         $this->property_id = $property_id;
     }

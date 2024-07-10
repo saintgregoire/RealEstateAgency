@@ -58,14 +58,11 @@ class PropertiesFormManager extends AbstractManager
       $result = $query->fetchAll(PDO::FETCH_ASSOC);
       $formLeads = [];
       if($result){
-          $em = new EmailManager();
           foreach($result as $lead){
-              $email = $em->findById($lead["email"]);
-              $email_id = $email->getId();
               $item = new PropertiesForm(
                   $lead["first_name"],
                   $lead["last_name"],
-                  $email_id,
+                  $lead["email_id"],
                   $lead["phone"],
                   $lead["location"],
                   $lead["property_type"],
