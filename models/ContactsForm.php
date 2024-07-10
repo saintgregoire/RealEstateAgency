@@ -8,7 +8,7 @@ class ContactsForm
     private bool $status = false;
 
 
-    public function __construct(private string $first_name, private string $last_name, private Email $email_id, private string $phone, private string $inquiry_type, private ?string $how_found, private ?string $message)
+    public function __construct(private string $first_name, private string $last_name, private ?int $email_id, private string $phone, private string $inquiry_type, private ?string $how_found, private ?string $message)
     {
         $this->created_at = new DateTime();
     }
@@ -73,12 +73,12 @@ class ContactsForm
         $this->last_name = $last_name;
     }
 
-    public function getEmailId(): Email
+    public function getEmailId(): int
     {
         return $this->email_id;
     }
 
-    public function setEmailId(Email $email_id): void
+    public function setEmailId(int $email_id): void
     {
         $this->email_id = $email_id;
     }
