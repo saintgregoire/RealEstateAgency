@@ -85,6 +85,70 @@ class PropertiesManager extends AbstractManager
         }
     }
 
+    public function addOne(string $name,
+                           string $description_for_card,
+                           string $location,
+                           int $no_bedrooms,
+                           int $no_bathrooms,
+                            string $type,
+                            string $sq_feet,
+                            string $listing_price,
+                            string $transfer_tax,
+                            string $legal_fees,
+                            string $home_inspection,
+                            string $insurance,
+                            string $mortg_fees,
+                            string $property_tax,
+                            string $assos_fee,
+                            string $addit_fee,
+                            string $down_payment,
+                            string $mortg_amount,
+                            string $mortg_pay,
+                            string $prop_insurance_month
+
+    ) : void
+    {
+        $query = $this->db->prepare("
+        INSERT INTO properties(name, description_for_card, location, no_bedrooms, no_bathrooms, type, sq_feet, listing_price, transfer_tax, legal_fees, home_inspection, insurance, mortg_fees, property_tax, assos_fee, addit_fee, down_payment, mortg_amount, mortg_pay, prop_insurance_month)
+        VALUES (:name, :description_for_card, :location, :no_bedrooms, :no_bathrooms, :type, :sq_feet, :listing_price, :transfer_tax, :legal_fees, :home_inspection, :insurance, :mortg_fees, :property_tax, :assos_fee, :addit_fee, :down_payment, :mortg_amount, :mortg_pay, :prop_insurance_month)
+        ");
+        $parameters = [
+            'name' => $name,
+            'description_for_card' => $description_for_card,
+            'location' => $location,
+            'no_bedrooms' => $no_bedrooms,
+            'no_bathrooms' => $no_bathrooms,
+            'type' => $type,
+            'sq_feet' => $sq_feet,
+            'listing_price' => $listing_price,
+            'transfer_tax' => $transfer_tax,
+            'legal_fees' => $legal_fees,
+            'home_inspection' => $home_inspection,
+            'insurance' => $insurance,
+            'mortg_fees' => $mortg_fees,
+            'property_tax' => $property_tax,
+            'assos_fee' => $assos_fee,
+            'addit_fee' => $addit_fee,
+            'down_payment' => $down_payment,
+            'mortg_amount' => $mortg_amount,
+            'mortg_pay' => $mortg_pay,
+            'prop_insurance_month' => $prop_insurance_month
+        ];
+        $query->execute($parameters);
+    }
+
+
+    public  function deleteOne(int $id) : void
+    {
+        $query = $this->db->prepare("
+        DELETE FROM properties WHERE id = :id
+        ");
+        $parameters = [
+            'id' => $id
+        ];
+        $query->execute($parameters);
+    }
+
 
 
 }
