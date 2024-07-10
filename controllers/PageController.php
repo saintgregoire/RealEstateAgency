@@ -15,7 +15,26 @@ class PageController extends AbstractController
     }
     public  function home():void{
         $this->currentPage = 'home';
-        $this->render('home.html.twig', []);
+        $mm = new MediaManager();
+        $pm = new PropertiesManager();
+        $allProperties = $pm->findAll();
+        $propertiesWithImg = [];
+        foreach ($allProperties as $property) {
+            $img = $mm->findByName($property->getName() . ' Main');
+            $propertiesWithImg[] = [
+                'id'=>$property->getId(),
+               'name' => $property->getName(),
+               'description' => $property->getDescriptionForCard(),
+               'price' => $property->getListingPrice(),
+                'no_bedrooms' => $property->getNoBedrooms(),
+                'no_bathrooms' => $property->getNoBathrooms(),
+                'type' => $property->getType(),
+                'img_url'=> $img->getUrl()
+            ];
+        }
+        $this->render('home.html.twig', [
+            'allProperties' => $propertiesWithImg
+        ]);
     }
 
     public function about(): void
@@ -33,7 +52,26 @@ class PageController extends AbstractController
     public function properties() : void
     {
         $this->currentPage = 'properties';
-        $this->render('properties.html.twig', []);
+        $mm = new MediaManager();
+        $pm = new PropertiesManager();
+        $allProperties = $pm->findAll();
+        $propertiesWithImg = [];
+        foreach ($allProperties as $property) {
+            $img = $mm->findByName($property->getName() . ' Main');
+            $propertiesWithImg[] = [
+                'id'=>$property->getId(),
+                'name' => $property->getName(),
+                'description' => $property->getDescriptionForCard(),
+                'price' => $property->getListingPrice(),
+                'no_bedrooms' => $property->getNoBedrooms(),
+                'no_bathrooms' => $property->getNoBathrooms(),
+                'type' => $property->getType(),
+                'img_url'=> $img->getUrl()
+            ];
+        }
+        $this->render('properties.html.twig', [
+            'allProperties' => $propertiesWithImg
+        ]);
     }
 
     public function propertyDetails() : void
