@@ -60,14 +60,7 @@ function mySwiper(
 
 // * SHOW ERROR MESSAGE FOR INPUT ----------------------
 
-function displayErrorMessageInput(fieldset, errorMessage, form){
-	if(!form.querySelector('#js-form-error')){
-		const formPar = document.createElement('p');
-		formPar.id = 'js-form-error';
-		formPar.innerText = "* Some fields are not filled in correctly.";
-		formPar.classList.add('js-error-input');
-		form.appendChild(formPar);
-	}
+function displayErrorMessageInput(fieldset, errorMessage){
 
 	if(!fieldset.querySelector('.js-error-input')){
 		const inputWithError = fieldset.querySelector('input');
@@ -77,6 +70,81 @@ function displayErrorMessageInput(fieldset, errorMessage, form){
 		fieldset.appendChild(par);
 		inputWithError.style.border = '1px solid red';
 	}
+}
+
+// * REMOVE ERROR MESSAGE------------------------
+function removeErrorMessage(input, fieldset){
+	input.addEventListener('input', () =>{
+		input.style.border = 'none';
+		const inputWithError = fieldset.querySelector('.js-error-input');
+		if(inputWithError){
+			fieldset.removeChild(inputWithError);
+		}
+	});
+}
+
+
+//  * INPUT NOT EMPTY--------------------------
+function inputIsNotEmpty(input, fieldset){
+	if (input.value.trim() === '' ){
+		displayErrorMessageInput(fieldset, "Input cannot be empty.");
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+
+
+// *SEARCH INSERT MARK--------------------------
+
+	function insertMark(string, position, len){
+		return string.slice(0, position)+'<mark style="background: #703BF7; color: white">'+string.slice(position, position+len)+'</mark>'+string.slice(position+len);
+	}
+
+// 	*SEARCH FUNCTION-------------------------------------
+
+function search (searchInput, list, listItems) {
+	searchInput.addEventListener('click', function (){
+		list.classList.remove('hidden');
+	});
+	searchInput.addEventListener('blur', function (){
+		setTimeout(function (){
+			list.classList.add('hidden');
+		}, 200);
+	});
+	searchInput.addEventListener('input', function () {
+		let val = this.value.trim().toLowerCase();
+		if(val !== ''){
+			listItems.forEach(function (elem){
+				if(elem.innerText.toLowerCase().search(val) === -1){
+					elem.classList.add('hidden');
+					elem.innerHTML = elem.innerText;
+				}
+				else{
+					elem.classList.remove('hidden');
+					let str = elem.innerText;
+					let startPos = elem.innerText.toLowerCase().search(val);
+					elem.innerHTML = insertMark(str, startPos, val.length);
+				}
+			});
+		}
+		else{
+			listItems.forEach(function (elem){
+				elem.classList.remove('hidden');
+				elem.innerHTML = elem.innerText;
+			});
+		}
+	});
+
+	listItems.forEach(function (item){
+		item.addEventListener('click', function (){
+			searchInput.value = item.innerText;
+			list.classList.add('hidden');
+		});
+	});
+
 }
 
 
@@ -142,6 +210,38 @@ document.addEventListener('DOMContentLoaded', ()=>{
 			}
 		});
 	}
+
+
+	// !SEARCH-----------------------------------
+
+	const searchInput = document.querySelector('#search');
+	const list = document.querySelector('.dream__options');
+	const listItems = document.querySelectorAll('.dream__options > li');
+	const searchForm = document.querySelector('#searchForm');
+
+	if(searchForm){
+		search(searchInput, list, listItems );
+
+		const inputs = searchForm.querySelectorAll('input');
+		searchForm.addEventListener('submit', (e) =>{
+			inputs.forEach(input => {
+				const fieldset = input.parentElement;
+				const check = inputIsNotEmpty(input, fieldset);
+				if(check === false){
+					e.preventDefault();
+				}
+			})
+		});
+		inputs.forEach(input =>{
+			const fieldset = input.parentElement;
+			removeErrorMessage(input, fieldset);
+		});
+	}
+
+
+
+
+
 
 	
 

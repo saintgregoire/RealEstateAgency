@@ -105,4 +105,25 @@ class PageController extends AbstractController
     {
         $this->render('admin_of_estatein_2024.html.twig', []);
     }
+
+    public function property() : void
+    {
+        if(isset($_POST['search']) && !empty($_POST['search'])){
+            $pm = new PropertiesManager();
+            $property = $pm->findByName($_POST['search']);
+            if($property !== null){
+                $id = $property->getId();
+                $this->redirect("index.php?route=propertyDetails&property=$id");
+            }
+            else{
+                $this->redirect("index.php?route=properties");
+            }
+        }
+        else{
+            $this->redirect("index.php?route=properties");
+        }
+    }
+
+
+
 }

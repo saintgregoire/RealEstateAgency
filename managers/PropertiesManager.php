@@ -80,6 +80,7 @@ class PropertiesManager extends AbstractManager
                 $result['mortg_pay'],
                 $result['prop_insurance_month']
             );
+            $property->setId($result['id']);
             return $property;
         }
         else{

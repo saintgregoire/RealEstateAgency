@@ -30,7 +30,7 @@
     }
   }
 
-  & form{
+  &__form{
     margin: 0 3rem;
     position: relative;
     @include vieport-lg{
@@ -42,6 +42,36 @@
     @include vieport-xxl{
       left: 15%;
       right: 15%;
+    }
+  }
+
+  &__options{
+    position: absolute;
+    width: 100%;
+    height: 15rem;
+    bottom: -16rem;
+    left: 0;
+    padding: 1rem;
+    border: 2px solid $btn-color;
+    border-radius: $border-radius-sm;
+    background: $main-bg;
+    overflow-y: auto ;
+    @include vieport-md{
+      height: 17rem;
+      bottom: -18rem;
+    }
+    @include vieport-xxl{
+      height: 20rem;
+      bottom: -21rem;
+    }
+
+    & > li{
+      cursor: pointer;
+      padding: .3rem;
+
+      &:hover{
+        color: white;
+      }
     }
   }
 

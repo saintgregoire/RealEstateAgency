@@ -1991,12 +1991,12 @@ h1 {
     font-size: 4.8rem;
   }
 }
-.dream form {
+.dream__form {
   margin: 0 3rem;
   position: relative;
 }
 @media (min-width: 1024px) {
-  .dream form {
+  .dream__form {
     position: absolute;
     bottom: 5rem;
     left: 10%;
@@ -2004,10 +2004,41 @@ h1 {
   }
 }
 @media (min-width: 1920px) {
-  .dream form {
+  .dream__form {
     left: 15%;
     right: 15%;
   }
+}
+.dream__options {
+  position: absolute;
+  width: 100%;
+  height: 15rem;
+  bottom: -16rem;
+  left: 0;
+  padding: 1rem;
+  border: 2px solid #703BF7;
+  border-radius: 10px;
+  background: #141414;
+  overflow-y: auto;
+}
+@media (min-width: 768px) {
+  .dream__options {
+    height: 17rem;
+    bottom: -18rem;
+  }
+}
+@media (min-width: 1920px) {
+  .dream__options {
+    height: 20rem;
+    bottom: -21rem;
+  }
+}
+.dream__options > li {
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.dream__options > li:hover {
+  color: white;
 }
 .dream__search {
   width: 100%;

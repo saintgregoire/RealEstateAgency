@@ -19,13 +19,18 @@
         <p>Welcome to Estatein, where your dream property awaits in every corner of our beautiful world. Explore our curated selection of properties, each offering a unique story and a chance to redefine your life. With categories to suit every dreamer, your journey </p>
         </div>
       </div>
-      <form action="" method="GET">
-        <input class="dream__search" type="text" name="search" id="search" placeholder="Search For A Property" autocomplete="off" required>
+      <form action="index.php?route=check-property" method="POST" id="searchForm" class="dream__form">
+        <input class="dream__search" type="text" name="search" id="search" placeholder="Search For A Property" autocomplete="off">
         <button type="submit">
           <i class="fa-solid fa-magnifying-glass"></i>
           <span class="dream__span">Find Property</span>
         </button>
-    </form>
+        <ul class="dream__options hidden">
+          {% for property in allProperties %}
+          <li>{{ property.name }}</li>
+          {% endfor %}
+        </ul>
+      </form>
     </section>
 
     <section class="featured_swiper container">
