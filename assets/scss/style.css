@@ -253,27 +253,12 @@ h1 {
   cursor: pointer;
 }
 .js-overlay img {
-  width: 80%;
+  width: 70%;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0px 0px 16px 12px rgba(111, 58, 246, 0.75);
   -webkit-box-shadow: 0px 0px 16px 12px rgba(111, 58, 246, 0.75);
   -moz-box-shadow: 0px 0px 16px 12px rgba(111, 58, 246, 0.75);
-}
-@media (min-width: 768px) {
-  .js-overlay img {
-    height: 50%;
-  }
-}
-@media (min-width: 1440px) {
-  .js-overlay img {
-    height: 60%;
-  }
-}
-@media (min-width: 1920px) {
-  .js-overlay img {
-    height: 80%;
-  }
 }
 
 .pop-up {
@@ -397,6 +382,7 @@ h1 {
 
 .header {
   background: #191919;
+  display: block;
 }
 .header__discover {
   font-size: 1.2rem;
