@@ -4101,6 +4101,19 @@ h1 {
 .email__btn:hover {
   color: #703BF7;
 }
+.email__success {
+  font-size: 1.2rem;
+  color: greenyellow;
+  padding-left: 1rem;
+  position: absolute;
+  left: 0;
+  bottom: -22px;
+}
+@media (min-width: 1920px) {
+  .email__success {
+    font-size: 1.4rem;
+  }
+}
 
 .social {
   padding-top: 2rem;

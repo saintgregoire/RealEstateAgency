@@ -82,10 +82,16 @@
         <a class="email__logo" href="index.php?route=home">
             <img src="../assets/img/Logo.png" alt="Estatein agency logo" width="115" height="35">
         </a>
-        <form action="" method="POST" class="email__form">
+        <form action="index.php?route=check-email" method="POST" class="email__form" novalidate>
+            <input type="hidden" id="redirect_url" name="redirect_url" value="{{ current_page }}">
+            {% if current_page is same as 'propertyDetails' %}
+            <input type="hidden" id="property_id_url" name="property_id_url" value="{{ property.getId() }}">
+            {% endif %}
+            <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
             <label class="sr-only" for="email_footer_input">Email</label>
-            <input type="email" name="emailFooterInput" class="email__input" id="email_footer_input" placeholder="📧 Enter Your Email" required>
+            <input type="email" name="emailFooterInput" class="email__input" id="email_footer_input" placeholder="📧 Enter Your Email">
             <button class="email__btn" type="submit" aria-label="send your email"><i class="fa-solid fa-paper-plane"></i></button>
+            <p class="email__success {% if success is not defined or success is same as false  %} hidden{% endif %}">Thanks for subscribing</p>
         </form>
     </section>
 

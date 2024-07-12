@@ -96,6 +96,19 @@ function inputIsNotEmpty(input, fieldset){
 }
 
 
+// * INPUT EMAIL FORMAT-----------------------------
+function isEmailInputValid(emailInput, fieldset){
+	const checkEmail = function (emailInput){
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailRegex.test(emailInput.value);
+	}
+	if(!checkEmail(emailInput)){
+		displayErrorMessageInput(fieldset, 'Wrong email');
+		return false;
+	}
+	return true;
+}
+
 
 // *SEARCH INSERT MARK--------------------------
 
@@ -242,6 +255,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
 			const fieldset = searchInput.parentElement;
 			removeErrorMessage(searchInput, fieldset);
 	}
+
+
+// 	! CHECK EMAIL FOOTER FORM-----------------------------------
+
+	const emailForm = document.querySelector('.email__form');
+	const emailInput = emailForm.querySelector('.email__input');
+
+	emailForm.addEventListener('submit', (e) =>{
+		const isNotEmpty = inputIsNotEmpty(emailInput, emailForm);
+		const isEmailOk = isEmailInputValid(emailInput, emailForm);
+		if(!isEmailOk || !isNotEmpty){
+			e.preventDefault();
+		}
+	});
+	removeErrorMessage(emailInput, emailForm);
+
+
 
 
 

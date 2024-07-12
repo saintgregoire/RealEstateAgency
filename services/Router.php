@@ -2,8 +2,10 @@
 
 class Router{
     private  PageController $pc;
+    private FormController $fc;
   public function __construct(){
       $this->pc = new PageController();
+      $this->fc = new FormController();
   }
   public function handleRequest(array $get) : void
   {
@@ -34,6 +36,9 @@ class Router{
      }
      else if(isset($get['route']) && $get['route'] === 'check-property'){
          $this->pc->property();
+     }
+     else if(isset($get['route']) && $get['route'] === 'check-email'){
+         $this->fc->checkEmail();
      }
      else{
          $this->pc->home();

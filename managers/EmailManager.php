@@ -34,7 +34,7 @@ class EmailManager extends AbstractManager
         }
     }
 
-    public function findById(int $id) : Email
+    public function findById(int $id) : ? Email
     {
        $query = $this->db->prepare("SELECT * FROM emails WHERE id = :id");
        $parameters = [
@@ -42,7 +42,13 @@ class EmailManager extends AbstractManager
        ];
        $query->execute($parameters);
        $result = $query->fetch(PDO::FETCH_ASSOC);
-        
+        if($result){
+            $newEmail = new Email($result['email']);
+            return $newEmail;
+        }
+        else{
+            return null;
+        }
     }
 
 

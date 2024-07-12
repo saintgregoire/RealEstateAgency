@@ -80,6 +80,7 @@ class PageController extends AbstractController
         $pm = new PropertiesManager();
         $mm = new MediaManager();
         $property = $pm->findById($_GET['property']);
+        $property->setId($_GET['property']);
         $propertyName = $property->getName();
         $allImages = $mm->findAllWhere($propertyName);
         $imgUrls = [];
@@ -103,6 +104,7 @@ class PageController extends AbstractController
 
     public function admin() : void
     {
+        $this->currentPage = 'admin';
         $this->render('admin_of_estatein_2024.html.twig', []);
     }
 
