@@ -3,6 +3,8 @@
 class PageController extends AbstractController
 {
     private string $currentPage = '';
+    private PropertiesManager $pm;
+    private MediaManager $mm;
 
     public function __construct()
     {
@@ -15,12 +17,10 @@ class PageController extends AbstractController
     }
     public  function home():void{
         $this->currentPage = 'home';
-        $mm = new MediaManager();
-        $pm = new PropertiesManager();
-        $allProperties = $pm->findAll();
+        $allProperties = $this->pm->findAll();
         $propertiesWithImg = [];
         foreach ($allProperties as $property) {
-            $img = $mm->findByName($property->getName() . ' Main');
+            $img = $this->mm->findByName($property->getName() . ' Main');
             $propertiesWithImg[] = [
                 'id'=>$property->getId(),
                'name' => $property->getName(),
@@ -52,12 +52,10 @@ class PageController extends AbstractController
     public function properties() : void
     {
         $this->currentPage = 'properties';
-        $mm = new MediaManager();
-        $pm = new PropertiesManager();
-        $allProperties = $pm->findAll();
+        $allProperties = $this->pm->findAll();
         $propertiesWithImg = [];
         foreach ($allProperties as $property) {
-            $img = $mm->findByName($property->getName() . ' Main');
+            $img = $this->mm->findByName($property->getName() . ' Main');
             $propertiesWithImg[] = [
                 'id'=>$property->getId(),
                 'name' => $property->getName(),
@@ -77,12 +75,10 @@ class PageController extends AbstractController
     public function propertyDetails() : void
     {
         $this->currentPage = 'propertyDetails';
-        $pm = new PropertiesManager();
-        $mm = new MediaManager();
-        $property = $pm->findById($_GET['property']);
+        $property = $this->pm->findById($_GET['property']);
         $property->setId($_GET['property']);
         $propertyName = $property->getName();
-        $allImages = $mm->findAllWhere($propertyName);
+        $allImages = $this->mm->findAllWhere($propertyName);
         $imgUrls = [];
         foreach ($allImages as $image) {
             $imgUrls[] = $image->getUrl();
@@ -111,8 +107,7 @@ class PageController extends AbstractController
     public function property() : void
     {
         if(isset($_POST['search']) && !empty($_POST['search'])){
-            $pm = new PropertiesManager();
-            $property = $pm->findByName($_POST['search']);
+            $property = $this->pm->findByName($_POST['search']);
             if($property !== null){
                 $id = $property->getId();
                 $this->redirect("index.php?route=propertyDetails&property=$id");

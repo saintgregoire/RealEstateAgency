@@ -89,6 +89,25 @@ class FormController extends AbstractController
 
     public function checkPropertiesForm() : void
     {
+        $this->currentPage = 'properties';
+
+        $allProperties = $this->pm->findAll();
+        $propertiesWithImg = [];
+
+        foreach ($allProperties as $property) {
+            $img = $this->mm->findByName($property->getName() . ' Main');
+            $propertiesWithImg[] = [
+                'id'=>$property->getId(),
+                'name' => $property->getName(),
+                'description' => $property->getDescriptionForCard(),
+                'price' => $property->getListingPrice(),
+                'no_bedrooms' => $property->getNoBedrooms(),
+                'no_bathrooms' => $property->getNoBathrooms(),
+                'type' => $property->getType(),
+                'img_url'=> $img->getUrl()
+            ];
+        }
+
         if(isset($_POST['first_name']) && !empty($_POST['first_name']) &&
             isset($_POST['last_name']) && !empty($_POST['last_name']) &&
             isset($_POST['email']) && !empty($_POST['email']) &&
@@ -118,18 +137,18 @@ class FormController extends AbstractController
                         $_POST['message']);
                     $pfm = new PropertiesFormManager();
                     $pfm->addOne($pfClass);
-                    $this->render('properties.html.twig', ['formValid' => true]);
+                    $this->render('properties.html.twig', ['formValid' => true, 'allProperties' => $propertiesWithImg]);
                 }
                 else{
-                    echo 'ALL NOT GOOD';
+                    $this->render('properties.html.twig', ['formValid' => false, 'allProperties' => $propertiesWithImg]);
                 }
             }
             else{
-                echo 'ALL NOT GOOD';
+                $this->render('properties.html.twig', ['formValid' => false, 'allProperties' => $propertiesWithImg]);
             }
         }
         else{
-            echo 'ALL NOT GOOD';
+            $this->render('properties.html.twig', ['formValid' => false, 'allProperties' => $propertiesWithImg]);
         }
     }
 }

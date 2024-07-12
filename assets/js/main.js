@@ -252,6 +252,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	}
 
 
+	// ! POP-UP----------------------------
+
+	const popUp = document.querySelector('.pop-up');
+	const closePopUp = document.querySelector('.pop-up__close');
+
+	if(popUp){
+		popUp.addEventListener('click', (e) => {
+			if(e.target === popUp || e.target === closePopUp ){
+				popUp.classList.add('hidden');
+			}
+		});
+	}
+
+
 	// !SEARCH-----------------------------------
 
 	const searchInput = document.querySelector('#search');
