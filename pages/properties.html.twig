@@ -90,7 +90,8 @@
       </div>
       <h2>Let's Make it Happen</h2>
       <p class="happen__paragraph">Ready to take the first step toward your dream property? Fill out the form below, and our real estate wizards will work their magic to find your perfect match. Don't wait; let's embark on this exciting journey together.</p>
-      <form action="" method="post" class="js-properties-form">
+      <form action="index.php?route=check-properties-form" method="POST" class="js-properties-form" novalidate>
+        <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
         <fieldset class="happen__first_name happen__fieldset">
           <label for="first_name" class="happen__label">First Name</label>
           <input type="text" name="first_name" id="first_name" class="happen__input" placeholder="Enter First Name">
@@ -114,7 +115,7 @@
         <fieldset class="happen__location happen__fieldset">
           <label for="location" class="happen__label">Preferred Location</label>
           <select id="location" name="location" class="happen__select">
-            <option value="null" disabled selected hidden>Select Location</option>
+            <option value="" disabled selected hidden>Select Location</option>
             <option value="California">California</option>
             <option value="Dubai">Dubai</option>
             <option value="Paris">Paris</option>
@@ -125,7 +126,7 @@
         <fieldset class="happen__type happen__fieldset">
           <label for="type" class="happen__label">Property Type</label>
           <select id="type" name="type" class="happen__select">
-            <option value="null" disabled selected hidden>Select Property Type</option>
+            <option value="" disabled selected hidden>Select Property Type</option>
             <option value="villa">Villa</option>
             <option value="apartments">Apartments</option>
           </select>
@@ -134,7 +135,7 @@
         <fieldset class="happen__bathrooms happen__fieldset">
           <label for="bathrooms" class="happen__label">No. of Bathrooms</label>
           <select id="bathrooms" name="bathrooms" class="happen__select">
-            <option value="null" disabled selected hidden>Select no. of Bathrooms</option>
+            <option value="" disabled selected hidden>Select no. of Bathrooms</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="2+">2+</option>
@@ -144,7 +145,7 @@
         <fieldset class="happen__bedrooms happen__fieldset">
           <label for="bedrooms" class="happen__label">No. of Bedrooms</label>
           <select id="bedrooms" name="bedrooms" class="happen__select">
-            <option value="null" disabled selected hidden>Select no. of Bedrooms</option>
+            <option value="" disabled selected hidden>Select no. of Bedrooms</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -155,7 +156,7 @@
         <fieldset class="happen__budget happen__fieldset">
           <label for="budget" class="happen__label">Budget</label>
           <select id="budget" name="budget" class="happen__budget_select happen__select">
-            <option value="null" disabled selected hidden>Select Budget</option>
+            <option value="" disabled selected hidden>Select Budget</option>
             <option value="200K">200K+</option>
             <option value="500K">500K+</option>
             <option value="1M">1M</option>
@@ -178,6 +179,7 @@
     </section>
   </main>
 {% endblock %}
+
 {% block pop_up %}
   <!-- ? POP_UP FORM SUCCESS -->
   <div class="pop-up hidden">

@@ -64,11 +64,17 @@ function displayErrorMessageInput(fieldset, errorMessage){
 
 	if(!fieldset.querySelector('.js-error-input')){
 		const inputWithError = fieldset.querySelector('input');
+		const selectWithError = fieldset.querySelector('select');
 		const par = document.createElement('p');
 		par.innerText = errorMessage;
 		par.classList.add('js-error-input');
 		fieldset.appendChild(par);
-		inputWithError.style.border = '1px solid red';
+		if(inputWithError){
+			inputWithError.style.border = '1px solid red';
+		}
+		else{
+			selectWithError.style.border = '1px solid red';
+		}
 	}
 }
 
@@ -87,7 +93,7 @@ function removeErrorMessage(input, fieldset){
 //  * INPUT NOT EMPTY--------------------------
 function inputIsNotEmpty(input, fieldset){
 	if (input.value.trim() === '' ){
-		displayErrorMessageInput(fieldset, "Input cannot be empty.");
+		displayErrorMessageInput(fieldset, "*This field cannot be empty.");
 		return false;
 	}
 	else {
@@ -98,17 +104,38 @@ function inputIsNotEmpty(input, fieldset){
 
 // * INPUT EMAIL FORMAT-----------------------------
 function isEmailInputValid(emailInput, fieldset){
-	const checkEmail = function (emailInput){
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailRegex.test(emailInput.value);
-	}
-	if(!checkEmail(emailInput)){
-		displayErrorMessageInput(fieldset, 'Wrong email');
+	if(!emailRegex.test(emailInput.value)){
+		displayErrorMessageInput(fieldset, '*Wrong email');
 		return false;
 	}
 	return true;
 }
 
+
+// * INPUT PHONE FORMAT-----------------------
+function isPhoneValid(phoneInput, fieldset){
+		const phonePattern = /^\+?[1-9]\d{1,14}$/;
+		if(!phonePattern.test(phoneInput.value)){
+			displayErrorMessageInput(fieldset, '*Wrong phone number');
+			return false;
+		}
+		else{
+			return true;
+		}
+}
+
+// * CHECKBOX VALIDATION-------------------
+
+function isCheckboxValid(checkbox, fieldset){
+	if(checkbox.checked){
+		return true;
+	}
+	else{
+		displayErrorMessageInput(fieldset, '*You must read and agree to our terms of use and privacy policy');
+		return false;
+	}
+}
 
 // *SEARCH INSERT MARK--------------------------
 
@@ -116,7 +143,7 @@ function isEmailInputValid(emailInput, fieldset){
 		return string.slice(0, position)+'<mark style="background: #703BF7; color: white">'+string.slice(position, position+len)+'</mark>'+string.slice(position+len);
 	}
 
-// 	*SEARCH FUNCTION-------------------------------------
+// 	*SEARCH FUNCTION------------------------------------
 
 function search (searchInput, list, listItems) {
 	searchInput.addEventListener('click', function (){
@@ -248,7 +275,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 					});
 					if(!options.includes(searchInput.value)){
 						e.preventDefault();
-						displayErrorMessageInput(fieldset, 'The property does not exist.');
+						displayErrorMessageInput(fieldset, '*The property does not exist.');
 					}
 				}
 		});
@@ -272,6 +299,52 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	removeErrorMessage(emailInput, emailForm);
 
 
+// 	! CHECK PROPERTIES FORM---------------------
+
+	const propertiesForm = document.querySelector('.js-properties-form');
+	const propertiesInputs = document.querySelectorAll('.happen__input');
+	const propertiesEmailInput = document.querySelector('#email');
+	const propertiesPhone = document.querySelector('#phone');
+	const propertiesLocation = document.querySelector('#location');
+	const propertiesType = document.querySelector('#type');
+	const propertiesBudget = document.querySelector('#budget');
+	const propertiesCheckbox = document.querySelector('#agree');
+
+	let checkThatNotEmpty = [ propertiesLocation, propertiesType, propertiesBudget ];
+
+	propertiesInputs.forEach(input =>{
+		checkThatNotEmpty.push(input);
+	});
+
+	if (propertiesForm){
+
+		propertiesForm.addEventListener('submit', (e) => {
+
+			checkThatNotEmpty.forEach(input =>{
+				const fieldsetOfInput = input.parentElement;
+				const isNotEmpty = inputIsNotEmpty(input, fieldsetOfInput);
+				removeErrorMessage(input, fieldsetOfInput);
+				if(!isNotEmpty){
+					e.preventDefault();
+				}
+			});
+
+			const isEmailValid = isEmailInputValid(propertiesEmailInput, propertiesEmailInput.parentElement);
+
+			const isPhoneValidOk = isPhoneValid(propertiesPhone, propertiesPhone.parentElement);
+
+			const isCheckboxChecked = isCheckboxValid(propertiesCheckbox, propertiesCheckbox.parentElement);
+			removeErrorMessage(propertiesCheckbox, propertiesCheckbox.parentElement);
+
+			if(!isEmailValid || !isPhoneValidOk || !isCheckboxChecked){
+				e.preventDefault();
+			}
+
+
+
+		});
+
+	}
 
 
 

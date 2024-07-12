@@ -2189,6 +2189,7 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  position: relative;
 }
 @media (min-width: 1024px) {
   .happen__fieldset {
