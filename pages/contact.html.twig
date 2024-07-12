@@ -80,31 +80,31 @@
       <h2 class="connect__title">Let's Connect</h2>
       <p>We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein.</p>
 
-      <form action="" method="POST" class="connect__form">
+      <form action="index.php?route=check-contacts" method="POST" class="connect__form" novalidate>
         <fieldset class="connect__fieldset">
           <label for="first_name_conn" class="connect__label">First Name</label>
-          <input type="text" class="connect__input" name="first_name_conn" id="first_name_conn" placeholder="Enter First Name" required>
+          <input type="text" class="connect__input" name="first_name_conn" id="first_name_conn" placeholder="Enter First Name">
         </fieldset>
 
         <fieldset class="connect__fieldset">
           <label for="last_name_conn" class="connect__label">Last Name</label>
-          <input type="text" class="connect__input" name="last_name_conn" id="last_name_conn" placeholder="Enter Last Name" required>
+          <input type="text" class="connect__input" name="last_name_conn" id="last_name_conn" placeholder="Enter Last Name">
         </fieldset>
 
         <fieldset class="connect__fieldset">
           <label for="email_conn" class="connect__label">Email</label>
-          <input type="email" class="connect__input" name="email_conn" id="email_conn" placeholder="Enter your Email" required>
+          <input type="email" class="connect__input" name="email_conn" id="email_conn" placeholder="Enter your Email">
         </fieldset>
 
         <fieldset class="connect__fieldset">
           <label for="phone_conn" class="connect__label">Phone</label>
-          <input type="tel" class="connect__input" name="phone_conn" id="phone_conn" placeholder="Enter Phone Number" required>
+          <input type="tel" class="connect__input" name="phone_conn" id="phone_conn" placeholder="Enter Phone Number">
         </fieldset>
 
         <fieldset class="connect__fieldset">
           <label for="inquiry_conn" class="connect__label">Inquiry Type</label>
-          <select class="connect__select" name="inquiry_conn" id="inquiry_conn" required>
-            <option value="null" disabled selected hidden>Select Inquiry Type</option>
+          <select class="connect__select" name="inquiry_conn" id="inquiry_conn">
+            <option value="" disabled selected hidden>Select Inquiry Type</option>
             <option value="Sell">Sell</option>
             <option value="Buy">Buy</option>
           </select>
@@ -113,7 +113,7 @@
         <fieldset class="connect__fieldset">
           <label for="hear_conn" class="connect__label">How Did You Hear About Us?</label>
           <select type="text" class="connect__select" name="hear_conn" id="hear_conn">
-            <option value="null" disabled selected hidden>Select</option>
+            <option value="" disabled selected hidden>Select</option>
             <option value="recommendation">By recommendation</option>
             <option value="google">Google Ads</option>
             <option value="fb">Fb/Inst Ads</option>
@@ -127,8 +127,8 @@
         </fieldset>
         <!-- ****BLOCK TAKEN FROM PROPERTY DETAILS PAGE -->
         <fieldset class="happen__check happen__fieldset connect__check">
-          <input type="checkbox" id="agree_conn" name="agree_conn" class="happen__checkbox" required>
-          <label for="agree_conn" class="happen__agree happen__label">I agree with <a href="terms.html.twig">Terms of Use & Privacy Policy</a></label>
+          <input type="checkbox" id="agree_conn" name="agree_conn" class="happen__checkbox">
+          <label for="agree_conn" class="happen__agree happen__label">I agree with <a href="index.php?route=terms">Terms of Use & Privacy Policy</a></label>
         </fieldset>
 
         <button type="submit" class="connect__submit">Send Your Message</button>
