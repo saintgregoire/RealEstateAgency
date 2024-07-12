@@ -9,6 +9,8 @@ class PageController extends AbstractController
     public function __construct()
     {
         parent::__construct();
+        $this->pm = new PropertiesManager();
+        $this->mm = new MediaManager();
     }
 
     protected function getCurrentPage(): string
