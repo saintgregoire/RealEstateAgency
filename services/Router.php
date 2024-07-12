@@ -40,6 +40,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'check-email'){
          $this->fc->checkEmail();
      }
+     else if(isset($get['route']) && $get['route'] === 'check-properties'){
+         $this->fc->checkPropertiesForm();
+     }
      else{
          $this->pc->home();
      }

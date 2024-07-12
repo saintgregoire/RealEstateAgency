@@ -81,6 +81,7 @@
       <p>We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein.</p>
 
       <form action="index.php?route=check-contacts" method="POST" class="connect__form" novalidate>
+        <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
         <fieldset class="connect__fieldset">
           <label for="first_name_conn" class="connect__label">First Name</label>
           <input type="text" class="connect__input" name="first_name_conn" id="first_name_conn" placeholder="Enter First Name">

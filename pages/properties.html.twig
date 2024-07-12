@@ -126,7 +126,7 @@
         <fieldset class="happen__type happen__fieldset">
           <label for="type" class="happen__label">Property Type</label>
           <select id="type" name="type" class="happen__select">
-            <option value="" disabled selected hidden>Select Property Type</option>
+            <option value="" selected hidden>Select Property Type</option>
             <option value="villa">Villa</option>
             <option value="apartments">Apartments</option>
           </select>
@@ -135,7 +135,7 @@
         <fieldset class="happen__bathrooms happen__fieldset">
           <label for="bathrooms" class="happen__label">No. of Bathrooms</label>
           <select id="bathrooms" name="bathrooms" class="happen__select">
-            <option value="" disabled selected hidden>Select no. of Bathrooms</option>
+            <option value="" selected hidden>Select no. of Bathrooms</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="2+">2+</option>
@@ -145,7 +145,7 @@
         <fieldset class="happen__bedrooms happen__fieldset">
           <label for="bedrooms" class="happen__label">No. of Bedrooms</label>
           <select id="bedrooms" name="bedrooms" class="happen__select">
-            <option value="" disabled selected hidden>Select no. of Bedrooms</option>
+            <option value="" selected hidden>Select no. of Bedrooms</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -182,7 +182,7 @@
 
 {% block pop_up %}
   <!-- ? POP_UP FORM SUCCESS -->
-  <div class="pop-up hidden">
+  <div class="pop-up ">
     <article class="pop-up__article">
       <div class="pop-up__logo">
         <img src="../assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28">
@@ -193,4 +193,5 @@
       <div class="pop-up__close" tabindex="0" aria-label="Close pop-up"></div>
     </article>
   </div>
+{#  {% if formValid is not defined or formValid is same as false %}hidden{% endif %}#}
 {% endblock %}

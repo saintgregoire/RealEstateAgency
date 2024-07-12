@@ -16,6 +16,7 @@ class EmailManager extends AbstractManager
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if($result){
             $newEmail = new Email($result['email']);
+            $newEmail->setId($result['id']);
             return $newEmail;
         }
         else{

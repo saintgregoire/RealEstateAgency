@@ -123,6 +123,7 @@
     </article>
 
     <form action="index.php?route=check-property" method="post" class="inquire__form" novalidate>
+      <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
       <fieldset class="inquire__fieldset">
         <label class="inquire__label" for="inquire__first_name">First Name</label>
           <input type="text" name="inquire__first_name" id="inquire__first_name" class="inquire__input" placeholder="Enter First Name">
