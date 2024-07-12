@@ -280,6 +280,12 @@ h1 {
       font-size: 1.2rem;
       color: red;
       padding-left: 1rem;
+      position: absolute;
+      left: 0;
+      bottom: -22px;
+      @include vieport-xxl{
+        font-size: 1.4rem;
+      }
     }
 
 

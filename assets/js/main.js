@@ -222,20 +222,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	if(searchForm){
 		search(searchInput, list, listItems );
 
-		const inputs = searchForm.querySelectorAll('input');
 		searchForm.addEventListener('submit', (e) =>{
-			inputs.forEach(input => {
-				const fieldset = input.parentElement;
-				const check = inputIsNotEmpty(input, fieldset);
+				const fieldset = searchInput.parentElement;
+				const check = inputIsNotEmpty(searchInput, fieldset);
 				if(check === false){
 					e.preventDefault();
 				}
-			})
+				else{
+					let options = [];
+					listItems.forEach(item =>{
+						options.push(item.innerText);
+					});
+					if(!options.includes(searchInput.value)){
+						e.preventDefault();
+						displayErrorMessageInput(fieldset, 'The property does not exist.');
+					}
+				}
 		});
-		inputs.forEach(input =>{
-			const fieldset = input.parentElement;
-			removeErrorMessage(input, fieldset);
-		});
+			const fieldset = searchInput.parentElement;
+			removeErrorMessage(searchInput, fieldset);
 	}
 
 
