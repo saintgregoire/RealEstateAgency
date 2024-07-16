@@ -122,7 +122,7 @@
       <p>Interested in this property? Fill out the form below, and our real estate experts will get back to you with more details, including scheduling a viewing and answering any questions you may have.</p>
     </article>
 
-    <form action="index.php?route=check-property" method="post" class="inquire__form" novalidate>
+    <form action="index.php?route=check-property-lead" method="post" class="inquire__form" novalidate>
       <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
       <fieldset class="inquire__fieldset">
         <label class="inquire__label" for="inquire__first_name">First Name</label>
@@ -342,7 +342,7 @@
 
 {% block pop_up %}
   <!-- ? POP_UP FORM SUCCESS -->
-  <div class="pop-up {% if formValid is not defined or formValid is same as false %}hidden{% endif %}">
+  <div class="pop-up hidden">
     <article class="pop-up__article">
       <div class="pop-up__logo">
         <img src="../assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28">

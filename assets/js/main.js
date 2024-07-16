@@ -199,6 +199,7 @@ function checkForm(form, isNotEmptyArray, emailInput, phoneInput, checkbox) {
 				removeErrorMessage(element, parentFieldset);
 				if(!notEmpty){
 					e.preventDefault();
+					return false;
 				}
 			});
 
@@ -211,9 +212,14 @@ function checkForm(form, isNotEmptyArray, emailInput, phoneInput, checkbox) {
 
 			if(!isEmailValid || !isPhoneInputValid || !isCheckboxChecked){
 				e.preventDefault();
+				return false;
+			}
+			else{
+				return true;
 			}
 		});
 	}
+	return false;
 }
 
 
@@ -331,13 +337,41 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 	const emailForm = document.querySelector('.email__form');
 	const emailInput = document.querySelector('.email__input');
+	const messageParagraphe = document.querySelector('.email__success');
 
 	emailForm.addEventListener('submit', (e) =>{
 		const isNotEmpty = inputIsNotEmpty(emailInput, emailForm);
 		const isEmailOk = isEmailInputValid(emailInput, emailForm);
-		if(!isEmailOk || !isNotEmpty){
-			e.preventDefault();
+		e.preventDefault();
+		if(isEmailOk || isNotEmpty){
+			const form = e.target;
+			const formData = new FormData(form);
+			const link = '/index.php?route=subscribe-newsletter';
+
+			fetch(link, {
+				method: 'POST',
+				body: formData
+			})
+				.then((response) => {
+					return response.json();
+				})
+				.then((data) => {
+					if(data.success){
+						emailInput.value = '';
+						messageParagraphe.innerText = data.message;
+						messageParagraphe.style.color = 'greenyellow';
+						messageParagraphe.classList.remove('hidden');
+					}
+
+				})
+				.catch((error) => {
+					console.error('Error: ', error);
+					messageParagraphe.innerText = 'Error. Please try later.';
+					messageParagraphe.style.color = 'red';
+					messageParagraphe.classList.remove('hidden');
+				})
 		}
+
 	});
 	removeErrorMessage(emailInput, emailForm);
 
@@ -397,7 +431,35 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		notEmptyCheck.push(input);
 	});
 
-	checkForm(detailsForm, notEmptyCheck, detailsEmail, detailsPhone, detailsCheckbox);
+	let formIsValid = checkForm(detailsForm, notEmptyCheck, detailsEmail, detailsPhone, detailsCheckbox);
+	if(formIsValid){
+		detailsForm.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const form = e.target;
+			const formData = new FormData(form);
+			const link = '/index.php?route=check-property-lead';
+
+			fetch(link, {
+				method: 'POST',
+				body: formData
+			})
+				.then((response) => {
+					return response.json();
+				})
+				.then((data) => {
+					if(data.success){
+						popUp.classList.remove('hidden');
+					}
+				})
+				.catch((error) => {
+					console.error('Error: ', error);
+				})
+
+		})
+	}
+
+
+
 
 
 

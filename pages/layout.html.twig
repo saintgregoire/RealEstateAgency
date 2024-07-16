@@ -82,8 +82,7 @@
         <a class="email__logo" href="index.php?route=home">
             <img src="../assets/img/Logo.png" alt="Estatein agency logo" width="115" height="35">
         </a>
-        <form action="index.php?route={{ current_page }}" method="POST" class="email__form" novalidate>
-
+        <form action="index.php?route=subscribe-newsletter" method="POST" class="email__form" novalidate>
             <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
             <label class="sr-only" for="email_footer_input">Email</label>
             <input type="email" name="emailFooterInput" class="email__input" id="email_footer_input" placeholder="📧 Enter Your Email">

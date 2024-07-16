@@ -2,8 +2,12 @@
 
 class Router{
     private  PageController $pc;
+    private NewsletterController $newsletterContr;
+    private PropertyLeadController $propertyLeadContr;
   public function __construct(){
       $this->pc = new PageController();
+      $this->newsletterContr = new NewsletterController();
+      $this->propertyLeadContr = new PropertyLeadController();
   }
   public function handleRequest(array $get) : void
   {
@@ -34,6 +38,12 @@ class Router{
      }
      else if(isset($get['route']) && $get['route'] === 'check-property'){
          $this->pc->property();
+     }
+     else if(isset($get['route']) && $get['route'] === 'subscribe-newsletter'){
+         $this->newsletterContr->addEmailToNewsletter();
+     }
+     else if(isset($get['route']) && $get['route'] === 'check-property-lead'){
+         $this->propertyLeadContr->addPropertyLead();
      }
      else{
          $this->pc->home();
