@@ -23,25 +23,29 @@ class PageController extends AbstractController
         return $this->currentPage;
     }
 
-
-    public  function home():void{
-        $this->currentPage = 'home';
+    private function findAllImgs() : array{
         $allProperties = $this->pm->findAll();
         $propertiesWithImg = [];
         foreach ($allProperties as $property) {
             $img = $this->mm->findByName($property->getName() . ' Main');
             $propertiesWithImg[] = [
                 'id'=>$property->getId(),
-               'name' => $property->getName(),
-               'description' => $property->getDescriptionForCard(),
-               'price' => $property->getListingPrice(),
+                'name' => $property->getName(),
+                'description' => $property->getDescriptionForCard(),
+                'price' => $property->getListingPrice(),
                 'no_bedrooms' => $property->getNoBedrooms(),
                 'no_bathrooms' => $property->getNoBathrooms(),
                 'type' => $property->getType(),
                 'img_url'=> $img->getUrl()
             ];
         }
+            return $propertiesWithImg;
+    }
 
+
+    public  function home():void{
+        $this->currentPage = 'home';
+        $propertiesWithImg = $this->findAllImgs();
         $this->render('home.html.twig', [
             'allProperties' => $propertiesWithImg
         ]);
@@ -92,21 +96,7 @@ class PageController extends AbstractController
     public function properties() : void
     {
         $this->currentPage = 'properties';
-        $allProperties = $this->pm->findAll();
-        $propertiesWithImg = [];
-        foreach ($allProperties as $property) {
-            $img = $this->mm->findByName($property->getName() . ' Main');
-            $propertiesWithImg[] = [
-                'id'=>$property->getId(),
-                'name' => $property->getName(),
-                'description' => $property->getDescriptionForCard(),
-                'price' => $property->getListingPrice(),
-                'no_bedrooms' => $property->getNoBedrooms(),
-                'no_bathrooms' => $property->getNoBathrooms(),
-                'type' => $property->getType(),
-                'img_url'=> $img->getUrl()
-            ];
-        }
+        $propertiesWithImg = $this->findAllImgs();
 
         $formValid = false;
 
