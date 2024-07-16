@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // 	! CHECK EMAIL FOOTER FORM-----------------------------------
 
 	const emailForm = document.querySelector('.email__form');
-	const emailInput = emailForm.querySelector('.email__input');
+	const emailInput = document.querySelector('.email__input');
 
 	emailForm.addEventListener('submit', (e) =>{
 		const isNotEmpty = inputIsNotEmpty(emailInput, emailForm);
@@ -311,6 +311,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		}
 	});
 	removeErrorMessage(emailInput, emailForm);
+
+
 
 
 // 	! CHECK PROPERTIES FORM---------------------
@@ -359,6 +361,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		});
 
 	}
+
+
+// ! CHECK CONTACTS FORM--------------------------
+
 
 
 

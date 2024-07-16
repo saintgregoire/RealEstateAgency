@@ -5,18 +5,25 @@ class PageController extends AbstractController
     private string $currentPage = '';
     private PropertiesManager $pm;
     private MediaManager $mm;
-
+    private CSRFTokenManager $tm;
+    private EmailManager $em;
+    private FormValidation $fv;
     public function __construct()
     {
         parent::__construct();
         $this->pm = new PropertiesManager();
         $this->mm = new MediaManager();
+        $this->tm = new CSRFTokenManager();
+        $this->em = new EmailManager();
+        $this->fv = new FormValidation();
     }
 
     protected function getCurrentPage(): string
     {
         return $this->currentPage;
     }
+
+
     public  function home():void{
         $this->currentPage = 'home';
         $allProperties = $this->pm->findAll();
@@ -34,6 +41,7 @@ class PageController extends AbstractController
                 'img_url'=> $img->getUrl()
             ];
         }
+
         $this->render('home.html.twig', [
             'allProperties' => $propertiesWithImg
         ]);
@@ -69,8 +77,44 @@ class PageController extends AbstractController
                 'img_url'=> $img->getUrl()
             ];
         }
+
+        $formValid = false;
+
+        if(isset($_POST['first_name']) && !empty($_POST['first_name']) &&
+            isset($_POST['last_name']) && !empty($_POST['last_name']) &&
+            isset($_POST['email']) && !empty($_POST['email']) &&
+            isset($_POST['phone']) && !empty($_POST['phone']) &&
+            isset($_POST['location']) && !empty($_POST['location']) &&
+            isset($_POST['type']) && !empty($_POST['type']) &&
+            isset($_POST['budget']) && !empty($_POST['budget']) &&
+            isset($_POST['agree']) && !empty($_POST['agree'])
+        ) {
+
+            if (isset($_POST['csrf-token']) && $this->tm->validateCSRFToken($_POST['csrf-token'])) {
+
+                if ($this->fv->isEmailValid($_POST['email']) && $this->fv->isPhoneValid($_POST['phone'])) {
+                    $this->em->addEmail($_POST['email']);
+                    $email = $this->em->findOneEmail($_POST['email']);
+                    $emailId = $email->getId();
+                    $pfClass = new PropertiesForm(
+                        $_POST['first_name'],
+                        $_POST['last_name'],
+                        $emailId,
+                        $_POST['phone'],
+                        $_POST['location'],
+                        $_POST['type'],
+                        (int)$_POST['bathrooms'],
+                        (int)$_POST['bedrooms'],
+                        $_POST['budget'],
+                        $_POST['message']);
+                    $pfm = new PropertiesFormManager();
+                    $pfm->addOne($pfClass);
+                    $formValid = true;
+                }
+            }
+        }
         $this->render('properties.html.twig', [
-            'allProperties' => $propertiesWithImg
+            'allProperties' => $propertiesWithImg, 'formValid' => $formValid
         ]);
     }
 
@@ -122,7 +166,6 @@ class PageController extends AbstractController
             $this->redirect("index.php?route=properties");
         }
     }
-
 
 
 }
