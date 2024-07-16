@@ -2850,6 +2850,7 @@ h1 {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  position: relative;
 }
 .inquire__label {
   font-size: 1.6rem;

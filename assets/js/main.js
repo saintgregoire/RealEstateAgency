@@ -188,6 +188,35 @@ function search (searchInput, list, listItems) {
 }
 
 
+// * CHECK FORM FUNCTION -------------------
+
+function checkForm(form, isNotEmptyArray, emailInput, phoneInput, checkbox) {
+	if(form){
+		form.addEventListener('submit', (e) => {
+			isNotEmptyArray.forEach(element =>{
+				const parentFieldset = element.parentElement;
+				const notEmpty = inputIsNotEmpty(element, parentFieldset);
+				removeErrorMessage(element, parentFieldset);
+				if(!notEmpty){
+					e.preventDefault();
+				}
+			});
+
+			const isEmailValid = isEmailInputValid(emailInput, emailInput.parentElement);
+
+			const isPhoneInputValid = isPhoneValid(phoneInput, phoneInput.parentElement);
+
+			const isCheckboxChecked = isCheckboxValid(checkbox, checkbox.parentElement);
+			removeErrorMessage(checkbox, checkbox.parentElement);
+
+			if(!isEmailValid || !isPhoneInputValid || !isCheckboxChecked){
+				e.preventDefault();
+			}
+		});
+	}
+}
+
+
 
 
 // ? MAIN CODE ----------------------------
@@ -332,35 +361,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		checkThatNotEmpty.push(input);
 	});
 
-	if (propertiesForm){
+	checkForm(propertiesForm, checkThatNotEmpty, propertiesEmailInput, propertiesPhone, propertiesCheckbox);
 
-		propertiesForm.addEventListener('submit', (e) => {
-
-			checkThatNotEmpty.forEach(input =>{
-				const fieldsetOfInput = input.parentElement;
-				const isNotEmpty = inputIsNotEmpty(input, fieldsetOfInput);
-				removeErrorMessage(input, fieldsetOfInput);
-				if(!isNotEmpty){
-					e.preventDefault();
-				}
-			});
-
-			const isEmailValid = isEmailInputValid(propertiesEmailInput, propertiesEmailInput.parentElement);
-
-			const isPhoneValidOk = isPhoneValid(propertiesPhone, propertiesPhone.parentElement);
-
-			const isCheckboxChecked = isCheckboxValid(propertiesCheckbox, propertiesCheckbox.parentElement);
-			removeErrorMessage(propertiesCheckbox, propertiesCheckbox.parentElement);
-
-			if(!isEmailValid || !isPhoneValidOk || !isCheckboxChecked){
-				e.preventDefault();
-			}
-
-
-
-		});
-
-	}
 
 
 // ! CHECK CONTACTS FORM--------------------------
@@ -377,31 +379,26 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		isNotEmpty.push(input);
 	});
 
-	if(contactForm){
-		contactForm.addEventListener('submit', (e) => {
+	checkForm(contactForm, isNotEmpty, contactEmailInput, contactPhoneInput, contactCheckbox);
 
-			isNotEmpty.forEach(element =>{
-				const parentFieldset = element.parentElement;
-				const notEmpty = inputIsNotEmpty(element, parentFieldset);
-				removeErrorMessage(element, parentFieldset);
-				if(!notEmpty){
-					e.preventDefault();
-				}
-			});
 
-			const emailValid = isEmailInputValid(contactEmailInput, contactEmailInput.parentElement);
 
-			const isTelValid = isPhoneValid(contactPhoneInput, contactPhoneInput.parentElement);
+// 	! CHECK PROPERTY DETAILS FORM -----------------------------
 
-			const isCheckboxCheck = isCheckboxValid(contactCheckbox, contactCheckbox.parentElement);
-			removeErrorMessage(contactCheckbox, contactCheckbox.parentElement);
+	const detailsForm = document.querySelector('.inquire__form');
+	const detailsInputs = document.querySelectorAll('.inquire__input');
+	const detailSelect = document.querySelector('#inquire__selected');
+	const detailsEmail = document.querySelector('#inquire__email');
+	const detailsPhone = document.querySelector('#inquire__tel');
+	const detailsCheckbox = document.querySelector('#inquire__agree');
 
-			if(!emailValid || !isTelValid || !isCheckboxCheck){
-				e.preventDefault();
-			}
+	let notEmptyCheck = [detailSelect];
+	detailsInputs.forEach(input => {
+		notEmptyCheck.push(input);
+	});
 
-		})
-	}
+	checkForm(detailsForm, notEmptyCheck, detailsEmail, detailsPhone, detailsCheckbox);
+
 
 
 
