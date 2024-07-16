@@ -3590,6 +3590,7 @@ h1 {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  position: relative;
 }
 .connect__label {
   font-size: 1.6rem;

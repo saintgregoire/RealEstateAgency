@@ -56,7 +56,37 @@ class PageController extends AbstractController
     public function contact() : void
     {
         $this->currentPage = 'contact';
-        $this->render('contact.html.twig', []);
+
+        $formValid = false;
+
+        if(isset($_POST['first_name_conn']) && !empty($_POST['first_name_conn']) &&
+            isset($_POST['last_name_conn']) && !empty($_POST['last_name_conn']) &&
+            isset($_POST['email_conn']) && !empty($_POST['email_conn']) &&
+            isset($_POST['phone_conn']) && !empty($_POST['phone_conn']) &&
+            isset($_POST['inquiry_conn']) && !empty($_POST['inquiry_conn']))
+        {
+            if (isset($_POST['csrf-token']) && $this->tm->validateCSRFToken($_POST['csrf-token'])) {
+                if($this->fv->isEmailValid($_POST['email_conn']) && $this->fv->isPhoneValid($_POST['phone_conn'])) {
+                    $this->em->addEmail($_POST['email_conn']);
+                    $email = $this->em->findOneEmail($_POST['email_conn']);
+                    $emailId = $email->getId();
+                    $contactFormClass = new ContactsForm(
+                        $_POST['first_name_conn'],
+                        $_POST['last_name_conn'],
+                        $emailId,
+                        $_POST['phone_conn'],
+                        $_POST['inquiry_conn'],
+                        $_POST['hear_conn'],
+                        $_POST['message_conn']
+                    );
+                    $cfm = new ContactsFormManager();
+                    $cfm->addOne($contactFormClass);
+                    $formValid = true;
+                }
+            }
+        }
+
+        $this->render('contact.html.twig', ['formValid' => $formValid]);
     }
 
     public function properties() : void

@@ -8,7 +8,7 @@ class ContactsForm
     private bool $status = false;
 
 
-    public function __construct(private string $first_name, private string $last_name, private ?int $email_id, private string $phone, private string $inquiry_type, private ?string $how_found, private ?string $message)
+    public function __construct(private string $first_name, private string $last_name, private int $email_id, private string $phone, private string $inquiry_type, private ?string $how_found, private ?string $message)
     {
         $this->created_at = new DateTime();
     }
@@ -23,23 +23,30 @@ class ContactsForm
         $this->id = $id;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
-        return $this->created_at;
+        return $this->created_at->format('Y-m-d H:i:s');
     }
 
     public function setCreatedAt(DateTime $created_at): void
     {
+        $created_at->format('Y-m-d H:i:s');
         $this->created_at = $created_at;
     }
 
-    public function getAnsweredAt(): ?DateTime
+    public function getAnsweredAt(): ?string
     {
-        return $this->answered_at;
+        if ($this->answered_at !== null) {
+            return $this->answered_at->format('Y-m-d H:i:s');
+        }
+        else{
+            return null;
+        }
     }
 
     public function setAnsweredAt(?DateTime $answered_at): void
     {
+        $answered_at->format('Y-m-d H:i:s');
         $this->answered_at = $answered_at;
     }
 

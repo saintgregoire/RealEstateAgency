@@ -365,6 +365,43 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // ! CHECK CONTACTS FORM--------------------------
 
+	const contactForm = document.querySelector('.connect__form');
+	const contactInputs = document.querySelectorAll('.connect__input');
+	const contactEmailInput = document.querySelector('#email_conn');
+	const contactPhoneInput = document.querySelector('#phone_conn');
+	const contactInquirySelect = document.querySelector('#inquiry_conn');
+	const contactCheckbox = document.querySelector('#agree_conn');
+
+	let isNotEmpty = [contactInquirySelect];
+	contactInputs.forEach(input =>{
+		isNotEmpty.push(input);
+	});
+
+	if(contactForm){
+		contactForm.addEventListener('submit', (e) => {
+
+			isNotEmpty.forEach(element =>{
+				const parentFieldset = element.parentElement;
+				const notEmpty = inputIsNotEmpty(element, parentFieldset);
+				removeErrorMessage(element, parentFieldset);
+				if(!notEmpty){
+					e.preventDefault();
+				}
+			});
+
+			const emailValid = isEmailInputValid(contactEmailInput, contactEmailInput.parentElement);
+
+			const isTelValid = isPhoneValid(contactPhoneInput, contactPhoneInput.parentElement);
+
+			const isCheckboxCheck = isCheckboxValid(contactCheckbox, contactCheckbox.parentElement);
+			removeErrorMessage(contactCheckbox, contactCheckbox.parentElement);
+
+			if(!emailValid || !isTelValid || !isCheckboxCheck){
+				e.preventDefault();
+			}
+
+		})
+	}
 
 
 
