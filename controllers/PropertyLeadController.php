@@ -46,7 +46,7 @@ class PropertyLeadController extends AbstractController
 
                     $this->pfm->addOne($pfClass);
 
-                    echo json_encode(['success' => true]);
+                    echo json_encode(['success' => true, 'kle' => $_POST['inquire__first_name'] . " " . $_POST['inquire__last_name']]);
                 }
             }
         }

@@ -132,7 +132,7 @@ function isCheckboxValid(checkbox, fieldset){
 		return true;
 	}
 	else{
-		displayErrorMessageInput(fieldset, '*You must read and agree to our terms of use and privacy policy');
+		displayErrorMessageInput(fieldset, '*Required');
 		return false;
 	}
 }
@@ -199,7 +199,6 @@ function checkForm(form, isNotEmptyArray, emailInput, phoneInput, checkbox) {
 				removeErrorMessage(element, parentFieldset);
 				if(!notEmpty){
 					e.preventDefault();
-					return false;
 				}
 			});
 
@@ -212,14 +211,9 @@ function checkForm(form, isNotEmptyArray, emailInput, phoneInput, checkbox) {
 
 			if(!isEmailValid || !isPhoneInputValid || !isCheckboxChecked){
 				e.preventDefault();
-				return false;
-			}
-			else{
-				return true;
 			}
 		});
 	}
-	return false;
 }
 
 
@@ -431,43 +425,59 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		notEmptyCheck.push(input);
 	});
 
-	let formIsValid = checkForm(detailsForm, notEmptyCheck, detailsEmail, detailsPhone, detailsCheckbox);
-	if(formIsValid){
+
+	if(detailsForm) {
+
 		detailsForm.addEventListener('submit', (e) => {
+
 			e.preventDefault();
-			const form = e.target;
-			const formData = new FormData(form);
-			const link = '/index.php?route=check-property-lead';
 
-			fetch(link, {
-				method: 'POST',
-				body: formData
-			})
-				.then((response) => {
-					return response.json();
-				})
-				.then((data) => {
-					if(data.success){
-						popUp.classList.remove('hidden');
-					}
-				})
-				.catch((error) => {
-					console.error('Error: ', error);
-				})
+			let notEmpty = true;
 
-		})
+			notEmptyCheck.forEach(element => {
+				const parentFieldset = element.parentElement;
+				if (!inputIsNotEmpty(element, parentFieldset)) {
+					notEmpty = false;
+				}
+				removeErrorMessage(element, parentFieldset);
+			});
+
+			const isEmailValid = isEmailInputValid(detailsEmail, detailsEmail.parentElement);
+
+			const isPhoneInputValid = isPhoneValid(detailsPhone, detailsPhone.parentElement);
+
+			const isCheckboxChecked = isCheckboxValid(detailsCheckbox, detailsCheckbox.parentElement);
+			removeErrorMessage(detailsCheckbox, detailsCheckbox.parentElement);
+
+
+			if (isEmailValid && isPhoneInputValid && isCheckboxChecked && notEmpty) {
+				const form = e.target;
+				const formData = new FormData(form);
+				const link = '/index.php?route=check-property-lead';
+				fetch(link, {
+					method: 'POST',
+					body: formData
+				})
+					.then((response) => {
+						return response.json();
+					})
+					.then((data) => {
+						if (data.success) {
+							popUp.classList.remove('hidden');
+							detailsInputs.forEach(input => {
+								input.value = '';
+								document.querySelector('#inquire__textarea').value = '';
+								detailsCheckbox.checked = false;
+							})
+						}
+					})
+					.catch((error) => {
+						console.error('Error: ', error);
+					})
+			}
+		});
 	}
 
-
-
-
-
-
-
-
-
-
-	
 
 
 });
