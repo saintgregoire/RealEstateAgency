@@ -164,12 +164,6 @@ class PageController extends AbstractController
         $this->render('terms.html.twig', []);
     }
 
-    public function admin() : void
-    {
-        $this->currentPage = 'admin';
-        $this->render('admin_of_estatein_2024.html.twig', []);
-    }
-
     public function property() : void
     {
         if(isset($_POST['search']) && !empty($_POST['search'])){
