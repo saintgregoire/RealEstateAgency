@@ -4,15 +4,17 @@ class Router{
     private  PageController $pc;
     private NewsletterController $newsletterContr;
     private PropertyLeadController $propertyLeadContr;
-
     private AdminPageController $apc;
     private AuthController $ac;
+    private AdminOperationsController $aoc;
+
   public function __construct(){
       $this->pc = new PageController();
       $this->newsletterContr = new NewsletterController();
       $this->propertyLeadContr = new PropertyLeadController();
       $this->ac = new AuthController();
       $this->apc = new AdminPageController();
+      $this->aoc = new AdminOperationsController();
   }
   public function handleRequest(array $get) : void
   {
@@ -38,9 +40,6 @@ class Router{
      else if (isset($get['route']) && $get['route'] === 'terms'){
          $this->pc->terms();
      }
-     else if (isset($get['route']) && $get['route'] === 'admin_of_estatein_2024'){
-         $this->apc->login();
-     }
      else if(isset($get['route']) && $get['route'] === 'check-property'){
          $this->pc->property();
      }
@@ -49,6 +48,12 @@ class Router{
      }
      else if(isset($get['route']) && $get['route'] === 'check-property-lead'){
          $this->propertyLeadContr->addPropertyLead();
+     }
+     else if (isset($get['route']) && $get['route'] === 'admin_of_estatein_2024'){
+         $this->apc->login();
+     }
+     else if(isset($get['route']) && $get['route'] === 'admin-home'){
+         $this->apc->adminMainPage();
      }
      else if(isset($get['route']) && $get['route'] === 'check-login'){
          $this->ac->checkLogin();
@@ -67,6 +72,12 @@ class Router{
      }
      else if(isset($get['route']) && $get['route'] === 'check-user-form'){
          $this->ac->checkUserForm();
+     }
+     else if(isset($get['route']) && $get['route'] === 'change-role'){
+         $this->aoc->changeRole();
+     }
+     else if(isset($get['route']) && $get['route'] === 'delete-user'){
+         $this->aoc->deleteUser();
      }
      else{
          $this->pc->home();

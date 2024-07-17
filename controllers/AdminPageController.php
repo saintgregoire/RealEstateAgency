@@ -47,4 +47,13 @@ class AdminPageController extends AbstractController
         }
     }
 
+    public function adminMainPage() : void
+    {
+        $userCheck = $this->isUserIsset();
+        if($userCheck){
+            $this->currentPage = 'admin-home';
+            $this->render('adminPanel.html.twig', []);
+        }
+    }
+
 }

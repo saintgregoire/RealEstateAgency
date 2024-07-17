@@ -11,11 +11,11 @@
     <title>Admin Panel of Estatein Agency</title>
 </head>
 <body class="container">
-<header class="header d-flex flex-wrap justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="d-flex align-items-center mb-3 me-3 mb-md-0 text-dark">
+<header class="header d-flex flex-wrap justify-content-center justify-content-md-between py-3 mb-4 border-bottom ">
+    <a href="index.php?route=admin-home" class="d-flex align-items-center mb-3 me-3 mb-md-0 text-decoration-none {% if current_page is same as 'admin-home' %} text-success text-decoration-underline{% endif %} " >
         <img src="../assets/icons/icon32.png" class="img-fluid me-1" alt="logo of Estatein" width="33" height="32" >
-        <span class="fs-4">Estatein</span>
-    </div>
+        <span class="fs-4">Admin</span>
+    </a>
 
     <ul class="nav nav-pills d-flex flex-wrap justify-content-center">
         <li class="nav-item">

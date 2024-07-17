@@ -2,44 +2,47 @@
 
 {% block content %}
     <section>
-        <h1 class="text-center">Members</h1>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Email</th>
-                <th scope="col">Role</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for user in allUsers  %}
-            <tr>
-                <th scope="row">{{ user.getId() }}</th>
-                <td>{{ user.getEmail() }}</td>
-                <td>{{ user.getRole() }}</td>
-                <td>
-                    {% if role == 'admin' or ( role == 'moderator' and user.getId() == user)  %}
-                    <div class ="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Modify
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Change Email</a></li>
-                            <li><a class="dropdown-item" href="#">Change login</a></li>
-                            <li><a class="dropdown-item" href="#">Change password</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                        </ul>
-                    </div>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </section>
+        <h1 class="text-center pb-3">Members</h1>
+        <div class="overflow-scroll" style="height: 400px">
+            <table class="table" style="height: 100%">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in allUsers  %}
+                    <tr>
+                        <th scope="row">{{ user.getId() }}</th>
+                        <td>{{ user.getEmail() }}</td>
+                        <td>{{ user.getRole() }}</td>
+                        <td>
+                            <div class ="dropdown {% if role is same as 'moderator' and userId is not same as user.getId() %} d-none{% endif %}">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Modify
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
+                                    <li><a class="dropdown-item" href="index.php?route=change-password&id={{ user.getId() }}">Change password</a></li>
+                                    {% if role is same as 'admin' %}
+                                        <li><a class="dropdown-item" href="index.php?route=change-role&id={{ user.getId() }}&role={{ user.getRole() }}">Change role</a></li>
+                                        <li><a class="dropdown-item" href="index.php?route=delete-user&id={{ user.getId() }}">Delete</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <section>
+    </section>
+    {% if role is same as 'admin' %}
+    <section class="pb-4">
         <h2 class="text-center mt-5">Add new member</h2>
         {% if errorMessage is defined and errorMessage is not empty %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -51,20 +54,24 @@
             <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
             <fieldset class="mb-3">
                 <label for="membersInputEmail" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="membersInputEmail" aria-describedby="emailHelp" name="membersInputEmail">
+                <input type="email" class="form-control" id="membersInputEmail" aria-describedby="emailHelp" name="membersInputEmail" required>
             </fieldset>
             <fieldset class="mb-3">
                 <label for="membersInputPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="membersInputPassword" name="membersInputPassword">
+                <input type="password" class="form-control" id="membersInputPassword" name="membersInputPassword" required>
             </fieldset>
             <fieldset class="mb-3">
                 <label for="membersInputRole" class="form-label">Role</label>
-                <input type="text" class="form-control" id="membersInputRole" name="membersInputRole">
+                <select class="form-select" id="membersInputRole" aria-label="Floating label select example" name="membersInputRole" required>
+                    <option value="moderator">Moderator</option>
+                    <option value="admin">Admin</option>
+                </select>
             </fieldset>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
     </section>
+    {% endif %}
 
 {% endblock %}
 

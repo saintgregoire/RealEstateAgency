@@ -22,11 +22,11 @@
             <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
             <fieldset class="mb-3">
                 <label for="inputEmailAdmin" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="inputEmailAdmin" name="inputEmailAdmin" >
+                <input type="email" class="form-control" id="inputEmailAdmin" name="inputEmailAdmin" required>
             </fieldset>
             <fieldset class="mb-3">
                 <label for="inputPasswordAdmin" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPasswordAdmin" name="inputPasswordAdmin">
+                <input type="password" class="form-control" id="inputPasswordAdmin" name="inputPasswordAdmin" required>
             </fieldset>
 
             <button type="submit" class="btn btn-primary">Login</button>

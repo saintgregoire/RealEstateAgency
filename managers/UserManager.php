@@ -82,4 +82,24 @@ class UserManager extends AbstractManager
       $query->execute($parameters);
     }
 
+    public function changePassword(int $id, string $password) : void
+    {
+        $query = $this->db->prepare("UPDATE admins SET password = :password WHERE id = :id");
+        $parameters = [
+            "id" => $id,
+            "password" => $password
+        ];
+        $query->execute($parameters);
+    }
+
+    public function changeEmail(int $id, string $email) : void
+    {
+        $query = $this->db->prepare("UPDATE admins SET email = :email WHERE id = :id");
+        $parameters = [
+            "id" => $id,
+            "email" => $email
+        ];
+        $query->execute($parameters);
+    }
+
 }
