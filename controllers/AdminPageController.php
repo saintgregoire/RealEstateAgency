@@ -3,9 +3,12 @@
 class AdminPageController extends AbstractController
 {
     private string $currentPage = '';
+
+    private UserManager $um;
     public function __construct()
     {
         parent::__construct();
+        $this->um = new UserManager();
     }
 
     protected function getCurrentPage(): string
@@ -38,8 +41,9 @@ class AdminPageController extends AbstractController
     public function adminMembersPage() : void{
         $userCheck = $this->isUserIsset();
         if($userCheck){
+            $allUsers = $this->um->findAll();
             $this->currentPage = 'members';
-            $this->render('adminMembers.html.twig', []);
+            $this->render('adminMembers.html.twig', ['allUsers' => $allUsers, 'role' => $_SESSION['role'], 'userId' => $_SESSION['user']]);
         }
     }
 

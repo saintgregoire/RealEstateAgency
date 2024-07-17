@@ -65,6 +65,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'logout'){
          $this->ac->logout();
      }
+     else if(isset($get['route']) && $get['route'] === 'check-user-form'){
+         $this->ac->checkUserForm();
+     }
      else{
          $this->pc->home();
      }

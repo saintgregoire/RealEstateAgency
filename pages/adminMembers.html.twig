@@ -1,0 +1,73 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+    <section>
+        <h1 class="text-center">Members</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in allUsers  %}
+            <tr>
+                <th scope="row">{{ user.getId() }}</th>
+                <td>{{ user.getEmail() }}</td>
+                <td>{{ user.getRole() }}</td>
+                <td>
+                    {% if role == 'admin' or ( role == 'moderator' and user.getId() == user)  %}
+                    <div class ="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Modify
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Change Email</a></li>
+                            <li><a class="dropdown-item" href="#">Change login</a></li>
+                            <li><a class="dropdown-item" href="#">Change password</a></li>
+                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2 class="text-center mt-5">Add new member</h2>
+        {% if errorMessage is defined and errorMessage is not empty %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ errorMessage }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <form class="mt-3" action="index.php?route=check-user-form" method="POST">
+            <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
+            <fieldset class="mb-3">
+                <label for="membersInputEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="membersInputEmail" aria-describedby="emailHelp" name="membersInputEmail">
+            </fieldset>
+            <fieldset class="mb-3">
+                <label for="membersInputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="membersInputPassword" name="membersInputPassword">
+            </fieldset>
+            <fieldset class="mb-3">
+                <label for="membersInputRole" class="form-label">Role</label>
+                <input type="text" class="form-control" id="membersInputRole" name="membersInputRole">
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </section>
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+{% endblock %}

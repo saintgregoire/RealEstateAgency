@@ -25,7 +25,7 @@
             <a href="index.php?route=admin-modif" class="nav-link {% if current_page is same as 'modif' %}active{% endif %}">Modifications</a>
         </li>
         <li class="nav-item">
-            <a href="index.php?route=admin-members" class="nav-link {% if current_page is same as 'members' %}active{% endif %}">Admins</a>
+            <a href="index.php?route=admin-members" class="nav-link {% if current_page is same as 'members' %}active{% endif %}">Members</a>
         </li>
         <li class="nav-item">
             <a href="index.php?route=go-to-site" class="nav-link {% if current_page is same as 'site' %}active{% endif %}">Go to website</a>
@@ -35,6 +35,9 @@
     <a href="index.php?route=logout" class="btn btn-outline-primary" role="button">Log Out</a>
 </header>
 {% block content %}
+{% endblock %}
+
+{% block script %}
 {% endblock %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
