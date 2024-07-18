@@ -39,9 +39,11 @@ class AuthController extends AbstractController
                     if(password_verify($_POST['inputPasswordAdmin'], $user->getPassword())){
                         $_SESSION['user'] = $user->getId();
                         $_SESSION['role'] = $user->getRole();
+                        $_SESSION['email'] = $user->getEmail();
+                        $email = $_SESSION['email'];
                         unset($_SESSION['error-message']);
                         $this->currentPage = 'admin-home';
-                        $this->render('adminPanel.html.twig', []);
+                        $this->render('adminPanel.html.twig', ['email' => $email]);
                     }
                     else{
                         $_SESSION['error-message'] = "Wrong password";

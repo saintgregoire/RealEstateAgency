@@ -52,7 +52,8 @@ class AdminPageController extends AbstractController
         $userCheck = $this->isUserIsset();
         if($userCheck){
             $this->currentPage = 'admin-home';
-            $this->render('adminPanel.html.twig', []);
+            $email = $_SESSION['email'];
+            $this->render('adminPanel.html.twig', ['email' => $email]);
         }
     }
 
