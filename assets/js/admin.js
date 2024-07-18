@@ -47,10 +47,11 @@ function isEmailInputValid(emailInput, fieldset){
 
 // * CHECK PASSWORD FORMAT-------------------------
 
-function validatePassword(password, fieldset) {
-    if (password.length < 11) {
-        if (!/[A-Z]/.test(password)) {
-            if (!/[\W]/.test(password)) {
+function validatePassword(input, fieldset) {
+    const password = input.value;
+    if (password.length >= 11) {
+        if (/[A-Z]/.test(password)) {
+            if (/[\W]/.test(password)) {
                 return true;
             }
             else{
@@ -80,46 +81,91 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const cancelEmailBtn = document.querySelectorAll('.cancelEmailBtn');
     const formsEmail = document.querySelectorAll('.form-change-email');
 
-    changeEmailLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const userId = this.getAttribute('data-user-id');
-            const form = document.querySelector(`#form-${userId}`);
-            const span = document.querySelector(`.user-email-span-${userId}`);
-            form.classList.remove('d-none');
-            span.classList.add('d-none');
-        })
-    });
-
-    cancelEmailBtn.forEach(button => {
-        button.addEventListener('click', function () {
-            const form = this.closest('form');
-            const userId = this.getAttribute('data-user-id');
-            const span = document.querySelector(`.user-email-span-${userId}`);
-            form.classList.add('d-none');
-            span.classList.remove('d-none');
+    if(formsEmail){
+        changeEmailLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-user-id');
+                const form = document.querySelector(`#form-${userId}`);
+                const span = document.querySelector(`.user-email-span-${userId}`);
+                form.classList.remove('d-none');
+                span.classList.add('d-none');
+            })
         });
-    });
 
-    formsEmail.forEach(form => {
-       form.addEventListener('submit', function (event)  {
-            const formEmailInput = form.querySelector('.userEmailInput');
-            const fieldset = formEmailInput.parentElement;
+        cancelEmailBtn.forEach(button => {
+            button.addEventListener('click', function () {
+                const form = this.closest('form');
+                const userId = this.getAttribute('data-user-id');
+                const span = document.querySelector(`.user-email-span-${userId}`);
+                form.classList.add('d-none');
+                span.classList.remove('d-none');
+            });
+        });
 
-           if(!inputIsNotEmpty(formEmailInput, fieldset)){
-               event.preventDefault();
-           }
-           else if(!isEmailInputValid(formEmailInput, fieldset)){
-               event.preventDefault();
-           }
-           removeErrorMessage(formEmailInput, fieldset)
-        }) ;
-    });
+        formsEmail.forEach(form => {
+            form.addEventListener('submit', function (event)  {
+                const formEmailInput = form.querySelector('.userEmailInput');
+                const fieldset = formEmailInput.parentElement;
+
+                if(!inputIsNotEmpty(formEmailInput, fieldset)){
+                    event.preventDefault();
+                }
+                else if(!isEmailInputValid(formEmailInput, fieldset)){
+                    event.preventDefault();
+                }
+                removeErrorMessage(formEmailInput, fieldset)
+            }) ;
+        });
+    }
+
+
 
 
 //     !CHANGE PASSWORD FOR USER------------------------
 
+    const changePasswordLinks = document.querySelectorAll('.change-password');
+    const cancelPasswordBtn = document.querySelectorAll('.cansel-password');
+    const formsPassword = document.querySelectorAll('.password-form');
 
+    if(formsPassword){
+        changePasswordLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const userId = this.getAttribute('data-user-id');
+                const form = document.querySelector(`#form-password-${ userId}`);
+                const dropdown = document.querySelector(`#dropdown-${userId}`);
+                form.classList.remove('d-none');
+                dropdown.classList.add('d-none');
+            });
+        });
+
+
+        cancelPasswordBtn.forEach(button => {
+            button.addEventListener('click', function () {
+                const form = this.closest('form');
+                const userId = this.getAttribute('data-user-id');
+                const dropdown = document.querySelector(`#dropdown-${userId}`);
+                form.classList.add('d-none');
+                dropdown.classList.remove('d-none');
+            });
+        });
+
+        formsPassword.forEach(form =>{
+            form.addEventListener('submit', function (e){
+                const formPasswordInput = form.querySelector('.password-input');
+                const fieldset = formPasswordInput.parentElement;
+
+                if(!inputIsNotEmpty(formPasswordInput, fieldset)){
+                    e.preventDefault();
+                }
+                else if(!validatePassword(formPasswordInput, fieldset)){
+                    e.preventDefault();
+                }
+                removeErrorMessage(formPasswordInput, fieldset);
+            });
+        });
+    }
 
 
 });

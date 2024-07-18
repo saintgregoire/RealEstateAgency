@@ -19,7 +19,7 @@ class AdminOperationsController extends AbstractController
         return $this->currentPage;
     }
 
-    private function emailFormAnswer(string $message) : void{
+    private function formAnswer(string $message) : void{
         $allUsers = $this->um->findAll();
         $this->currentPage = 'members';
         $this->render('adminMembers.html.twig', ['role' => $_SESSION['role'],
@@ -72,17 +72,44 @@ class AdminOperationsController extends AbstractController
                 }
                 else{
                     $message = 'Invalid CSRF token';
-                    $this->emailFormAnswer($message);
+                    $this->formAnswer($message);
                 }
             }
             else{
                 $message = 'Invalid format of email';
-                $this->emailFormAnswer($message);
+                $this->formAnswer($message);
             }
         }
         else{
             $message = 'Missing fields';
-            $this->emailFormAnswer($message);
+            $this->formAnswer($message);
+        }
+    }
+
+
+    public function checkChangedPassword() : void
+    {
+        if(isset($_POST['user-id-password']) && !empty($_POST['user-id-password']) &&
+        isset($_POST['new-password']) && !empty($_POST['new-password'])){
+            if(isset($_POST['csrf-token']) && $this->tm->validateCSRFToken($_POST['csrf-token'])){
+                if($this->fv->validatePassword($_POST['new-password']) === 'OK'){
+                    $hashPassword = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
+                   $this->um->changePassword($_POST['user-id-password'], $hashPassword);
+                   $this->redirect('index.php?route=admin-members');
+                }
+                else{
+                    $message = $this->fv->validatePassword($_POST['new-password']);
+                    $this->formAnswer($message);
+                }
+            }
+            else{
+                $message = 'Invalid CSRF token';
+                $this->formAnswer($message);
+            }
+        }
+        else{
+            $message = 'Missing fields';
+            $this->formAnswer($message);
         }
     }
 
