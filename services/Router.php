@@ -79,6 +79,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'delete-user'){
          $this->aoc->deleteUser();
      }
+     else if(isset($get['route']) && $get['route'] === 'change-email'){
+         $this->aoc->checkChangedEmail();
+     }
      else{
          $this->pc->home();
      }

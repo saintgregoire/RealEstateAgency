@@ -3,6 +3,12 @@
 {% block content %}
     <section>
         <h1 class="text-center pb-3">Members</h1>
+        {% if errorEmailMessage is defined and errorEmailMessage is not empty %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ errorEmailMessage }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
         <div class="overflow-scroll" style="height: 400px">
             <table class="table" style="height: 100%">
                 <thead>
@@ -16,16 +22,45 @@
                 <tbody>
                 {% for user in allUsers  %}
                     <tr>
-                        <th scope="row">{{ user.getId() }}</th>
-                        <td>{{ user.getEmail() }}</td>
-                        <td>{{ user.getRole() }}</td>
+                        <th scope="row">{{ user.getId()|e }}</th>
+
                         <td>
+                            <span class="user-email-span-{{ user.getId()|e }}">{{ user.getEmail()|e }}</span>
+
+                            <form action="index.php?route=change-email" method="POST" class="d-flex gap-2 d-none form-change-email" id="form-{{ user.getId()|e }}">
+                                <input type="hidden" name="csrf-token" id="csrf-token-{{ user.getId()|e }}" value="{{ csrf_token }}" />
+                                <input type="hidden" name="user-id" value="{{ user.getId()|e }}">
+                                <fieldset>
+                                    <label class="d-none" for="userEmailInput-{{ user.getId()|e }}">Change Email</label>
+                                    <input class="userEmailInput" id="userEmailInput-{{ user.getId()|e }}" name="userEmailInput" type="text" value="{{ user.getEmail()|e }}">
+                                </fieldset>
+                                <button type="submit">Submit</button>
+                                <button type="button" class="cancelEmailBtn"  data-user-id="{{ user.getId()|e }}">Cansel</button>
+                            </form>
+                        </td>
+
+                        <td>{{ user.getRole()|e }}</td>
+
+                        <td>
+                            <form action="index.php?route=change-password" method="POST" id="form-password-{{ user.getId()|e }}" class="d-none">
+                                <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
+                                <input type="hidden" name="user-id-password" value="{{ user.getId()|e }}">
+                                <fieldset>
+                                    <label class="d-none" for="new-password-{{ user.getId()|e }}">New password</label>
+                                    <input type="text" name="new-password" id="new-password-{{ user.getId()|e }}" placeholder="New password" style="width: 100%" class="mb-2">
+                                </fieldset>
+                                <div class="d-flex gap-4 justify-content-center">
+                                    <button type="submit">Submit</button>
+                                    <button type="button" class="cancelPasswordBtn"  data-user-id="{{ user.getId()|e }}">Cansel</button>
+                                </div>
+                            </form>
+
                             <div class ="dropdown {% if role is same as 'moderator' and userId is not same as user.getId() %} d-none{% endif %}">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Modify
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
+                                       <li><a class="dropdown-item change-email" data-user-id="{{ user.getId()|e }}" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
                                     <li><a class="dropdown-item" href="index.php?route=change-password&id={{ user.getId() }}">Change password</a></li>
                                     {% if role is same as 'admin' %}
                                         <li><a class="dropdown-item" href="index.php?route=change-role&id={{ user.getId() }}&role={{ user.getRole() }}">Change role</a></li>
@@ -76,5 +111,6 @@
 {% endblock %}
 
 {% block script %}
+    <script src="../assets/js/admin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 {% endblock %}
