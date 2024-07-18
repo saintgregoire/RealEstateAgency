@@ -88,6 +88,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'admin-leads'){
          $this->apc->adminLeadsPage();
      }
+     else if(isset($get['route']) && $get['route'] === 'change-status-contact-lead'){
+         $this->aoc->changeContactLeadStatus();
+     }
      else{
          $this->pc->home();
      }

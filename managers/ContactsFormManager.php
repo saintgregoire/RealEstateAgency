@@ -101,4 +101,14 @@ class ContactsFormManager extends AbstractManager
         $query->execute($parameters);
     }
 
+    public function changeStatusToDone(int $id ) : void
+    {
+     $query = $this->db->prepare("UPDATE contacts_form SET status = :status WHERE id = :id");
+     $parameters = [
+         ":status" => true,
+         ":id" => $id
+     ];
+     $query->execute($parameters);
+    }
+
 }

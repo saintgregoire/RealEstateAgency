@@ -43,10 +43,11 @@
                         <td>{{ lead.getHowFound()|e }}</td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
                         <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
-                        <td class="text-danger">
+                        <td>
                             {% if lead.isStatus()|e is same as false %}
-                                Pending
+                                <p class="text-danger">Pending</p>
                             {% endif %}
+                            <a href="index.php?route=change-status-contact-lead&lead-id={{ lead.getId()|e }}" class="text-decoration-none text-success p-1 text-nowrap border border-success">Done ✅</a>
                         </td>
                     </tr>
                 {% endfor %}

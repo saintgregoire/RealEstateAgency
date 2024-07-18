@@ -5,6 +5,7 @@ class AdminOperationsController extends AbstractController
     private UserManager $um;
     private FormValidation $fv;
     private CSRFTokenManager $tm;
+    private ContactsFormManager $cfm;
     private string $currentPage = '';
     public function __construct()
     {
@@ -12,11 +13,21 @@ class AdminOperationsController extends AbstractController
         $this->um = new UserManager();
         $this->fv = new FormValidation();
         $this->tm = new CSRFTokenManager();
+        $this->cfm = new ContactsFormManager();
     }
 
     protected function getCurrentPage(): string
     {
         return $this->currentPage;
+    }
+
+    private function isUserIsset() : bool{
+        if(isset($_SESSION['user'])){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private function formAnswer(string $message) : void{
@@ -110,6 +121,25 @@ class AdminOperationsController extends AbstractController
         else{
             $message = 'Missing fields';
             $this->formAnswer($message);
+        }
+    }
+
+
+    public function changeContactLeadStatus() : void
+    {
+        if($this->isUserIsset()){
+            if(isset($_GET['lead-id']) && !empty($_GET['lead-id'])){
+                $this->cfm->changeStatusToDone($_GET['lead-id']);
+                $this->redirect('index.php?route=admin-leads');
+            }
+            else{
+                echo 'error';
+                die;
+            }
+        }
+        else{
+            echo 'error';
+            die;
         }
     }
 
