@@ -85,6 +85,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'change-password'){
          $this->aoc->checkChangedPassword();
      }
+     else if(isset($get['route']) && $get['route'] === 'admin-leads'){
+         $this->apc->adminLeadsPage();
+     }
      else{
          $this->pc->home();
      }

@@ -35,10 +35,19 @@ class ContactsFormManager extends AbstractManager
         $formLeads = [];
         if($result){
             foreach ($result as $lead){
+                $createdAt = new DateTime($lead['created_at']);
+                if($lead['answered_at']){
+                    $answeredAt = new DateTime($lead['answered_at']);
+
+                }
+                else{
+                    $answeredAt = null;
+                }
+
                 $item = new ContactsForm($lead['first_name'], $lead['last_name'], $lead['email_id'], $lead['phone'], $lead['inquiry_type'], $lead['how_found'], $lead['message']);
                 $item->setId($lead['id']);
-                $item->setCreatedAt($lead['created_at']);
-                $item->setAnsweredAt($lead['answered_at']);
+                $item->setCreatedAt($createdAt);
+                $item->setAnsweredAt($answeredAt);
                 $item->setStatus($lead['status']);
                 $formLeads[] = $item;
             }

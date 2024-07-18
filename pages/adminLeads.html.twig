@@ -1,0 +1,59 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+<main>
+    <section>
+        <h1 class="text-center">Leads</h1>
+        <h2 class="text-center mt-5 mb-4">Waiting for an answer</h2>
+        <h3 class="text-center mb-3 text-info">Contacts page form</h3>
+        <div class="overflow-scroll" style="max-height: 600px">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Inquiry Type</th>
+                    <th scope="col">How Found Us</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for lead in leads %}
+                    <tr>
+                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <td>{{ lead.getFirstName()|e }}</td>
+                        <td>{{ lead.getLastName()|e }}</td>
+                        <td>
+                            {%set leadId = lead.getId() %}
+                            {% if allEmails[leadId] is defined %}
+                                {{ allEmails[leadId].getEmail()|e }}
+                            {% else %}
+                                Error
+                            {% endif %}
+                        </td>
+                        <td>{{ lead.getPhone()|e }}</td>
+                        <td class="{% if lead.getInquiryType()|e is same as 'Buy' %}text-success{% else %}text-primary{% endif %}">
+                            {{ lead.getInquiryType()|e }}
+                        </td>
+                        <td>{{ lead.getHowFound()|e }}</td>
+                        <td class="text-nowrap text-truncate" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
+                        <td>{{ lead.getCreatedAt()|e }}</td>
+                        <td class="text-danger">
+                            {% if lead.isStatus()|e is same as false %}
+                                Pending
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+</main>
+{% endblock %}

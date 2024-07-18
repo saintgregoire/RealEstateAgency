@@ -5,10 +5,14 @@ class AdminPageController extends AbstractController
     private string $currentPage = '';
 
     private UserManager $um;
+    private ContactsFormManager $cfm;
+    private EmailManager $em;
     public function __construct()
     {
         parent::__construct();
         $this->um = new UserManager();
+        $this->cfm = new ContactsFormManager();
+        $this->em = new EmailManager();
     }
 
     protected function getCurrentPage(): string
@@ -54,6 +58,23 @@ class AdminPageController extends AbstractController
             $this->currentPage = 'admin-home';
             $email = $_SESSION['email'];
             $this->render('adminPanel.html.twig', ['email' => $email]);
+        }
+    }
+
+    public function adminLeadsPage() : void
+    {
+        $userCheck = $this->isUserIsset();
+        if($userCheck){
+            $this->currentPage = 'leads';
+            $contactsLeads = $this->cfm->findNotAnswered();
+            $allEmails = [];
+            foreach ($contactsLeads as $lead) {
+                $emailId = $lead->getEmailId();
+                $contactEmail = $this->em->findById($emailId);
+                $allEmails[$lead->getId()] = $contactEmail;
+            }
+
+            $this->render('adminLeads.html.twig', ['leads' => $contactsLeads, 'allEmails' => $allEmails]);
         }
     }
 
