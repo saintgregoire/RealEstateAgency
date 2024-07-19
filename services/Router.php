@@ -19,7 +19,7 @@ class Router{
   public function handleRequest(array $get) : void
   {
 
-     if(isset($get['route']) && $get['route'] === 'home'){
+     if(isset($get['route']) && ($get['route'] === 'home' || $get['route'] === 'go-to-site')){
          $this->pc->home();
      }
      else if(isset($get['route']) && $get['route'] === 'about'){
@@ -63,9 +63,6 @@ class Router{
      }
      else if(isset($get['route']) && $get['route'] === 'admin-members'){
          $this->apc->adminMembersPage();
-     }
-     else if(isset($get['route']) && $get['route'] === 'go-to-site'){
-         $this->pc->home();
      }
      else if(isset($get['route']) && $get['route'] === 'logout'){
          $this->ac->logout();
