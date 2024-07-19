@@ -59,6 +59,15 @@ class PropertiesFormManager extends AbstractManager
       $formLeads = [];
       if($result){
           foreach($result as $lead){
+              $createdAt = new DateTime($lead['created_at']);
+              if($lead['answered_at']){
+                  $answeredAt = new DateTime($lead['answered_at']);
+
+              }
+              else{
+                  $answeredAt = null;
+              }
+
               $item = new PropertiesForm(
                   $lead["first_name"],
                   $lead["last_name"],
@@ -72,8 +81,8 @@ class PropertiesFormManager extends AbstractManager
                   $lead["message"]
               );
               $item->setId($lead['id']);
-              $item->setCreatedAt($lead['created_at']);
-              $item->setAnsweredAt($lead['answered_at']);
+              $item->setCreatedAt($createdAt);
+              $item->setAnsweredAt($answeredAt);
               $item->setStatus($lead['status']);
               $formLeads[] = $item;
           }
@@ -82,6 +91,15 @@ class PropertiesFormManager extends AbstractManager
       else{
           return null;
       }
+    }
+
+    public function changeStatusToDone(int $id) : void{
+        $query = $this->db->prepare("UPDATE properties_form SET status = :status WHERE id = :id");
+        $parameters = [
+            ":status" => true,
+            ":id" => $id
+        ];
+        $query->execute($parameters);
     }
 
 }

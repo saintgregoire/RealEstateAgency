@@ -6,6 +6,8 @@ class AdminOperationsController extends AbstractController
     private FormValidation $fv;
     private CSRFTokenManager $tm;
     private ContactsFormManager $cfm;
+    private PropertiesFormManager $psm;
+    private PropertyFormManager $pfm;
     private string $currentPage = '';
     public function __construct()
     {
@@ -14,6 +16,8 @@ class AdminOperationsController extends AbstractController
         $this->fv = new FormValidation();
         $this->tm = new CSRFTokenManager();
         $this->cfm = new ContactsFormManager();
+        $this->psm = new PropertiesFormManager();
+        $this->pfm = new PropertyFormManager();
     }
 
     protected function getCurrentPage(): string
@@ -130,6 +134,42 @@ class AdminOperationsController extends AbstractController
         if($this->isUserIsset()){
             if(isset($_GET['lead-id']) && !empty($_GET['lead-id'])){
                 $this->cfm->changeStatusToDone($_GET['lead-id']);
+                $this->redirect('index.php?route=admin-leads');
+            }
+            else{
+                echo 'error';
+                die;
+            }
+        }
+        else{
+            echo 'error';
+            die;
+        }
+    }
+
+    public function changePropertiesLeadStatus() : void
+    {
+        if($this->isUserIsset()){
+            if(isset($_GET['lead-id']) && !empty($_GET['lead-id'])){
+                $this->psm->changeStatusToDone($_GET['lead-id']);
+                $this->redirect('index.php?route=admin-leads');
+            }
+            else{
+                echo 'error';
+                die;
+            }
+        }
+        else{
+            echo 'error';
+            die;
+        }
+    }
+
+    public function changePropertyLeadStatus() : void
+    {
+        if($this->isUserIsset()){
+            if(isset($_GET['lead-id']) && !empty($_GET['lead-id'])){
+                $this->pfm->changeStatusToDone($_GET['lead-id']);
                 $this->redirect('index.php?route=admin-leads');
             }
             else{

@@ -200,5 +200,40 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
 
+//     ! CHOOSE TABLE (PENDING LEADS)--------------------
+
+    const leadsBtn = document.querySelector('.leads-form-btn');
+    const leadsBtnOptions = document.querySelectorAll('.leads-option');
+    const contactLeadsOption = document.querySelector('.contact-option');
+    const propertiesLeadsOption = document.querySelector('.properties-option');
+    const propertyLeadsOption = document.querySelector('.property-option');
+    const contactLeadsTable = document.querySelector('.table-contacts-form');
+    const propertiesLeadsTable = document.querySelector('.table-properties-form');
+    const propertyLeadsTable = document.querySelector('.table-property-form');
+
+    leadsBtnOptions.forEach(option => {
+       option.addEventListener('click', function(e) {
+          leadsBtn.innerText = this.innerText;
+
+          if(e.target === contactLeadsOption){
+              contactLeadsTable.classList.remove('d-none');
+              propertiesLeadsTable.classList.add('d-none');
+              propertyLeadsTable.classList.add('d-none');
+          }
+          else if(e.target === propertyLeadsOption){
+              propertyLeadsTable.classList.remove('d-none');
+              propertiesLeadsTable.classList.add('d-none');
+              contactLeadsTable.classList.add('d-none');
+          }
+          else{
+              propertiesLeadsTable.classList.remove('d-none');
+              propertyLeadsTable.classList.add('d-none');
+              contactLeadsTable.classList.add('d-none');
+          }
+       });
+    });
+
+
+
 
 });

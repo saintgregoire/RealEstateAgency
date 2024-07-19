@@ -34,7 +34,10 @@ class PropertyForm
 
     public function setAnsweredAt(?DateTime $answered_at): void
     {
-        $answered_at->format('Y-m-d H:i:s');
+        if($answered_at !== null){
+            $answered_at->format('Y-m-d H:i:s');
+        }
+        $this->answered_at = $answered_at;
     }
 
     public function isStatus(): bool

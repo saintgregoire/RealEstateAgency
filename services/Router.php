@@ -91,6 +91,12 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'change-status-contact-lead'){
          $this->aoc->changeContactLeadStatus();
      }
+     else if(isset($get['route']) && $get['route'] === 'change-status-properties-lead'){
+         $this->aoc->changePropertiesLeadStatus();
+     }
+     else if(isset($get['route']) && $get['route'] === 'change-status-property-lead'){
+         $this->aoc->changePropertyLeadStatus();
+     }
      else{
          $this->pc->home();
      }
