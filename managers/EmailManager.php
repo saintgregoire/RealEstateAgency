@@ -52,4 +52,29 @@ class EmailManager extends AbstractManager
         }
     }
 
+    public function getAllEmailsAsTxt() : ? string
+    {
+        $query = $this->db->prepare("SELECT * FROM emails");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if($result){
+            $temp_file = tempnam(sys_get_temp_dir(), 'txt');
+            $file = fopen($temp_file, 'w');
+
+            foreach ($result as $row) {
+                fputcsv($file, $row, "\t");
+            }
+
+            fclose($file);
+            return $temp_file;
+        }
+        else{
+            return null;
+        }
+
+    }
+
+
+
 }

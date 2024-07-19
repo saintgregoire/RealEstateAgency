@@ -8,6 +8,7 @@ class AdminOperationsController extends AbstractController
     private ContactsFormManager $cfm;
     private PropertiesFormManager $psm;
     private PropertyFormManager $pfm;
+    private EmailManager $em;
     private string $currentPage = '';
     public function __construct()
     {
@@ -18,6 +19,7 @@ class AdminOperationsController extends AbstractController
         $this->cfm = new ContactsFormManager();
         $this->psm = new PropertiesFormManager();
         $this->pfm = new PropertyFormManager();
+        $this->em = new EmailManager();
     }
 
     protected function getCurrentPage(): string
@@ -181,6 +183,30 @@ class AdminOperationsController extends AbstractController
         else{
             echo 'error';
             die;
+        }
+    }
+
+    public function downloadEmails() : void{
+        if($this->isUserIsset()){
+            $temp_file = $this->em->getAllEmailsAsTxt();
+
+            if($temp_file){
+                header('Content-Description: File Transfer');
+                header('Content-Type: text/plain');
+                header('Content-Disposition: attachment; filename=emails.txt');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($temp_file));
+
+                readfile($temp_file);
+                unlink($temp_file);
+                exit;
+            }
+            else{
+                $error = "No data found";
+                $this->render('index.php?route=admin-leads', ['downloadError' => $error]);
+            }
         }
     }
 

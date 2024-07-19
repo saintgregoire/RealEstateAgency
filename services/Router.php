@@ -97,6 +97,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'change-status-property-lead'){
          $this->aoc->changePropertyLeadStatus();
      }
+     else if(isset($get['route']) && $get['route'] === 'download-emails'){
+         $this->aoc->downloadEmails();
+     }
      else{
          $this->pc->home();
      }

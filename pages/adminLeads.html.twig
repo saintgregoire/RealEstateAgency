@@ -4,6 +4,15 @@
 <main>
     <section>
         <h1 class="text-center">Leads</h1>
+        {% if downloadError is defined and downloadError is not empty %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ downloadError }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <div class="text-center mt-5">
+            <a href="index.php?route=download-emails" class="border border-dark rounded p-2 bg-warning text-dark text-decoration-none" style="font-weight: bold;">Download all emails</a>
+        </div>
         <h2 class="text-center mt-5 mb-5 border py-2 bg-info bg-opacity-10 border-start-0 border-end-0">Waiting for an answer</h2>
         <div class="btn-group position-relative top-50 start-50 translate-middle">
             <button class="btn btn-primary btn-lg dropdown-toggle leads-form-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
