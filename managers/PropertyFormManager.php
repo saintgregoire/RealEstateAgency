@@ -39,30 +39,44 @@ class PropertyFormManager extends AbstractManager
     }
 
 
-    public function findAll() : array
+    public function findAll() : ?array
     {
         $query = $this->db->prepare("
         SELECT * FROM property_form
         ");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        $formLeads = [];
-        foreach($result as $lead){
-            $item = new PropertyForm(
-                $lead["first_name"],
-                $lead["last_name"],
-                $lead["email_id"],
-                $lead["phone"],
-                $lead["property_id"],
-                $lead["message"]
-            );
-            $item->setId($lead["id"]);
-            $item->setAnsweredAt($lead["answered_at"]);
-            $item->setCreatedAt($lead["created_at"]);
-            $item->setStatus($lead["status"]);
-            $formLeads[] = $item;
+        if($result){
+            $formLeads = [];
+            foreach($result as $lead){
+                $createdAt = new DateTime($lead['created_at']);
+                if($lead['answered_at']){
+                    $answeredAt = new DateTime($lead['answered_at']);
+
+                }
+                else{
+                    $answeredAt = null;
+                }
+
+                $item = new PropertyForm(
+                    $lead["first_name"],
+                    $lead["last_name"],
+                    $lead["email_id"],
+                    $lead["phone"],
+                    $lead["property_id"],
+                    $lead["message"]
+                );
+                $item->setId($lead["id"]);
+                $item->setAnsweredAt($answeredAt);
+                $item->setCreatedAt($createdAt);
+                $item->setStatus($lead["status"]);
+                $formLeads[] = $item;
+            }
+            return $formLeads;
         }
-        return $formLeads;
+        else{
+            return null;
+        }
     }
 
     public function findNotAnswered() : ?array{
@@ -104,7 +118,7 @@ class PropertyFormManager extends AbstractManager
     }
 
     public function changeStatusToDone(int $id) : void{
-        $query = $this->db->prepare("UPDATE property_form SET status = :status WHERE id = :id");
+        $query = $this->db->prepare("UPDATE property_form SET status = :status, answered_at = NOW() WHERE id = :id");
         $parameters = [
             ":status" => true,
             ":id" => $id

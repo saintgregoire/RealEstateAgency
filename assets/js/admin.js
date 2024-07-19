@@ -71,6 +71,33 @@ function validatePassword(input, fieldset) {
 }
 
 
+// * FUNCTION SWITCH TABLES---------------------------------------
+
+function switchTable(allMembersOfOptions, btnWithOptions, optionOne, tableOne, optionTwo, tableTwo, tableThree){
+    allMembersOfOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+            btnWithOptions.innerText = this.innerText;
+
+            if(e.target === optionOne){
+                tableOne.classList.remove('d-none');
+                tableTwo.classList.add('d-none');
+                tableThree.classList.add('d-none');
+            }
+            else if(e.target === optionTwo){
+                tableTwo.classList.remove('d-none');
+                tableOne.classList.add('d-none');
+                tableThree.classList.add('d-none');
+            }
+            else{
+                tableThree.classList.remove('d-none');
+                tableOne.classList.add('d-none');
+                tableTwo.classList.add('d-none');
+            }
+        });
+    });
+}
+
+
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
@@ -205,33 +232,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const leadsBtn = document.querySelector('.leads-form-btn');
     const leadsBtnOptions = document.querySelectorAll('.leads-option');
     const contactLeadsOption = document.querySelector('.contact-option');
-    const propertiesLeadsOption = document.querySelector('.properties-option');
     const propertyLeadsOption = document.querySelector('.property-option');
     const contactLeadsTable = document.querySelector('.table-contacts-form');
     const propertiesLeadsTable = document.querySelector('.table-properties-form');
     const propertyLeadsTable = document.querySelector('.table-property-form');
 
-    leadsBtnOptions.forEach(option => {
-       option.addEventListener('click', function(e) {
-          leadsBtn.innerText = this.innerText;
 
-          if(e.target === contactLeadsOption){
-              contactLeadsTable.classList.remove('d-none');
-              propertiesLeadsTable.classList.add('d-none');
-              propertyLeadsTable.classList.add('d-none');
-          }
-          else if(e.target === propertyLeadsOption){
-              propertyLeadsTable.classList.remove('d-none');
-              propertiesLeadsTable.classList.add('d-none');
-              contactLeadsTable.classList.add('d-none');
-          }
-          else{
-              propertiesLeadsTable.classList.remove('d-none');
-              propertyLeadsTable.classList.add('d-none');
-              contactLeadsTable.classList.add('d-none');
-          }
-       });
-    });
+    if(leadsBtn){
+        switchTable(leadsBtnOptions, leadsBtn, contactLeadsOption, contactLeadsTable, propertyLeadsOption, propertyLeadsTable, propertiesLeadsTable);
+    }
+
+
+//     ! CHOOSE TABLE (ALL LEADS)-----------------------------
+
+    const allLeadsBtn = document.querySelector('.all-leads-form-btn');
+    const allLeadsBtnOptions = document.querySelectorAll('.all-leads-option');
+    const allContactLeadsOption = document.querySelector('.all-contact-option');
+    const allPropertyLeadsOption = document.querySelector('.all-property-option');
+    const allContactLeadsTable = document.querySelector('.table-all-contacts-form');
+    const allPropertiesLeadsTable = document.querySelector('.table-all-properties-form');
+    const allPropertyLeadsTable = document.querySelector('.table-all-property-form');
+
+
+    if(allLeadsBtn){
+        switchTable(allLeadsBtnOptions, allLeadsBtn, allContactLeadsOption, allContactLeadsTable, allPropertyLeadsOption, allPropertyLeadsTable, allPropertiesLeadsTable);
+    }
+
+
 
 
 

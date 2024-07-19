@@ -81,6 +81,16 @@ class AdminPageController extends AbstractController
                 }
             }
 
+            $allContactsLeads = $this->cfm->findAll();
+            $emailsForAllContacts = [];
+            if($allContactsLeads !== null){
+                foreach ($allContactsLeads as $lead) {
+                    $emailId = $lead->getEmailId();
+                    $contactEmail = $this->em->findById($emailId);
+                    $emailsForAllContacts[$lead->getId()] = $contactEmail;
+                }
+            }
+
 
             $propertiesLeads = $this->psfm->findNotAnswered();
             $allEmailsProperties = [];
@@ -92,7 +102,15 @@ class AdminPageController extends AbstractController
                 }
             }
 
-
+            $allPropertiesLeads = $this->psfm->findAll();
+            $emailsForAllProperties = [];
+            if($allPropertiesLeads !== null){
+                foreach ($allPropertiesLeads as $lead) {
+                    $emailId = $lead->getEmailId();
+                    $propertiesEmail = $this->em->findById($emailId);
+                    $emailsForAllProperties[$lead->getId()] = $propertiesEmail;
+                }
+            }
 
             $propertyLeads = $this->pfm->findNotAnswered();
             $allEmailsProperty = [];
@@ -108,8 +126,22 @@ class AdminPageController extends AbstractController
                 }
             }
 
+            $allPropertyLeads = $this->pfm->findAll();
+            $emailsForAllProperty = [];
+            $namesForAllProperty = [];
+            if($allPropertyLeads !== null){
+                foreach ($allPropertyLeads as $lead) {
+                    $emailId = $lead->getEmailId();
+                    $propertyId = $lead->getPropertyId();
+                    $propertyEmail = $this->em->findById($emailId);
+                    $emailsForAllProperty[$lead->getId()] = $propertyEmail;
+                    $propertyName = $this->pm->findById($propertyId);
+                    $namesForAllProperty[$lead->getId()] = $propertyName;
+                }
+            }
+
             $this->currentPage = 'leads';
-            $this->render('adminLeads.html.twig', ['leads' => $contactsLeads, 'allEmailsContact' => $allEmailsContact, 'propertiesLeads' => $propertiesLeads, 'allEmailsProperties' => $allEmailsProperties, 'propertyLeads' => $propertyLeads, 'allEmailsProperty' => $allEmailsProperty, 'allPropertiesNames' => $allPropertiesNames]);
+            $this->render('adminLeads.html.twig', ['leads' => $contactsLeads, 'allEmailsContact' => $allEmailsContact, 'propertiesLeads' => $propertiesLeads, 'allEmailsProperties' => $allEmailsProperties, 'propertyLeads' => $propertyLeads, 'allEmailsProperty' => $allEmailsProperty, 'allPropertiesNames' => $allPropertiesNames, 'allContactsLeads' => $allContactsLeads, 'emailsForAllContacts' => $emailsForAllContacts, 'allPropertiesLeads' => $allPropertiesLeads, 'emailsForAllProperties' => $emailsForAllProperties, 'allPropertyLeads' => $allPropertyLeads, 'emailsForAllProperty' => $emailsForAllProperty, 'namesForAllProperty' => $namesForAllProperty]);
         }
     }
 

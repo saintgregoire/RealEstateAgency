@@ -171,6 +171,180 @@
         </div>
 
     </section>
+
+    <section>
+        <h2 class="text-center mt-5 mb-5 border py-2 bg-info bg-opacity-10 border-start-0 border-end-0">All leads</h2>
+        <div class="btn-group position-relative top-50 start-50 translate-middle">
+            <button class="btn bg-success text-white bg-gradient btn-lg dropdown-toggle all-leads-form-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us page form
+            </button>
+            <ul class="dropdown-menu text-center" style="width: 100%">
+                <li class="px-2 all-leads-option all-contact-option" role="button" tabindex="0">Contact us page form</li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="px-2 all-leads-option all-properties-option" role="button" tabindex="0">Properties page</li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="px-2 all-leads-option all-property-option" role="button" tabindex="0">Property page</li>
+            </ul>
+        </div>
+        <div class="overflow-scroll" style="max-height: 900px">
+            <table class="table table-all-contacts-form">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Inquiry Type</th>
+                    <th scope="col">How Found Us</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Answered At</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for lead in allContactsLeads %}
+                    <tr>
+                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <td>{{ lead.getFirstName()|e }}</td>
+                        <td>{{ lead.getLastName()|e }}</td>
+                        <td>
+                            {%set leadId = lead.getId() %}
+                            {% if emailsForAllContacts[leadId] is defined %}
+                                {{ emailsForAllContacts[leadId].getEmail()|e }}
+                            {% else %}
+                                Error
+                            {% endif %}
+                        </td>
+                        <td>{{ lead.getPhone()|e }}</td>
+                        <td class="{% if lead.getInquiryType()|e is same as 'Buy' %}text-success{% else %}text-primary{% endif %}">
+                            {{ lead.getInquiryType()|e }}
+                        </td>
+                        <td>{{ lead.getHowFound()|e }}</td>
+                        <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td>
+                            {% if lead.isStatus()|e is same as false %}
+                                <p class="text-danger">Pending</p>
+                            {% else%}
+                                <p class="text-success">Answered</p>
+                            {% endif %}
+                        </td>
+                        <td style="min-width: 100px">{{ lead.getAnsweredAt()|e }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <table class="table table-all-properties-form d-none">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">No Bathrooms</th>
+                    <th scope="col">No Bedrooms</th>
+                    <th scope="col">Budget</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Answered At</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for lead in allPropertiesLeads %}
+                    <tr>
+                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <td>{{ lead.getFirstName()|e }}</td>
+                        <td>{{ lead.getLastName()|e }}</td>
+                        <td>
+                            {%set leadId = lead.getId() %}
+                            {% if emailsForAllProperties[leadId] is defined %}
+                                {{ emailsForAllProperties[leadId].getEmail()|e }}
+                            {% else %}
+                                Error
+                            {% endif %}
+                        </td>
+                        <td>{{ lead.getPhone()|e }}</td>
+                        <td>
+                            {{ lead.getLocation()|e }}
+                        </td>
+                        <td>{{ lead.getPropertyType()|e }}</td>
+                        <td>{{ lead.getNoBathroom()|e }}</td>
+                        <td>{{ lead.getNoBedroom()|e }}</td>
+                        <td>{{ lead.getBudget()|e }}</td>
+                        <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td>
+                            {% if lead.isStatus()|e is same as false %}
+                                <p class="text-danger">Pending</p>
+                            {% else%}
+                                <p class="text-success">Answered</p>
+                            {% endif %}
+                        </td>
+                        <td style="min-width: 100px">{{ lead.getAnsweredAt()|e }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <table class="table table-all-property-form d-none">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Property</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Answered At</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for lead in allPropertyLeads %}
+                    <tr>
+                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <td>{{ lead.getFirstName()|e }}</td>
+                        <td>{{ lead.getLastName()|e }}</td>
+                        <td>
+                            {%set leadId = lead.getId() %}
+                            {% if emailsForAllProperty[leadId] is defined %}
+                                {{ emailsForAllProperty[leadId].getEmail()|e }}
+                            {% else %}
+                                Error
+                            {% endif %}
+                        </td>
+                        <td>{{ lead.getPhone()|e }}</td>
+                        <td>{% if namesForAllProperty[leadId] is defined %}
+                                {{ namesForAllProperty[leadId].getName()|e }}
+                            {% else %}
+                                Error
+                            {% endif %}
+                        </td>
+                        <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td>
+                            {% if lead.isStatus()|e is same as false %}
+                                <p class="text-danger">Pending</p>
+                            {% else%}
+                                <p class="text-success">Answered</p>
+                            {% endif %}
+                        </td>
+                        <td style="min-width: 100px">{{ lead.getAnsweredAt()|e }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 </main>
     <div id="modalContainer"></div>
 {% endblock %}

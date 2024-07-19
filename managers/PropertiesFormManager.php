@@ -7,6 +7,46 @@ class PropertiesFormManager extends AbstractManager
         parent::__construct();
     }
 
+    public function findAll() : ?array
+    {
+        $query = $this->db->prepare("SELECT * FROM properties_form");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        if($result) {
+            $formLeads = [];
+            foreach ($result as $lead) {
+                $createdAt = new DateTime($lead['created_at']);
+                if ($lead['answered_at']) {
+                    $answeredAt = new DateTime($lead['answered_at']);
+
+                } else {
+                    $answeredAt = null;
+                }
+                $item = new PropertiesForm(
+                    $lead['first_name'],
+                    $lead['last_name'],
+                    $lead['email_id'],
+                    $lead['phone'],
+                    $lead['location'],
+                    $lead['property_type'],
+                    $lead['no_bathroom'],
+                    $lead['no_bedroom'],
+                    $lead['budget'],
+                    $lead['message']
+                );
+                $item->setId($lead['id']);
+                $item->setCreatedAt($createdAt);
+                $item->setAnsweredAt($answeredAt);
+                $item->setStatus($lead['status']);
+                $formLeads[] = $item;
+            }
+            return $formLeads;
+        }
+        else{
+            return null;
+        }
+    }
+
     public function addOne(PropertiesForm $lead) : void{
         $query = $this->db->prepare("
             INSERT INTO properties_form(
@@ -94,7 +134,7 @@ class PropertiesFormManager extends AbstractManager
     }
 
     public function changeStatusToDone(int $id) : void{
-        $query = $this->db->prepare("UPDATE properties_form SET status = :status WHERE id = :id");
+        $query = $this->db->prepare("UPDATE properties_form SET status = :status, answered_at = NOW() WHERE id = :id");
         $parameters = [
             ":status" => true,
             ":id" => $id

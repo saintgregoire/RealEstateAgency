@@ -170,6 +170,7 @@ class AdminOperationsController extends AbstractController
         if($this->isUserIsset()){
             if(isset($_GET['lead-id']) && !empty($_GET['lead-id'])){
                 $this->pfm->changeStatusToDone($_GET['lead-id']);
+
                 $this->redirect('index.php?route=admin-leads');
             }
             else{
