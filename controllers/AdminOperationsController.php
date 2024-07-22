@@ -10,6 +10,7 @@ class AdminOperationsController extends AbstractController
     private PropertyFormManager $pfm;
     private EmailManager $em;
     private PropertiesManager $pm;
+    private MediaManager $mm;
     private string $currentPage = '';
     public function __construct()
     {
@@ -22,6 +23,7 @@ class AdminOperationsController extends AbstractController
         $this->pfm = new PropertyFormManager();
         $this->em = new EmailManager();
         $this->pm = new PropertiesManager();
+        $this->mm = new MediaManager();
     }
 
     protected function getCurrentPage(): string
@@ -269,6 +271,125 @@ class AdminOperationsController extends AbstractController
             else{
                 echo 'error';
                 die;
+            }
+        }
+        else{
+            echo 'error';
+            die;
+        }
+    }
+
+
+    public function checkNewProperty() : void{
+        if($this->isUserIsset()){
+            if(isset($_POST['csrf-token']) && $this->tm->validateCSRFToken($_POST['csrf-token'])){
+                if(isset($_POST['add-name']) && !empty($_POST['add-name']) &&
+                isset($_POST['add-location']) && !empty($_POST['add-location']) &&
+                isset($_POST['add-bed']) && !empty($_POST['add-bed']) &&
+                isset($_POST['add-bath']) && !empty($_POST['add-bath']) &&
+                isset($_POST['add-type']) && !empty($_POST['add-type']) &&
+                isset($_POST['add-feet']) && !empty($_POST['add-feet']) &&
+                isset($_POST['add-price']) && !empty($_POST['add-price']) &&
+                isset($_POST['add-tr-tax']) && !empty($_POST['add-tr-tax']) &&
+                isset($_POST['add-leg-fees']) && !empty($_POST['add-leg-fees']) &&
+                isset($_POST['add-inspection']) && !empty($_POST['add-inspection']) &&
+                isset($_POST['add-insurance']) && !empty($_POST['add-insurance']) &&
+                isset($_POST['add-mort-fees']) && !empty($_POST['add-mort-fees']) &&
+                isset($_POST['add-prop-tax']) && !empty($_POST['add-prop-tax']) &&
+                isset($_POST['add-assos-fees']) && !empty($_POST['add-assos-fees']) &&
+                isset($_POST['add-addit-fees']) && !empty($_POST['add-addit-fees']) &&
+                isset($_POST['add-down']) && !empty($_POST['add-down']) &&
+                isset($_POST['add-mort-amount']) && !empty($_POST['add-mort-amount']) &&
+                isset($_POST['add-mort-pay']) && !empty($_POST['add-mort-pay']) &&
+                isset($_POST['add-monthly-ins']) && !empty($_POST['add-monthly-ins']) &&
+                isset($_POST['add-description']) && !empty($_POST['add-description']) &&
+                    isset($_FILES['img-main']) && $_FILES['img-main']['error'] == UPLOAD_ERR_OK &&
+                    isset($_FILES['images']) && !empty($_FILES['images']['name'][0])){
+                    $this->pm->addOne(
+                        $_POST['add-name'],
+                        $_POST['add-description'],
+                        $_POST['add-location'],
+                        (int)$_POST['add-bed'],
+                        (int)$_POST['add-bath'],
+                        $_POST['add-type'],
+                        $_POST['add-feet'],
+                        $_POST['add-price'],
+                        $_POST['add-tr-tax'],
+                        $_POST['add-leg-fees'],
+                        $_POST['add-inspection'],
+                        $_POST['add-insurance'],
+                        $_POST['add-mort-fees'],
+                        $_POST['add-prop-tax'],
+                        $_POST['add-assos-fees'],
+                        $_POST['add-addit-fees'],
+                        $_POST['add-down'],
+                        $_POST['add-mort-amount'],
+                        $_POST['add-mort-pay'],
+                        $_POST['add-monthly-ins']
+                    );
+                    $uploadDir = __DIR__ . '/../assets/img/prop/';
+                    $allowedTypes = ['image/jpeg', 'image/png', 'image/webp, image/jpg'];
+                    $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+
+                    if(!in_array($_FILES['img-main']['type'], $allowedTypes)){
+                        $resultMessage = 'Invalid image format';
+                        $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                        die;
+                    }
+                    $fileExtension = pathinfo($_FILES['img-main']['name'], PATHINFO_EXTENSION);
+                    if(!in_array($fileExtension, $allowedExtensions)){
+                        $resultMessage = 'Invalid file extension';
+                        $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                        die;
+                    }
+
+                    $uploadFile = $uploadDir . trim($_POST['add-name']) . 'Main' . '.' . $fileExtension;
+                    $name = $_POST['add-name'] . ' Main';
+                    $url = './assets/img/prop/' . trim($_POST['add-name']) . '.' . $fileExtension;
+                    $this->mm->addOne($name, $url);
+
+                    move_uploaded_file($_FILES['img-main']['tmp_name'], $uploadFile);
+
+                    foreach ($_FILES['images']['name'] as $key => $value) {
+                        $file = [
+                            'name' => $_FILES['images']['name'][$key],
+                            'type' => $_FILES['images']['type'][$key],
+                            'tmp_name' => $_FILES['images']['tmp_name'][$key]
+                        ];
+
+                        if(!in_array($file['type'], $allowedTypes)){
+                            $resultMessage = 'Invalid image format';
+                            $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                            die;
+                        }
+                        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+                        if(!in_array($fileExtension, $allowedExtensions)){
+                            $resultMessage = 'Invalid file extension';
+                            $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                            die;
+                        }
+
+                        $upload = $uploadDir . trim($_POST['add-name']) . uniqid() . '.' . $fileExtension;
+                        $name = $_POST['add-name'] . ' ' . uniqid();
+                        $url = './assets/img/prop/' . trim($_POST['add-name']) . '.' . $fileExtension;
+                        $this->mm->addOne($name, $url);
+
+                        move_uploaded_file($file['tmp_name'], $upload);
+
+                    }
+
+                    $resultMessage = 'Property added';
+                    $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+
+                }
+                else{
+                    $resultMessage = 'Missing fields';
+                    $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                }
+            }
+            else{
+                $resultMessage = 'CSRF token mismatch';
+                $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
             }
         }
         else{

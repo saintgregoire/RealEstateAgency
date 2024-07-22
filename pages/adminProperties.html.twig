@@ -181,6 +181,132 @@
         </div>
 
     </section>
+
+    <section class="my-5">
+        <h2 class="text-center mt-3 mb-3">Add new property</h2>
+        {% if resultMessage is defined and resultMessage is not empty %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ resultMessage }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <form method="POST" action="index.php?route=check-new-property" enctype="multipart/form-data">
+            <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
+            <fieldset class="mb-3">
+                <label for="add-name" class="form-label">Property Name</label>
+                <input type="text" class="form-control" id="add-name" name="add-name">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="add-location" name="add-location">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-bed" class="form-label">No. Bedrooms</label>
+                <input type="text" class="form-control" id="add-bed" name="add-bed">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-bath" class="form-label">No. Bathrooms</label>
+                <input type="text" class="form-control" id="add-bath" name="add-bath">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-type" class="form-label">Type</label>
+                <input type="text" class="form-control" id="add-type" name="add-type">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-feet" class="form-label">Sq. Feet</label>
+                <input type="text" class="form-control" id="add-feet" name="add-feet">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-price" class="form-label">Listing Price</label>
+                <input type="text" class="form-control" id="add-price" name="add-price">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-tr-tax" class="form-label">Transfer Tax</label>
+                <input type="text" class="form-control" id="add-tr-tax" name="add-tr-tax">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-leg-fees" class="form-label">Legal Fees</label>
+                <input type="text" class="form-control" id="add-leg-fees" name="add-leg-fees">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-inspection" class="form-label">Home Inspection</label>
+                <input type="text" class="form-control" id="add-inspection" name="add-inspection">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-insurance" class="form-label">Insurance</label>
+                <input type="text" class="form-control" id="add-insurance" name="add-insurance">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-mort-fees" class="form-label">Mortg. Fees</label>
+                <input type="text" class="form-control" id="add-mort-fees" name="add-mort-fees">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-prop-tax" class="form-label">Property tax</label>
+                <input type="text" class="form-control" id="add-prop-tax" name="add-prop-tax">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-assos-fees" class="form-label">Assos. Fees</label>
+                <input type="text" class="form-control" id="add-assos-fees" name="add-assos-fees">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-addit-fees" class="form-label">Addit. Fees</label>
+                <input type="text" class="form-control" id="add-addit-fees" name="add-addit-fees">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-down" class="form-label">Down Payment</label>
+                <input type="text" class="form-control" id="add-down" name="add-down">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-mort-amount" class="form-label">Mortg. Amount</label>
+                <input type="text" class="form-control" id="add-mort-amount" name="add-mort-amount">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-mort-pay" class="form-label">Mortg. Pay</label>
+                <input type="text" class="form-control" id="add-mort-pay" name="add-mort-pay">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-monthly-ins" class="form-label">Monthly Insurance</label>
+                <input type="text" class="form-control" id="add-monthly-ins" name="add-monthly-ins">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="add-description" class="form-label">Short Description</label>
+                <textarea class="form-control" id="add-description" name="add-description" ></textarea>
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="img-main" class="form-label">Select Main Image</label>
+                <input class="form-control" type="file" id="img-main" name="img-main">
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <label for="formFileMultiple" class="form-label">Select Five Images</label>
+                <input class="form-control" type="file" id="formFileMultiple" name="images[]" multiple>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary" >Submit</button>
+        </form>
+
+    </section>
 </main>
 {% endblock %}
 

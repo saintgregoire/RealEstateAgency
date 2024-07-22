@@ -53,4 +53,14 @@ class MediaManager extends AbstractManager
         }
     }
 
+    public function addOne(string $name, string $url) : void
+    {
+        $query = $this->db->prepare("INSERT INTO medias (name, url) VALUES (:name, :url)");
+        $parameters = [
+            'name' => $name,
+            'url' => $url
+        ];
+        $query->execute($parameters);
+    }
+
 }
