@@ -40,11 +40,13 @@ class AdminPageController extends AbstractController
         $this->render('login.html.twig', []);
     }
 
-    public function adminModificationPage() : void{
+    public function adminPropertiesPage() : void{
         $userCheck = $this->isUserIsset();
         if($userCheck){
-            $this->currentPage = 'modif';
-            $this->render('adminModification.html.twig', []);
+            $allProperties = $this->pm->findAll();
+
+            $this->currentPage = 'admin-properties';
+            $this->render('adminProperties.html.twig', ['allProperties' => $allProperties]);
         }
     }
 
@@ -144,5 +146,6 @@ class AdminPageController extends AbstractController
             $this->render('adminLeads.html.twig', ['leads' => $contactsLeads, 'allEmailsContact' => $allEmailsContact, 'propertiesLeads' => $propertiesLeads, 'allEmailsProperties' => $allEmailsProperties, 'propertyLeads' => $propertyLeads, 'allEmailsProperty' => $allEmailsProperty, 'allPropertiesNames' => $allPropertiesNames, 'allContactsLeads' => $allContactsLeads, 'emailsForAllContacts' => $emailsForAllContacts, 'allPropertiesLeads' => $allPropertiesLeads, 'emailsForAllProperties' => $emailsForAllProperties, 'allPropertyLeads' => $allPropertyLeads, 'emailsForAllProperty' => $emailsForAllProperty, 'namesForAllProperty' => $namesForAllProperty]);
         }
     }
+
 
 }

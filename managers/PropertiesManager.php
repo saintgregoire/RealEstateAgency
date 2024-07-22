@@ -195,5 +195,54 @@ class PropertiesManager extends AbstractManager
     }
 
 
+    public function modifyOne(int $id, string $description, string $location, int $no_bedrooms, int $no_bathrooms, string $type, string $sq_feet, string $listing_price, string $transfer_tax, string $legal_fees, string $inspection, string $insurance, string $mortg_fees, string $property_tax, string $assos_fee, string $addit_fee, string $down_payment, string $mortg_amount, string $mort_pay, string $insuranse_month) : void
+    {
+        $query = $this->db->prepare("UPDATE properties 
+        SET description_for_card = :description_for_card,
+            location = :location,
+            no_bedrooms = :no_bedrooms,
+            no_bathrooms = :no_bathrooms,
+            type = :type,
+            sq_feet = :sq_feet,
+            listing_price = :listing_price,
+            transfer_tax = :transfer_tax,
+            legal_fees = :legal_fees,
+            home_inspection = :home_inspection,
+            insurance = :insurance,
+            mortg_fees = :mortg_fees,
+            property_tax = :property_tax,
+            assos_fee = :assos_fee,
+            addit_fee = :addit_fee,
+            down_payment = :down_payment,
+            mortg_amount = :mortg_amount,
+            mortg_pay = :mortg_pay,
+            prop_insurance_month = :prop_insurance_month
+        WHERE id = :id
+            ");
+        $parameters = [
+            'description_for_card' => $description,
+            'location' => $location,
+            'no_bedrooms' => $no_bedrooms,
+            'no_bathrooms' => $no_bathrooms,
+            'type' => $type,
+            'sq_feet' => $sq_feet,
+            'listing_price' => $listing_price,
+            'transfer_tax' => $transfer_tax,
+            'legal_fees' => $legal_fees,
+            'home_inspection' => $inspection,
+            'insurance' => $insurance,
+            'mortg_fees' => $mortg_fees,
+            'property_tax' => $property_tax,
+            'assos_fee' => $assos_fee,
+            'addit_fee' => $addit_fee,
+            'down_payment' => $down_payment,
+            'mortg_amount' => $mortg_amount,
+            'mortg_pay' => $mort_pay,
+            'prop_insurance_month' => $insuranse_month,
+            'id' => $id
+        ];
+        $query->execute($parameters);
+    }
+
 
 }

@@ -58,11 +58,11 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'check-login'){
          $this->ac->checkLogin();
      }
-     else if(isset($get['route']) && $get['route'] === 'admin-modif'){
-         $this->apc->adminModificationPage();
-     }
      else if(isset($get['route']) && $get['route'] === 'admin-members'){
          $this->apc->adminMembersPage();
+     }
+     else if(isset($get['route']) && $get['route'] === 'admin-properties'){
+         $this->apc->adminPropertiesPage();
      }
      else if(isset($get['route']) && $get['route'] === 'logout'){
          $this->ac->logout();
@@ -96,6 +96,9 @@ class Router{
      }
      else if(isset($get['route']) && $get['route'] === 'download-emails'){
          $this->aoc->downloadEmails();
+     }
+     else if(isset($get['route']) && $get['route'] === 'edit-property'){
+         $this->aoc->modifyProperty();
      }
      else{
          $this->pc->home();

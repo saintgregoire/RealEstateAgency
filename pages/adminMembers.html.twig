@@ -1,112 +1,114 @@
 {% extends 'admin.html.twig' %}
 
 {% block content %}
-    <section>
-        <h1 class="text-center pb-3">Members</h1>
-        {% if errorEmailMessage is defined and errorEmailMessage is not empty %}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ errorEmailMessage }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endif %}
-        <div class="overflow-scroll" style="height: 400px">
-            <table class="table" style="height: 100%">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for user in allUsers  %}
+    <main>
+        <section>
+            <h1 class="text-center pb-3">Members</h1>
+            {% if errorEmailMessage is defined and errorEmailMessage is not empty %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ errorEmailMessage }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            <div class="overflow-scroll" style="height: 400px">
+                <table class="table" style="height: 100%">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ user.getId()|e }}</th>
-
-                        <td>
-                            <span class="user-email-span-{{ user.getId()|e }}">{{ user.getEmail()|e }}</span>
-
-                            <form action="index.php?route=change-email" method="POST" class="d-flex gap-2 d-none form-change-email" id="form-{{ user.getId()|e }}">
-                                <input type="hidden" name="csrf-token" id="csrf-token-{{ user.getId()|e }}" value="{{ csrf_token }}" />
-                                <input type="hidden" name="user-id" value="{{ user.getId()|e }}">
-                                <fieldset>
-                                    <label class="d-none" for="userEmailInput-{{ user.getId()|e }}">Change Email</label>
-                                    <input class="userEmailInput" id="userEmailInput-{{ user.getId()|e }}" name="userEmailInput" type="text" value="{{ user.getEmail()|e }}">
-                                </fieldset>
-                                <button type="submit">Submit</button>
-                                <button type="button" class="cancelEmailBtn"  data-user-id="{{ user.getId()|e }}">Cansel</button>
-                            </form>
-                        </td>
-
-                        <td>{{ user.getRole()|e }}</td>
-
-                        <td>
-                            <form action="index.php?route=change-password" method="POST" id="form-password-{{ user.getId()|e }}" class="d-none password-form">
-                                <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
-                                <input type="hidden" name="user-id-password" value="{{ user.getId()|e }}">
-                                <fieldset>
-                                    <label class="d-none" for="new-password-{{ user.getId()|e }}">New password</label>
-                                    <input type="password" name="new-password" id="new-password-{{ user.getId()|e }}" placeholder="New password" style="width: 100%" class="mb-2 password-input">
-                                </fieldset>
-                                <div class="d-flex gap-4 justify-content-center">
-                                    <button type="submit">Submit</button>
-                                    <button type="button" data-user-id="{{ user.getId()|e }}" class="cansel-password">Cansel</button>
-                                </div>
-                            </form>
-
-                            <div class ="dropdown {% if role is same as 'moderator' and userId is not same as user.getId() %} d-none{% endif %}" id="dropdown-{{ user.getId()|e }}">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Modify
-                                </button>
-                                <ul class="dropdown-menu">
-                                       <li><a class="dropdown-item change-email" data-user-id="{{ user.getId()|e }}" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
-                                    <li><a class="dropdown-item change-password" href="index.php?route=change-password&id={{ user.getId() }}" data-user-id="{{ user.getId()|e }}">Change password</a></li>
-                                    {% if role is same as 'admin' %}
-                                        <li><a class="dropdown-item" href="index.php?route=change-role&id={{ user.getId() }}&role={{ user.getRole() }}">Change role</a></li>
-                                        <li><a class="dropdown-item" href="index.php?route=delete-user&id={{ user.getId() }}">Delete</a></li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Actions</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                    {% for user in allUsers  %}
+                        <tr>
+                            <th scope="row">{{ user.getId()|e }}</th>
 
-    </section>
-    {% if role is same as 'admin' %}
-    <section class="pb-4">
-        <h2 class="text-center mt-5">Add new member</h2>
-        {% if errorMessage is defined and errorMessage is not empty %}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ errorMessage }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <td>
+                                <span class="user-email-span-{{ user.getId()|e }}">{{ user.getEmail()|e }}</span>
+
+                                <form action="index.php?route=change-email" method="POST" class="d-flex gap-2 d-none form-change-email" id="form-{{ user.getId()|e }}">
+                                    <input type="hidden" name="csrf-token" id="csrf-token-{{ user.getId()|e }}" value="{{ csrf_token }}" />
+                                    <input type="hidden" name="user-id" value="{{ user.getId()|e }}">
+                                    <fieldset>
+                                        <label class="d-none" for="userEmailInput-{{ user.getId()|e }}">Change Email</label>
+                                        <input class="userEmailInput" id="userEmailInput-{{ user.getId()|e }}" name="userEmailInput" type="text" value="{{ user.getEmail()|e }}">
+                                    </fieldset>
+                                    <button type="submit">Submit</button>
+                                    <button type="button" class="cancelEmailBtn"  data-user-id="{{ user.getId()|e }}">Cansel</button>
+                                </form>
+                            </td>
+
+                            <td>{{ user.getRole()|e }}</td>
+
+                            <td>
+                                <form action="index.php?route=change-password" method="POST" id="form-password-{{ user.getId()|e }}" class="d-none password-form">
+                                    <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
+                                    <input type="hidden" name="user-id-password" value="{{ user.getId()|e }}">
+                                    <fieldset>
+                                        <label class="d-none" for="new-password-{{ user.getId()|e }}">New password</label>
+                                        <input type="password" name="new-password" id="new-password-{{ user.getId()|e }}" placeholder="New password" style="width: 100%" class="mb-2 password-input">
+                                    </fieldset>
+                                    <div class="d-flex gap-4 justify-content-center">
+                                        <button type="submit">Submit</button>
+                                        <button type="button" data-user-id="{{ user.getId()|e }}" class="cansel-password">Cansel</button>
+                                    </div>
+                                </form>
+
+                                <div class ="dropdown {% if role is same as 'moderator' and userId is not same as user.getId() %} d-none{% endif %}" id="dropdown-{{ user.getId()|e }}">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Modify
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item change-email" data-user-id="{{ user.getId()|e }}" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
+                                        <li><a class="dropdown-item change-password" href="index.php?route=change-password&id={{ user.getId() }}" data-user-id="{{ user.getId()|e }}">Change password</a></li>
+                                        {% if role is same as 'admin' %}
+                                            <li><a class="dropdown-item" href="index.php?route=change-role&id={{ user.getId() }}&role={{ user.getRole() }}">Change role</a></li>
+                                            <li><a class="dropdown-item" href="index.php?route=delete-user&id={{ user.getId() }}">Delete</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
-        {% endif %}
-        <form class="mt-3" action="index.php?route=check-user-form" method="POST">
-            <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
-            <fieldset class="mb-3">
-                <label for="membersInputEmail" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="membersInputEmail" aria-describedby="emailHelp" name="membersInputEmail" required>
-            </fieldset>
-            <fieldset class="mb-3">
-                <label for="membersInputPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="membersInputPassword" name="membersInputPassword" required>
-            </fieldset>
-            <fieldset class="mb-3">
-                <label for="membersInputRole" class="form-label">Role</label>
-                <select class="form-select" id="membersInputRole" aria-label="Floating label select example" name="membersInputRole" required>
-                    <option value="moderator">Moderator</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
 
-    </section>
-    {% endif %}
+        </section>
+        {% if role is same as 'admin' %}
+            <section class="pb-4">
+                <h2 class="text-center mt-5">Add new member</h2>
+                {% if errorMessage is defined and errorMessage is not empty %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ errorMessage }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+                <form class="mt-3" action="index.php?route=check-user-form" method="POST">
+                    <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
+                    <fieldset class="mb-3">
+                        <label for="membersInputEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="membersInputEmail" aria-describedby="emailHelp" name="membersInputEmail" required>
+                    </fieldset>
+                    <fieldset class="mb-3">
+                        <label for="membersInputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="membersInputPassword" name="membersInputPassword" required>
+                    </fieldset>
+                    <fieldset class="mb-3">
+                        <label for="membersInputRole" class="form-label">Role</label>
+                        <select class="form-select" id="membersInputRole" aria-label="Floating label select example" name="membersInputRole" required>
+                            <option value="moderator">Moderator</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </section>
+        {% endif %}
+    </main>
 
 {% endblock %}
 

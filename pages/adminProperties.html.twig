@@ -1,0 +1,189 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+<main>
+    <section>
+        <h1 class="text-center">Properties</h1>
+        <h2 class="text-center mt-5">List of properties</h2>
+        <div class="overflow-scroll mt-3" style="height: 600px">
+            <table class="table" style="height: 100%">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Short Description</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">No Bedrooms</th>
+                    <th scope="col">No Bathrooms</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Sq Feet</th>
+                    <th scope="col">Listing Price</th>
+                    <th scope="col">Transfer Tax</th>
+                    <th scope="col">Legal Fees</th>
+                    <th scope="col">Home Inspection</th>
+                    <th scope="col">Insurance</th>
+                    <th scope="col">Mortg. Fees</th>
+                    <th scope="col">Property Tax</th>
+                    <th scope="col">Assos. Fees</th>
+                    <th scope="col">Addit. Fees</th>
+                    <th scope="col">Down Payment</th>
+                    <th scope="col">Mortg. Amount</th>
+                    <th scope="col">Mortg. Pay</th>
+                    <th scope="col">Monthly Insurance</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for property in allProperties %}
+                    <tr>
+                        <th>{{ property.getId()|e }}</th>
+                        <td>{{ property.getName()|e }}</td>
+                        <td>{{ property.getDescriptionForCard()|e }}</td>
+                        <td>{{ property.getLocation()|e }}</td>
+                        <td>{{ property.getNoBedrooms()|e }}</td>
+                        <td>{{ property.getNoBathrooms()|e }}</td>
+                        <td>{{ property.getType()|e }}</td>
+                        <td>{{ property.getSqFeet()|e }}</td>
+                        <td>{{ property.getListingPrice()|e }}</td>
+                        <td>{{ property.getTransferTax()|e }}</td>
+                        <td>{{ property.getLegalFees()|e }}</td>
+                        <td>{{ property.getHomeInspection()|e }}</td>
+                        <td>{{ property.getInsurance()|e }}</td>
+                        <td>{{ property.getMortgFees()|e }}</td>
+                        <td>{{ property.getPropertyTax()|e }}</td>
+                        <td>{{ property.getAssosFee()|e }}</td>
+                        <td>{{ property.getAdditFee()|e }}</td>
+                        <td>{{ property.getDownPayment()|e }}</td>
+                        <td>{{ property.getMortgAmount()|e }}</td>
+                        <td>{{ property.getMortgPay()|e }}</td>
+                        <td>{{ property.getPropInsuranceMonth()|e }}</td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </section>
+
+    <section>
+        <h2 class="text-center mt-5 mb-3">Editing</h2>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            {% for property in allProperties %}
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    {{ property.getName()|e }}
+                </button>
+                <form class="dropdown-menu p-4" action="index.php?route=edit-property" method="POST" style="width: 70vw;">
+                    <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
+                    <input type="hidden" name="property-id" value="{{ property.getId()|e }}" />
+
+                    <fieldset class="mb-3">
+                        <label for="property-location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="property-location" name="property-location" value="{{ property.getLocation()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-bedrooms" class="form-label">No. Bedrooms</label>
+                        <input type="text" class="form-control" id="property-bedrooms" name="property-bedrooms" value="{{ property.getNoBedrooms()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-bathrooms" class="form-label">No. Bedrooms</label>
+                        <input type="text" class="form-control" id="property-bathrooms" name="property-bathrooms" value="{{ property.getNoBathrooms()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-type" class="form-label">Type</label>
+                        <input type="text" class="form-control" id="property-type" name="property-type" value="{{ property.getType()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-feet" class="form-label">Sq. Feet</label>
+                        <input type="text" class="form-control" id="property-feet" name="property-feet" value="{{ property.getSqFeet()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-listing" class="form-label">Listing Price</label>
+                        <input type="text" class="form-control" id="property-listing" name="property-listing" value="{{ property.getListingPrice()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-transfer-tax" class="form-label">Transfer Tax</label>
+                        <input type="text" class="form-control" id="property-transfer-tax" name="property-transfer-tax" value="{{ property.getTransferTax()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-legal-fees" class="form-label">Legal Fees</label>
+                        <input type="text" class="form-control" id="property-legal-fees" name="property-legal-fees" value="{{ property.getLegalFees()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-inspection" class="form-label">Home Inspection</label>
+                        <input type="text" class="form-control" id="property-inspection" name="property-inspection" value="{{ property.getHomeInspection()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-insurance" class="form-label">Insurance</label>
+                        <input type="text" class="form-control" id="property-insurance" name="property-insurance" value="{{ property.getInsurance()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-mort-fees" class="form-label">Mortg. Fees</label>
+                        <input type="text" class="form-control" id="property-mort-fees" name="property-mort-fees" value="{{ property.getMortgFees()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-tax" class="form-label">Property Tax</label>
+                        <input type="text" class="form-control" id="property-tax" name="property-tax" value="{{ property.getPropertyTax()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-assos-fees" class="form-label">Assos. Fees</label>
+                        <input type="text" class="form-control" id="property-assos-fees" name="property-assos-fees" value="{{ property.getAssosFee()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-addit-fees" class="form-label">Addit. Fees</label>
+                        <input type="text" class="form-control" id="property-addit-fees" name="property-addit-fees" value="{{ property.getAdditFee()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-down-pay" class="form-label">Down Payment</label>
+                        <input type="text" class="form-control" id="property-down-pay" name="property-down-pay" value="{{ property.getDownPayment()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-mort-amount" class="form-label">Mortg. Amount</label>
+                        <input type="text" class="form-control" id="property-mort-amount" name="property-mort-amount" value="{{ property.getMortgAmount()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-mort-pay" class="form-label">Mortg. Pay</label>
+                        <input type="text" class="form-control" id="property-mort-pay" name="property-mort-pay" value="{{ property.getMortgPay()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-monthly-ins" class="form-label">Monthly Insurance</label>
+                        <input type="text" class="form-control" id="property-monthly-ins" name="property-monthly-ins" value="{{ property.getPropInsuranceMonth()|e }}">
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <label for="property-description" class="form-label">Short Description</label>
+                        <textarea class="form-control" id="property-description" name="property-description" >{{ property.getDescriptionForCard()|e }}</textarea>
+                    </fieldset>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+{% endblock %}
