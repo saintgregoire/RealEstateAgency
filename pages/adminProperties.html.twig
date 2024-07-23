@@ -184,14 +184,20 @@
 
     <section class="my-5">
         <h2 class="text-center mt-3 mb-3">Add new property</h2>
+
+        <div class="d-flex justify-content-center mb-3">
+            <button type="button" class="btn btn-primary btn-lg" id="add-new-property">Let's start</button>
+        </div>
+
+
         {% if resultMessage is defined and resultMessage is not empty %}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert {% if resultMessage is same as 'Property added' %}alert-success{% else %}alert-danger{% endif%} alert-dismissible fade show" role="alert">
                 {{ resultMessage }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endif %}
 
-        <form method="POST" action="index.php?route=check-new-property" enctype="multipart/form-data">
+        <form method="POST" action="index.php?route=check-new-property" enctype="multipart/form-data" id="add-property-form" class="d-none">
 
             <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
 
@@ -297,12 +303,12 @@
 
             <fieldset class="mb-3">
                 <label for="img-main" class="form-label">Select Main Image</label>
-                <input class="form-control" type="file" id="img-main" name="img-main">
+                <input class="form-control" type="file" id="img-main" name="img-main" onchange="checkFiles(this.files)">
             </fieldset>
 
             <fieldset class="mb-3">
-                <label for="formFileMultiple" class="form-label">Select Five Images</label>
-                <input class="form-control" type="file" id="formFileMultiple" name="images[]" multiple>
+                <label for="formFileMultiple" class="form-label">Select Other Images</label>
+                <input class="form-control" type="file" id="formFileMultiple" name="images[]" onchange="checkFiles(this.files)" multiple>
             </fieldset>
 
             <button type="submit" class="btn btn-primary" >Submit</button>
@@ -313,5 +319,6 @@
 {% endblock %}
 
 {% block script %}
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="../assets/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 {% endblock %}

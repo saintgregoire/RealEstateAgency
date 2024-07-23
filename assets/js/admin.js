@@ -97,6 +97,26 @@ function switchTable(allMembersOfOptions, btnWithOptions, optionOne, tableOne, o
     });
 }
 
+function checkFiles(files) {
+    const maxFiles = 5;
+    const maxSize = 2 * 1024 * 1024;
+    let fileCount = files.length;
+
+    if (fileCount > maxFiles) {
+        alert("You can upload a maximum of 5 files.");
+        document.querySelector('input[type="file"][name="images[]"]').value = "";
+        return;
+    }
+
+    for (let i = 0; i < fileCount; i++) {
+        if (files[i].size > maxSize) {
+            alert(`File ${files[i].name} exceeds the maximum size of 2MB.`);
+            document.querySelector('input[type="file"][name="images[]"]').value = "";
+            return;
+        }
+    }
+}
+
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -258,6 +278,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
         switchTable(allLeadsBtnOptions, allLeadsBtn, allContactLeadsOption, allContactLeadsTable, allPropertyLeadsOption, allPropertyLeadsTable, allPropertiesLeadsTable);
     }
 
+
+//     ! ADD PROPERTY BTN------------------------
+
+    const addPropertyBtn = document.querySelector('#add-new-property');
+    const addPropertyForm = document.querySelector('#add-property-form');
+
+    if(addPropertyBtn){
+        addPropertyBtn.addEventListener('click', () =>{
+            console.log('click')
+            addPropertyForm.classList.remove('d-none');
+            addPropertyBtn.classList.add('d-none');
+        });
+    }
 
 
 
