@@ -192,7 +192,9 @@
         {% endif %}
 
         <form method="POST" action="index.php?route=check-new-property" enctype="multipart/form-data">
+
             <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
+
             <fieldset class="mb-3">
                 <label for="add-name" class="form-label">Property Name</label>
                 <input type="text" class="form-control" id="add-name" name="add-name">

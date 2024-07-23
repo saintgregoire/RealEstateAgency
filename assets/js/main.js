@@ -244,8 +244,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	const btnRight = document.querySelector('.featured__btn.right');
 	const btnLeft = document.querySelector('.featured__btn.left');
 	const cards = document.querySelectorAll('.featured__card');
+	let lengthMdLg = cards.length - 1;
+	let lengthXl = cards.length - 2;
+	let lengthXxl = cards.length - 3;
 
-	mySwiper(btnRight, btnLeft, cards, 5, 5, 4, 3);
+
+	mySwiper(btnRight, btnLeft, cards, lengthMdLg, lengthMdLg, lengthXl, lengthXxl);
 
 
 	// !SWIPER REVIEWS-------------------------------------

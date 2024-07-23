@@ -281,6 +281,8 @@ class AdminOperationsController extends AbstractController
 
 
     public function checkNewProperty() : void{
+        echo mime_content_type(__DIR__ . '/../assets/img/prop/Damac.webp' );
+        die;
         if($this->isUserIsset()){
             if(isset($_POST['csrf-token']) && $this->tm->validateCSRFToken($_POST['csrf-token'])){
                 if(isset($_POST['add-name']) && !empty($_POST['add-name']) &&
@@ -332,20 +334,24 @@ class AdminOperationsController extends AbstractController
                     $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
                     if(!in_array($_FILES['img-main']['type'], $allowedTypes)){
+                        $allProperties = $this->pm->findAll();
+                        $this->currentPage = 'admin-properties';
                         $resultMessage = 'Invalid image format';
-                        $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
-                        die;
+                        $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
+                        return;
                     }
                     $fileExtension = pathinfo($_FILES['img-main']['name'], PATHINFO_EXTENSION);
                     if(!in_array($fileExtension, $allowedExtensions)){
+                        $allProperties = $this->pm->findAll();
+                        $this->currentPage = 'admin-properties';
                         $resultMessage = 'Invalid file extension';
-                        $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
-                        die;
+                        $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
+                        return;
                     }
 
                     $uploadFile = $uploadDir . trim($_POST['add-name']) . 'Main' . '.' . $fileExtension;
                     $name = $_POST['add-name'] . ' Main';
-                    $url = './assets/img/prop/' . trim($_POST['add-name']) . '.' . $fileExtension;
+                    $url = './assets/img/prop/' . trim($_POST['add-name']) . 'Main' . '.' . $fileExtension;
                     $this->mm->addOne($name, $url);
 
                     move_uploaded_file($_FILES['img-main']['tmp_name'], $uploadFile);
@@ -358,43 +364,52 @@ class AdminOperationsController extends AbstractController
                         ];
 
                         if(!in_array($file['type'], $allowedTypes)){
+                            $allProperties = $this->pm->findAll();
+                            $this->currentPage = 'admin-properties';
                             $resultMessage = 'Invalid image format';
-                            $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
-                            die;
+                            $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
+                            return;
                         }
                         $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
                         if(!in_array($fileExtension, $allowedExtensions)){
+                            $allProperties = $this->pm->findAll();
+                            $this->currentPage = 'admin-properties';
                             $resultMessage = 'Invalid file extension';
-                            $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
-                            die;
+                            $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
+                            return;
                         }
 
-                        $upload = $uploadDir . trim($_POST['add-name']) . uniqid() . '.' . $fileExtension;
+                        $shortName = trim($_POST['add-name']) . uniqid();
+                        $upload = $uploadDir . $shortName . '.' . $fileExtension;
                         $name = $_POST['add-name'] . ' ' . uniqid();
-                        $url = './assets/img/prop/' . trim($_POST['add-name']) . '.' . $fileExtension;
+                        $url = './assets/img/prop/' . $shortName .  '.' . $fileExtension;
                         $this->mm->addOne($name, $url);
 
                         move_uploaded_file($file['tmp_name'], $upload);
 
                     }
-
+                    $allProperties = $this->pm->findAll();
+                    $this->currentPage = 'admin-properties';
                     $resultMessage = 'Property added';
-                    $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                    $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
 
                 }
                 else{
+                    $allProperties = $this->pm->findAll();
+                    $this->currentPage = 'admin-properties';
                     $resultMessage = 'Missing fields';
-                    $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                    $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
                 }
             }
             else{
+                $allProperties = $this->pm->findAll();
+                $this->currentPage = 'admin-properties';
                 $resultMessage = 'CSRF token mismatch';
-                $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage]);
+                $this->render('adminProperties.html.twig', ['resultMessage' => $resultMessage, 'allProperties' => $allProperties]);
             }
         }
         else{
             echo 'error';
-            die;
         }
     }
 
