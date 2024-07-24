@@ -41,7 +41,7 @@ class AdminOperationsController extends AbstractController
         }
     }
 
-    private function fileUploadErrorMessage($errorCode) {
+    private function fileUploadErrorMessage($errorCode) : string {
         switch ($errorCode) {
             case UPLOAD_ERR_INI_SIZE:
                 return 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
@@ -419,10 +419,7 @@ class AdminOperationsController extends AbstractController
             move_uploaded_file($_FILES['images']['tmp_name'][$key], $upload);
         }
 
-        $this->render('adminProperties.html.twig', [
-            'resultMessage' => 'Property added',
-            'allProperties' => $allProperties
-        ]);
+        $this->redirect('index.php?route=admin-properties');
     }
 
 }

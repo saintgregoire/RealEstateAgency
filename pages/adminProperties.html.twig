@@ -191,7 +191,7 @@
 
 
         {% if resultMessage is defined and resultMessage is not empty %}
-            <div class="alert {% if resultMessage is same as 'Property added' %}alert-success{% else %}alert-danger{% endif%} alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ resultMessage }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
