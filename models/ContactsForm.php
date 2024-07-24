@@ -10,7 +10,7 @@ class ContactsForm
 
     public function __construct(private string $first_name, private string $last_name, private int $email_id, private string $phone, private string $inquiry_type, private ?string $how_found, private ?string $message)
     {
-        $this->created_at = new DateTime();
+        $this->created_at = new DateTime('now', new DateTimeZone('Europe/Paris'));
     }
 
     public function getId(): ?int
@@ -30,7 +30,6 @@ class ContactsForm
 
     public function setCreatedAt(DateTime $created_at): void
     {
-        $created_at->format('Y-m-d H:i:s');
         $this->created_at = $created_at;
     }
 
