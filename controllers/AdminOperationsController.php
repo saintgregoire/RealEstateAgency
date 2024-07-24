@@ -280,13 +280,15 @@ class AdminOperationsController extends AbstractController
             return;
         }
 
+        $role = $_SESSION['role'];
         $allProperties = $this->pm->findAll();
         $this->currentPage = 'admin-properties';
 
         if (!isset($_POST['csrf-token']) || !$this->tm->validateCSRFToken($_POST['csrf-token'])) {
             $this->render('adminProperties.html.twig', [
                 'resultMessage' => 'CSRF token mismatch',
-                'allProperties' => $allProperties
+                'allProperties' => $allProperties,
+                'role' => $role
             ]);
             return;
         }
@@ -302,7 +304,8 @@ class AdminOperationsController extends AbstractController
             if (!isset($_POST[$field]) || empty($_POST[$field])) {
                 $this->render('adminProperties.html.twig', [
                     'resultMessage' => 'Missing fields',
-                    'allProperties' => $allProperties
+                    'allProperties' => $allProperties,
+                    'role' => $role
                 ]);
                 return;
             }
@@ -312,7 +315,8 @@ class AdminOperationsController extends AbstractController
             $error = $this->fileUploadErrorMessage($_FILES['img-main']['error']);
             $this->render('adminProperties.html.twig', [
                 'resultMessage' => 'Main image upload error: ' . $error,
-                'allProperties' => $allProperties
+                'allProperties' => $allProperties,
+                'role' => $role
             ]);
             return;
         }
@@ -321,7 +325,8 @@ class AdminOperationsController extends AbstractController
             $error = $this->fileUploadErrorMessage($_FILES['images']['error'][0]);
             $this->render('adminProperties.html.twig', [
                 'resultMessage' => 'Additional image upload error: ' . $error,
-                'allProperties' => $allProperties
+                'allProperties' => $allProperties,
+                'role' => $role
             ]);
             return;
         }
@@ -330,7 +335,8 @@ class AdminOperationsController extends AbstractController
         if (count($_FILES['images']['name']) > $maxFiles) {
             $this->render('adminProperties.html.twig', [
                 'resultMessage' => 'You can upload a maximum of 5 files.',
-                'allProperties' => $allProperties
+                'allProperties' => $allProperties,
+                'role' => $role
             ]);
             return;
         }
@@ -345,7 +351,8 @@ class AdminOperationsController extends AbstractController
         if ($_FILES['img-main']['size'] > $maxFileSize) {
             $this->render('adminProperties.html.twig', [
                 'resultMessage' => 'Main image exceeds the maximum size of 2MB.',
-                'allProperties' => $allProperties
+                'allProperties' => $allProperties,
+                'role' => $role
             ]);
             return;
         }
@@ -353,7 +360,8 @@ class AdminOperationsController extends AbstractController
         if (!in_array($mainImageType, $allowedTypes) || !in_array($mainImageExtension, $allowedExtensions)) {
             $this->render('adminProperties.html.twig', [
                 'resultMessage' => 'Invalid main image format or extension',
-                'allProperties' => $allProperties
+                'allProperties' => $allProperties,
+                'role' => $role
             ]);
             return;
         }
@@ -365,7 +373,8 @@ class AdminOperationsController extends AbstractController
             if ($_FILES['images']['size'][$key] > $maxFileSize) {
                 $this->render('adminProperties.html.twig', [
                     'resultMessage' => "File {$value} exceeds the maximum size of 2MB.",
-                    'allProperties' => $allProperties
+                    'allProperties' => $allProperties,
+                    'role' => $role
                 ]);
                 return;
             }
@@ -373,7 +382,8 @@ class AdminOperationsController extends AbstractController
             if (!in_array($imageType, $allowedTypes) || !in_array($imageExtension, $allowedExtensions)) {
                 $this->render('adminProperties.html.twig', [
                     'resultMessage' => 'Invalid additional image format or extension',
-                    'allProperties' => $allProperties
+                    'allProperties' => $allProperties,
+                    'role' => $role
                 ]);
                 return;
             }

@@ -292,6 +292,32 @@ document.addEventListener('DOMContentLoaded', ()=>{
         });
     }
 
+//     ! DELETE PROPERTY------------------
+
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+
+    if(deleteBtns){
+        deleteBtns.forEach(deleteBtn =>{
+            deleteBtn.addEventListener('click', function () {
+                const option = this.parentElement;
+                option.classList.add('d-none');
+
+                const propertyId = this.getAttribute('data-property-id');
+                const modal = document.querySelector(`#modal-${propertyId}`);
+                modal.classList.remove('d-none');
+            });
+        })
+
+        const noBtns = document.querySelectorAll('.btn-no');
+        noBtns.forEach(btn =>{
+            btn.addEventListener('click', function(){
+                const modal = this.closest('.modal-window');
+                modal.classList.add('d-none');
+                modal.parentElement.querySelector('.delete-property').classList.remove('d-none');
+            });
+        });
+
+    }
 
 
 

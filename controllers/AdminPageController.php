@@ -44,9 +44,10 @@ class AdminPageController extends AbstractController
         $userCheck = $this->isUserIsset();
         if($userCheck){
             $allProperties = $this->pm->findAll();
+            $role = $_SESSION['role'];
 
             $this->currentPage = 'admin-properties';
-            $this->render('adminProperties.html.twig', ['allProperties' => $allProperties]);
+            $this->render('adminProperties.html.twig', ['allProperties' => $allProperties, 'role' => $role]);
         }
     }
 
