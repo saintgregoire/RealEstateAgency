@@ -23,46 +23,46 @@
                     <tbody>
                     {% for user in allUsers  %}
                         <tr>
-                            <th scope="row">{{ user.getId()|e }}</th>
+                            <th scope="row">{{ user.getId() }}</th>
 
                             <td>
-                                <span class="user-email-span-{{ user.getId()|e }}">{{ user.getEmail()|e }}</span>
+                                <span class="user-email-span-{{ user.getId() }}">{{ user.getEmail()|e }}</span>
 
-                                <form action="index.php?route=change-email" method="POST" class="d-flex gap-2 d-none form-change-email" id="form-{{ user.getId()|e }}">
-                                    <input type="hidden" name="csrf-token" id="csrf-token-{{ user.getId()|e }}" value="{{ csrf_token }}" />
-                                    <input type="hidden" name="user-id" value="{{ user.getId()|e }}">
+                                <form action="index.php?route=change-email" method="POST" class="d-flex gap-2 d-none form-change-email" id="form-{{ user.getId() }}">
+                                    <input type="hidden" name="csrf-token" id="csrf-token-{{ user.getId() }}" value="{{ csrf_token }}" />
+                                    <input type="hidden" name="user-id" value="{{ user.getId() }}">
                                     <fieldset>
-                                        <label class="d-none" for="userEmailInput-{{ user.getId()|e }}">Change Email</label>
-                                        <input class="userEmailInput" id="userEmailInput-{{ user.getId()|e }}" name="userEmailInput" type="text" value="{{ user.getEmail()|e }}">
+                                        <label class="d-none" for="userEmailInput-{{ user.getId() }}">Change Email</label>
+                                        <input class="userEmailInput" id="userEmailInput-{{ user.getId() }}" name="userEmailInput" type="text" value="{{ user.getEmail()|e }}">
                                     </fieldset>
                                     <button type="submit">Submit</button>
-                                    <button type="button" class="cancelEmailBtn"  data-user-id="{{ user.getId()|e }}">Cansel</button>
+                                    <button type="button" class="cancelEmailBtn"  data-user-id="{{ user.getId() }}">Cansel</button>
                                 </form>
                             </td>
 
                             <td>{{ user.getRole()|e }}</td>
 
                             <td>
-                                <form action="index.php?route=change-password" method="POST" id="form-password-{{ user.getId()|e }}" class="d-none password-form">
+                                <form action="index.php?route=change-password" method="POST" id="form-password-{{ user.getId() }}" class="d-none password-form">
                                     <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
-                                    <input type="hidden" name="user-id-password" value="{{ user.getId()|e }}">
+                                    <input type="hidden" name="user-id-password" value="{{ user.getId() }}">
                                     <fieldset>
-                                        <label class="d-none" for="new-password-{{ user.getId()|e }}">New password</label>
-                                        <input type="password" name="new-password" id="new-password-{{ user.getId()|e }}" placeholder="New password" style="width: 100%" class="mb-2 password-input">
+                                        <label class="d-none" for="new-password-{{ user.getId() }}">New password</label>
+                                        <input type="password" name="new-password" id="new-password-{{ user.getId() }}" placeholder="New password" style="width: 100%" class="mb-2 password-input">
                                     </fieldset>
                                     <div class="d-flex gap-4 justify-content-center">
                                         <button type="submit">Submit</button>
-                                        <button type="button" data-user-id="{{ user.getId()|e }}" class="cansel-password">Cansel</button>
+                                        <button type="button" data-user-id="{{ user.getId() }}" class="cansel-password">Cansel</button>
                                     </div>
                                 </form>
 
-                                <div class ="dropdown {% if role is same as 'moderator' and userId is not same as user.getId() %} d-none{% endif %}" id="dropdown-{{ user.getId()|e }}">
+                                <div class ="dropdown {% if role is same as 'moderator' and userId is not same as user.getId() %} d-none{% endif %}" id="dropdown-{{ user.getId() }}">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Modify
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item change-email" data-user-id="{{ user.getId()|e }}" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
-                                        <li><a class="dropdown-item change-password" href="index.php?route=change-password&id={{ user.getId() }}" data-user-id="{{ user.getId()|e }}">Change password</a></li>
+                                        <li><a class="dropdown-item change-email" data-user-id="{{ user.getId() }}" href="index.php?route=change-email&id={{ user.getId() }}">Change Email</a></li>
+                                        <li><a class="dropdown-item change-password" href="index.php?route=change-password&id={{ user.getId() }}" data-user-id="{{ user.getId() }}">Change password</a></li>
                                         {% if role is same as 'admin' %}
                                             <li><a class="dropdown-item" href="index.php?route=change-role&id={{ user.getId() }}&role={{ user.getRole() }}">Change role</a></li>
                                             <li><a class="dropdown-item" href="index.php?route=delete-user&id={{ user.getId() }}">Delete</a></li>

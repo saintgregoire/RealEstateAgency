@@ -46,7 +46,7 @@
                 <tbody>
                 {% for lead in leads %}
                     <tr>
-                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <th scope="row">{{ lead.getId() }}</th>
                         <td>{{ lead.getFirstName()|e }}</td>
                         <td>{{ lead.getLastName()|e }}</td>
                         <td>
@@ -63,12 +63,12 @@
                         </td>
                         <td>{{ lead.getHowFound()|e }}</td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
-                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt() }}</td>
                         <td>
-                            {% if lead.isStatus()|e is same as false %}
+                            {% if lead.isStatus() is same as false %}
                                 <p class="text-danger">Pending</p>
                             {% endif %}
-                            <a href="index.php?route=change-status-contact-lead&lead-id={{ lead.getId()|e }}" class="text-decoration-none text-success p-1 text-nowrap border border-success rounded bg-success bg-opacity-10">Done ✅</a>
+                            <a href="index.php?route=change-status-contact-lead&lead-id={{ lead.getId() }}" class="text-decoration-none text-success p-1 text-nowrap border border-success rounded bg-success bg-opacity-10">Done ✅</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -97,7 +97,7 @@
                 <tbody>
                 {% for lead in propertiesLeads %}
                     <tr>
-                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <th scope="row">{{ lead.getId() }}</th>
                         <td>{{ lead.getFirstName()|e }}</td>
                         <td>{{ lead.getLastName()|e }}</td>
                         <td>
@@ -117,12 +117,12 @@
                         <td>{{ lead.getNoBedroom()|e }}</td>
                         <td>{{ lead.getBudget()|e }}</td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
-                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt() }}</td>
                         <td>
-                            {% if lead.isStatus()|e is same as false %}
+                            {% if lead.isStatus() is same as false %}
                                 <p class="text-danger">Pending</p>
                             {% endif %}
-                            <a href="index.php?route=change-status-properties-lead&lead-id={{ lead.getId()|e }}" class="text-decoration-none text-success p-1 text-nowrap border border-success rounded bg-success bg-opacity-10">Done ✅</a>
+                            <a href="index.php?route=change-status-properties-lead&lead-id={{ lead.getId() }}" class="text-decoration-none text-success p-1 text-nowrap border border-success rounded bg-success bg-opacity-10">Done ✅</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -147,7 +147,7 @@
                 <tbody>
                 {% for lead in propertyLeads %}
                     <tr>
-                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <th scope="row">{{ lead.getId() }}</th>
                         <td>{{ lead.getFirstName()|e }}</td>
                         <td>{{ lead.getLastName()|e }}</td>
                         <td>
@@ -168,12 +168,12 @@
                             {% endif %}
                         </td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
-                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt() }}</td>
                         <td>
-                            {% if lead.isStatus()|e is same as false %}
+                            {% if lead.isStatus() is same as false %}
                                 <p class="text-danger">Pending</p>
                             {% endif %}
-                            <a href="index.php?route=change-status-property-lead&lead-id={{ lead.getId()|e }}" class="text-decoration-none text-success p-1 text-nowrap border border-success rounded bg-success bg-opacity-10">Done ✅</a>
+                            <a href="index.php?route=change-status-property-lead&lead-id={{ lead.getId() }}" class="text-decoration-none text-success p-1 text-nowrap border border-success rounded bg-success bg-opacity-10">Done ✅</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -217,7 +217,7 @@
                 <tbody>
                 {% for lead in allContactsLeads %}
                     <tr>
-                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <th scope="row">{{ lead.getId() }}</th>
                         <td>{{ lead.getFirstName()|e }}</td>
                         <td>{{ lead.getLastName()|e }}</td>
                         <td>
@@ -234,15 +234,15 @@
                         </td>
                         <td>{{ lead.getHowFound()|e }}</td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
-                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt() }}</td>
                         <td>
-                            {% if lead.isStatus()|e is same as false %}
+                            {% if lead.isStatus() is same as false %}
                                 <p class="text-danger">Pending</p>
                             {% else%}
                                 <p class="text-success">Answered</p>
                             {% endif %}
                         </td>
-                        <td style="min-width: 100px">{{ lead.getAnsweredAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getAnsweredAt() }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -270,7 +270,7 @@
                 <tbody>
                 {% for lead in allPropertiesLeads %}
                     <tr>
-                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <th scope="row">{{ lead.getId() }}</th>
                         <td>{{ lead.getFirstName()|e }}</td>
                         <td>{{ lead.getLastName()|e }}</td>
                         <td>
@@ -290,15 +290,15 @@
                         <td>{{ lead.getNoBedroom()|e }}</td>
                         <td>{{ lead.getBudget()|e }}</td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
-                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt() }}</td>
                         <td>
-                            {% if lead.isStatus()|e is same as false %}
+                            {% if lead.isStatus() is same as false %}
                                 <p class="text-danger">Pending</p>
                             {% else%}
                                 <p class="text-success">Answered</p>
                             {% endif %}
                         </td>
-                        <td style="min-width: 100px">{{ lead.getAnsweredAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getAnsweredAt() }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -322,7 +322,7 @@
                 <tbody>
                 {% for lead in allPropertyLeads %}
                     <tr>
-                        <th scope="row">{{ lead.getId()|e }}</th>
+                        <th scope="row">{{ lead.getId() }}</th>
                         <td>{{ lead.getFirstName()|e }}</td>
                         <td>{{ lead.getLastName()|e }}</td>
                         <td>
@@ -343,7 +343,7 @@
                             {% endif %}
                         </td>
                         <td class="text-nowrap text-truncate contacts-lead-message" role="button" tabindex="0" style="max-width: 200px;">{{ lead.getMessage()|e }}</td>
-                        <td style="min-width: 100px">{{ lead.getCreatedAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getCreatedAt() }}</td>
                         <td>
                             {% if lead.isStatus()|e is same as false %}
                                 <p class="text-danger">Pending</p>
@@ -351,7 +351,7 @@
                                 <p class="text-success">Answered</p>
                             {% endif %}
                         </td>
-                        <td style="min-width: 100px">{{ lead.getAnsweredAt()|e }}</td>
+                        <td style="min-width: 100px">{{ lead.getAnsweredAt() }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

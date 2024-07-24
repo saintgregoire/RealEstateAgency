@@ -27,7 +27,7 @@
         </button>
         <ul class="dream__options hidden">
           {% for property in allProperties %}
-          <li>{{ property.name }}</li>
+          <li>{{ property.name|e }}</li>
           {% endfor %}
         </ul>
       </form>
@@ -43,27 +43,27 @@
         {% for property in allProperties %}
           <article class="featured__card">
             <div class="featured__card_img">
-              <img src="{{ property.img_url }}" alt="{{ property.name }}" width="264" height="210">
+              <img src="{{ property.img_url|e }}" alt="{{ property.name|e }}" width="264" height="210">
             </div>
-            <h3>{{ property.name }}</h3>
-            <p class="featured__card_text">{{ property.description }}</p>
+            <h3>{{ property.name|e }}</h3>
+            <p class="featured__card_text">{{ property.description|e }}</p>
             <div class="featured__card_notes">
               <div class="featured__card_note">
                 <img src="../assets/icons/bedroom.svg" alt="bedroom icon" width="20" height="20">
-                <p>{{ property.no_bedrooms }}-Bedroom</p>
+                <p>{{ property.no_bedrooms|e }}-Bedroom</p>
               </div>
               <div class="featured__card_note">
                 <img src="../assets/icons/Bathroom.svg" alt="Bathroom icon" width="20" height="20">
-                <p>{{ property.no_bathrooms }}-Bathroom</p>
+                <p>{{ property.no_bathrooms|e }}-Bathroom</p>
               </div>
               <div class="featured__card_note">
                 <img src="../assets/icons/villa.svg" alt="Building icon" width="20" height="20">
-                <p>{{ property.type }}</p>
+                <p>{{ property.type|e }}</p>
               </div>
             </div>
             <div class="featured__card_footer">
               <p class="featured__card_price">Price</p>
-              <p class="featured__card_value">{{ property.price }}</p>
+              <p class="featured__card_value">{{ property.price|e }}</p>
               <a href="index.php?route=propertyDetails&property={{ property.id }}"><p>View Property Details</p></a>
             </div>
           </article>

@@ -17,15 +17,15 @@
   <!-- !PROPERTY SECTION -->
   <section class="property container">
     <div class="property__top">
-      <h1>{{ property.getName() }}</h1>
+      <h1>{{ property.getName()|e }}</h1>
       <div class="property__info">
         <p class="property__geo">
           <i class="fa-solid fa-location-dot"></i>
-          {{ property.getLocation() }}
+          {{ property.getLocation()|e }}
         </p>
         <p class="property__price">
           Price
-          <span>{{ property.getListingPrice() }}</span>
+          <span>{{ property.getListingPrice()|e }}</span>
         </p>
       </div>
     </div>
@@ -38,7 +38,7 @@
           <!-- Slides -->
           {% for img in imgUrls %}
           <div class="swiper-slide property__swiper-slide">
-            <img src="{{ img }}" alt="{{ property.getName() }}"  width="272" height="250">
+            <img src="{{ img|e }}" alt="{{ property.getName()|e }}"  width="272" height="250">
           </div>
           {% endfor %}
 
@@ -58,21 +58,21 @@
     <h2 class="sr-only">Property description</h2>
     <article class="description__desc">
       <h3 class="description__title">Description</h3>
-      <p class="description__text">Discover your own piece of paradise with the {{ property.getName() }}. With an open floor plan, breathtaking ocean views from every room, and direct access to a pristine sandy beach, this property is the epitome of coastal living.</p>
+      <p class="description__text">Discover your own piece of paradise with the {{ property.getName()|e }}. With an open floor plan, breathtaking ocean views from every room, and direct access to a pristine sandy beach, this property is the epitome of coastal living.</p>
       <div class="description__cards">
         <div class="description__card">
           <p class="description__name">
             <img src="../assets/icons/bedroom.svg" alt="Bedroom icon" width="20" height="20">
             Bedrooms
           </p>
-          <p class="description__value">0{{ property.getNoBedrooms() }}</p>
+          <p class="description__value">0{{ property.getNoBedrooms()|e }}</p>
         </div>
         <div class="description__card">
           <p class="description__name">
             <img src="../assets/icons/Bathroom.svg" alt="Bathroom icon" width="20" height="20">
             Bathrooms
           </p>
-          <p class="description__value">0{{ property.getNoBathrooms() }}</p>
+          <p class="description__value">0{{ property.getNoBathrooms()|e }}</p>
         </div>
         <div class="description__card">
           <p class="description__name">
@@ -80,7 +80,7 @@
             Area
             </svg>
           </p>
-          <p class="description__value">{{ property.getSqFeet() }}</p>
+          <p class="description__value">{{ property.getSqFeet()|e }}</p>
         </div>
       </div>
     </article>
@@ -118,7 +118,7 @@
       <div class="stars">
         <img src="../assets/icons/star.png" alt="stars icon" width="46" height="20">
       </div>
-      <h2 class="inquire__title">Inquire About {{ property.getName() }}</h2>
+      <h2 class="inquire__title">Inquire About {{ property.getName()|e }}</h2>
       <p>Interested in this property? Fill out the form below, and our real estate experts will get back to you with more details, including scheduling a viewing and answering any questions you may have.</p>
     </article>
 
@@ -146,7 +146,7 @@
 
       <fieldset class="inquire__fieldset inquire__fieldset_selected">
         <label class="inquire__label" for="inquire__selected">Selected Property</label>
-          <input type="text" name="inquire__selected" id="inquire__selected" class="inquire__input inquire__selected" value="{{  property.getName() }}" readonly>
+          <input type="text" name="inquire__selected" id="inquire__selected" class="inquire__input inquire__selected" value="{{  property.getName()|e }}" readonly>
           <p class="inquire__geo">
             <i class="fa-solid fa-location-dot"></i>
           </p>
@@ -173,7 +173,7 @@
     </div>
     <h2 class="pricing__title">Comprehensive Pricing Details</h2>
     <p>At Estatein, transparency is key. We want you to have a clear understanding of all costs associated with your property investment. Below, we break down the pricing for
-      {{ property.getName() }} to help you make an informed decision</p>
+      {{ property.getName()|e }} to help you make an informed decision</p>
 
     <article class="pricing__note">
       <h3>Note</h3>
@@ -183,7 +183,7 @@
     <div class="pricing__wrapper">
       <div class="pricing__listing_price">
         <p>Listing Price</p>
-        <p>{{ property.getListingPrice() }}</p>
+        <p>{{ property.getListingPrice()|e }}</p>
       </div>
 
       <article class="pricing__card">
@@ -192,7 +192,7 @@
           <p class="pricing__small">
             Property Transfer Tax
           </p>
-          <p class="pricing__value">{{ property.getTransferTax() }}</p>
+          <p class="pricing__value">{{ property.getTransferTax()|e }}</p>
           <p class="pricing__desc">
             Based on the sale price and local regulations
           </p>
@@ -202,7 +202,7 @@
           <p class="pricing__small">
             Legal Fees
           </p>
-          <p class="pricing__value">{{ property.getLegalFees() }}</p>
+          <p class="pricing__value">{{ property.getLegalFees()|e }}</p>
           <p class="pricing__desc">
             Approximate cost for legal services, including title transfer
           </p>
@@ -212,7 +212,7 @@
           <p class="pricing__small">
             Home Inspection
           </p>
-          <p class="pricing__value">{{ property.getHomeInspection() }}</p>
+          <p class="pricing__value">{{ property.getHomeInspection()|e }}</p>
           <p class="pricing__desc">
             Recommended for due diligence
           </p>
@@ -222,7 +222,7 @@
           <p class="pricing__small">
             Property Insurance
           </p>
-          <p class="pricing__value">{{ property.getInsurance() }}</p>
+          <p class="pricing__value">{{ property.getInsurance()|e }}</p>
           <p class="pricing__desc">
             Annual cost for comprehensive property insurance
           </p>
@@ -232,7 +232,7 @@
           <p class="pricing__small">
             Mortgage Fees
           </p>
-          <p class="pricing__value">{{ property.getMortgFees() }}</p>
+          <p class="pricing__value">{{ property.getMortgFees()|e }}</p>
           <p class="pricing__desc">
             If applicable, consult with your lender for specific details
           </p>
@@ -245,7 +245,7 @@
           <p class="pricing__small">
             Property Taxes
           </p>
-          <p class="pricing__value">{{ property.getPropertyTax() }}</p>
+          <p class="pricing__value">{{ property.getPropertyTax()|e }}</p>
           <p class="pricing__desc">
             Approximate monthly property tax based on the sale price and local rates
           </p>
@@ -255,7 +255,7 @@
           <p class="pricing__small">
             Homeowners' Association Fee
           </p>
-          <p class="pricing__value">{{ property.getAssosFee() }}</p>
+          <p class="pricing__value">{{ property.getAssosFee()|e }}</p>
           <p class="pricing__desc">
             Monthly fee for common area maintenance and security
           </p>
@@ -268,14 +268,14 @@
           <p class="pricing__small">
             Listing Price
           </p>
-          <p class="pricing__value">{{ property.getListingPrice() }}</p>
+          <p class="pricing__value">{{ property.getListingPrice()|e }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Additional Fees
           </p>
-          <p class="pricing__value">{{ property.getAdditFee() }}</p>
+          <p class="pricing__value">{{ property.getAdditFee()|e }}</p>
           <p class="pricing__desc">
             Property transfer tax, legal fees, inspection, insurance
           </p>
@@ -285,7 +285,7 @@
           <p class="pricing__small">
             Down Payment
           </p>
-          <p class="pricing__value down">{{ property.getDownPayment() }}</p>
+          <p class="pricing__value down">{{ property.getDownPayment()|e }}</p>
           <p class="pricing__desc persent">
             20%
           </p>
@@ -295,7 +295,7 @@
           <p class="pricing__small">
             Mortgage Amount
           </p>
-          <p class="pricing__value million">{{ property.getMortgAmount() }}</p>
+          <p class="pricing__value million">{{ property.getMortgAmount()|e }}</p>
           <p class="pricing__desc applic">
             If applicable
           </p>
@@ -308,28 +308,28 @@
           <p class="pricing__small">
             Property Taxes
           </p>
-          <p class="pricing__value">{{ property.getPropertyTax() }}</p>
+          <p class="pricing__value">{{ property.getPropertyTax()|e }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Homeowners' Association Fee
           </p>
-          <p class="pricing__value">{{ property.getAssosFee() }}</p>
+          <p class="pricing__value">{{ property.getAssosFee()|e }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Mortgage Payment
           </p>
-          <p class="pricing__value">{{ property.getMortgPay() }}</p>
+          <p class="pricing__value">{{ property.getMortgPay()|e }}</p>
         </div>
 
         <div class="pricing__card_section">
           <p class="pricing__small">
             Property Insurance
           </p>
-          <p class="pricing__value">{{ property.getPropInsuranceMonth() }}</p>
+          <p class="pricing__value">{{ property.getPropInsuranceMonth()|e }}</p>
           <p class="pricing__desc cost">
             Approximate monthly cost
           </p>

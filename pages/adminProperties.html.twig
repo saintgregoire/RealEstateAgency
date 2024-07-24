@@ -36,7 +36,7 @@
                 <tbody>
                 {% for property in allProperties %}
                     <tr>
-                        <th>{{ property.getId()|e }}</th>
+                        <th>{{ property.getId() }}</th>
                         <td>{{ property.getName()|e }}</td>
                         <td>{{ property.getDescriptionForCard()|e }}</td>
                         <td>{{ property.getLocation()|e }}</td>
@@ -77,7 +77,7 @@
                 </button>
                 <form class="dropdown-menu p-4" action="index.php?route=edit-property" method="POST" style="width: 70vw;">
                     <input type="hidden" name="csrf-token" value="{{ csrf_token }}" />
-                    <input type="hidden" name="property-id" value="{{ property.getId()|e }}" />
+                    <input type="hidden" name="property-id" value="{{ property.getId() }}" />
 
                     <fieldset class="mb-3">
                         <label for="property-location" class="form-label">Location</label>
@@ -323,14 +323,14 @@
             {% for property in allProperties %}
             <li style="width: 300px">
                 <div class="d-flex justify-content-between delete-property">
-                    {{ property.getName() }}
+                    {{ property.getName()|e }}
                     <button type="button" class="border border-danger rounded px-2 text-danger bg-danger bg-gradient delete-btn" style="--bs-bg-opacity: .1" data-property-id="{{ property.getId() }}">DELETE</button>
                 </div>
 
 
 
                 <div class="border rounded p-2 d-none modal-window" id="modal-{{ property.getId() }}">
-                    <p class="text-center">DELETE {{ property.getName() }}?</p>
+                    <p class="text-center">DELETE {{ property.getName()|e }}?</p>
                     <div class="d-flex justify-content-center gap-3">
                         <a href="index.php?route=delete-property&id={{ property.getId() }}" class="border rounded border-danger px-2 text-danger bg-danger text-decoration-none" style="--bs-bg-opacity: .1">Yes</a>
                         <button type="button" class="border rounded border-success px-2 text-success bg-success btn-no" style="--bs-bg-opacity: .1">No</button>
