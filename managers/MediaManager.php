@@ -63,4 +63,12 @@ class MediaManager extends AbstractManager
         $query->execute($parameters);
     }
 
+    public function deleteAllWhere(string $name) : void{
+        $query = $this->db->prepare("DELETE FROM medias WHERE name LIKE :name");
+        $parameters = [
+            'name' => '%' . $name . '%'
+        ];
+        $query->execute($parameters);
+    }
+
 }

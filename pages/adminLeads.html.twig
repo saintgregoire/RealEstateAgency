@@ -159,8 +159,10 @@
                             {% endif %}
                         </td>
                         <td>{{ lead.getPhone()|e }}</td>
-                        <td>{% if allPropertiesNames[leadId] is defined %}
+                        <td>{% if allPropertiesNames[leadId] is defined and allPropertiesNames[leadId] is not empty %}
                                 {{ allPropertiesNames[leadId].getName()|e }}
+                            {% elseif allPropertiesNames[leadId] is empty %}
+                                DELETED
                             {% else %}
                                 Error
                             {% endif %}
@@ -332,8 +334,10 @@
                             {% endif %}
                         </td>
                         <td>{{ lead.getPhone()|e }}</td>
-                        <td>{% if namesForAllProperty[leadId] is defined %}
+                        <td>{% if namesForAllProperty[leadId] is defined and namesForAllProperty[leadId] is not empty %}
                                 {{ namesForAllProperty[leadId].getName()|e }}
+                            {% elseif namesForAllProperty[leadId] is empty%}
+                                DELETED
                             {% else %}
                                 Error
                             {% endif %}

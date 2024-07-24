@@ -72,6 +72,30 @@ class AdminOperationsController extends AbstractController
             'errorEmailMessage' => $message]);
     }
 
+    private function deleteFilesWithKeywords($directory, $keywords) : void {
+        if ($handle = opendir($directory)) {
+            while (false !== ($file = readdir($handle))) {
+                if ($file != "." && $file != "..") {
+                    foreach ($keywords as $keyword) {
+                        if (strpos($file, $keyword) !== false) {
+                            $filePath = $directory . '/' . $file;
+                            if (!unlink($filePath)) {
+                                echo $file . "File deletion error";
+                                return;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            closedir($handle);
+        } else {
+            echo $directory . " not found";
+            return;
+        }
+    }
+
+
     public function changeRole(): void
     {
         if (isset($_SESSION['user']) && $_SESSION['role'] === 'admin') {
@@ -430,6 +454,43 @@ class AdminOperationsController extends AbstractController
         }
 
         $this->redirect('index.php?route=admin-properties');
+    }
+
+
+    public function deleteProperty() : void
+    {
+        if ($this->isUserIsset()) {
+            if($_SESSION['role'] === 'admin'){
+                if(isset($_GET['id']) && !empty($_GET['id'])){
+                    $property = $this->pm->findById((int)$_GET['id']);
+
+                    if($property){
+                        $directory = __DIR__ . '/../assets/img/prop/';
+                        $name = $property->getName();
+                        $keywords = [$name];
+                        $this->deleteFilesWithKeywords($directory, $keywords);
+
+                        $this->mm->deleteAllWhere($name);
+
+                        $this->pm->deleteOne((int)$_GET['id']);
+
+                        $this->redirect('index.php?route=admin-properties');
+                    }
+                    else{
+                        echo 'Property not found';
+                    }
+                }
+                else{
+                    echo 'Data error';
+                }
+            }
+            else{
+                echo 'Error';
+            }
+        }
+        else {
+            echo 'Error';
+        }
     }
 
 }

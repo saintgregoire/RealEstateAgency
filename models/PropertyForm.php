@@ -7,7 +7,7 @@ class PropertyForm
     private bool $status = false;
     private DateTime $created_at;
 
-    public function __construct(private string $first_name, private string $last_name, private int $email_id, private string $phone, private int $property_id, private ?string $message)
+    public function __construct(private string $first_name, private string $last_name, private int $email_id, private string $phone, private ? int $property_id, private ?string $message)
     {
         $this->created_at = new DateTime();
     }
@@ -101,12 +101,12 @@ class PropertyForm
         $this->phone = $phone;
     }
 
-    public function getPropertyId(): int
+    public function getPropertyId(): ? int
     {
         return $this->property_id;
     }
 
-    public function setPropertyId(int $property_id): void
+    public function setPropertyId( ? int $property_id): void
     {
         $this->property_id = $property_id;
     }

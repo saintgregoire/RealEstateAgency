@@ -103,6 +103,9 @@ class Router{
      else if(isset($get['route']) && $get['route'] === 'check-new-property'){
          $this->aoc->checkNewProperty();
      }
+     else if(isset($get['route']) && $get['route'] === 'delete-property'){
+         $this->aoc->deleteProperty();
+     }
      else{
          $this->pc->home();
      }

@@ -140,7 +140,7 @@ class PropertiesManager extends AbstractManager
         $query->execute($parameters);
     }
 
-    public function findById(int $id) : ?Properties
+    public function findById(? int $id) : ?Properties
     {
         $query = $this->db->prepare("
         SELECT *
