@@ -35,8 +35,8 @@
                                         <label class="d-none" for="userEmailInput-{{ user.getId() }}">Change Email</label>
                                         <input class="userEmailInput" id="userEmailInput-{{ user.getId() }}" name="userEmailInput" type="text" value="{{ user.getEmail()|e }}">
                                     </fieldset>
-                                    <button type="submit">Submit</button>
-                                    <button type="button" class="cancelEmailBtn"  data-user-id="{{ user.getId() }}">Cansel</button>
+                                    <button type="submit" class="rounded border-success bg-success text-white">Submit</button>
+                                    <button type="button" class="cancelEmailBtn rounded border-danger bg-danger text-white"  data-user-id="{{ user.getId() }}">Cansel</button>
                                 </form>
                             </td>
 
@@ -51,8 +51,8 @@
                                         <input type="password" name="new-password" id="new-password-{{ user.getId() }}" placeholder="New password" style="width: 100%" class="mb-2 password-input">
                                     </fieldset>
                                     <div class="d-flex gap-4 justify-content-center">
-                                        <button type="submit">Submit</button>
-                                        <button type="button" data-user-id="{{ user.getId() }}" class="cansel-password">Cansel</button>
+                                        <button type="submit" class="rounded border-success bg-success text-white">Submit</button>
+                                        <button type="button" data-user-id="{{ user.getId() }}" class="cansel-password rounded border-danger bg-danger text-white">Cansel</button>
                                     </div>
                                 </form>
 
