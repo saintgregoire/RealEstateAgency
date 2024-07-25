@@ -8,6 +8,7 @@ class Router{
     private AuthController $ac;
     private AdminOperationsController $aoc;
     private AdminMembersController $amc;
+    private AdminLeadsController $alc;
 
   public function __construct(){
       $this->pc = new PageController();
@@ -17,6 +18,7 @@ class Router{
       $this->apc = new AdminPageController();
       $this->aoc = new AdminOperationsController();
       $this->amc = new AdminMembersController();
+      $this->alc = new AdminLeadsController();
   }
   public function handleRequest(array $get) : void
   {
@@ -88,16 +90,16 @@ class Router{
          $this->apc->adminLeadsPage();
      }
      else if(isset($get['route']) && $get['route'] === 'change-status-contact-lead'){
-         $this->aoc->changeContactLeadStatus();
+         $this->alc->changeContactLeadStatus();
      }
      else if(isset($get['route']) && $get['route'] === 'change-status-properties-lead'){
-         $this->aoc->changePropertiesLeadStatus();
+         $this->alc->changePropertiesLeadStatus();
      }
      else if(isset($get['route']) && $get['route'] === 'change-status-property-lead'){
-         $this->aoc->changePropertyLeadStatus();
+         $this->alc->changePropertyLeadStatus();
      }
      else if(isset($get['route']) && $get['route'] === 'download-emails'){
-         $this->aoc->downloadEmails();
+         $this->alc->downloadEmails();
      }
      else if(isset($get['route']) && $get['route'] === 'edit-property'){
          $this->aoc->modifyProperty();
