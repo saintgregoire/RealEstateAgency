@@ -7,6 +7,7 @@ class Router{
     private AdminPageController $apc;
     private AuthController $ac;
     private AdminOperationsController $aoc;
+    private AdminMembersController $amc;
 
   public function __construct(){
       $this->pc = new PageController();
@@ -15,6 +16,7 @@ class Router{
       $this->ac = new AuthController();
       $this->apc = new AdminPageController();
       $this->aoc = new AdminOperationsController();
+      $this->amc = new AdminMembersController();
   }
   public function handleRequest(array $get) : void
   {
@@ -71,16 +73,16 @@ class Router{
          $this->ac->checkUserForm();
      }
      else if(isset($get['route']) && $get['route'] === 'change-role'){
-         $this->aoc->changeRole();
+         $this->amc->changeRole();
      }
      else if(isset($get['route']) && $get['route'] === 'delete-user'){
-         $this->aoc->deleteUser();
+         $this->amc->deleteUser();
      }
      else if(isset($get['route']) && $get['route'] === 'change-email'){
-         $this->aoc->checkChangedEmail();
+         $this->amc->checkChangedEmail();
      }
      else if(isset($get['route']) && $get['route'] === 'change-password'){
-         $this->aoc->checkChangedPassword();
+         $this->amc->checkChangedPassword();
      }
      else if(isset($get['route']) && $get['route'] === 'admin-leads'){
          $this->apc->adminLeadsPage();
