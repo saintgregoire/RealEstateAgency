@@ -6,7 +6,7 @@ class Router{
     private PropertyLeadController $propertyLeadContr;
     private AdminPageController $apc;
     private AuthController $ac;
-    private AdminOperationsController $aoc;
+    private AdminPropertiesController $aprc;
     private AdminMembersController $amc;
     private AdminLeadsController $alc;
 
@@ -16,7 +16,7 @@ class Router{
       $this->propertyLeadContr = new PropertyLeadController();
       $this->ac = new AuthController();
       $this->apc = new AdminPageController();
-      $this->aoc = new AdminOperationsController();
+      $this->aprc = new AdminPropertiesController();
       $this->amc = new AdminMembersController();
       $this->alc = new AdminLeadsController();
   }
@@ -102,13 +102,13 @@ class Router{
          $this->alc->downloadEmails();
      }
      else if(isset($get['route']) && $get['route'] === 'edit-property'){
-         $this->aoc->modifyProperty();
+         $this->aprc->modifyProperty();
      }
      else if(isset($get['route']) && $get['route'] === 'check-new-property'){
-         $this->aoc->checkNewProperty();
+         $this->aprc->checkNewProperty();
      }
      else if(isset($get['route']) && $get['route'] === 'delete-property'){
-         $this->aoc->deleteProperty();
+         $this->aprc->deleteProperty();
      }
      else{
          $this->pc->home();

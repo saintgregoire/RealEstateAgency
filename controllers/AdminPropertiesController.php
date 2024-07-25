@@ -1,6 +1,6 @@
 <?php
 
-class AdminOperationsController extends AbstractController
+class AdminPropertiesController extends AbstractController
 {
     private CSRFTokenManager $tm;
     private PropertiesManager $pm;
@@ -82,27 +82,16 @@ class AdminOperationsController extends AbstractController
     {
         if ($this->isUserIsset()) {
             if (isset($_POST['csrf-token']) && $this->tm->validateCSRFToken($_POST['csrf-token'])) {
-                if (isset($_POST['property-id']) && !empty($_POST['property-id']) &&
-                    isset($_POST['property-location']) && !empty($_POST['property-location']) &&
-                    isset($_POST['property-bedrooms']) && !empty($_POST['property-bedrooms']) &&
-                    isset($_POST['property-bathrooms']) && !empty($_POST['property-bathrooms']) &&
-                    isset($_POST['property-type']) && !empty($_POST['property-type']) &&
-                    isset($_POST['property-feet']) && !empty($_POST['property-feet']) &&
-                    isset($_POST['property-listing']) && !empty($_POST['property-listing']) &&
-                    isset($_POST['property-transfer-tax']) && !empty($_POST['property-transfer-tax']) &&
-                    isset($_POST['property-legal-fees']) && !empty($_POST['property-legal-fees']) &&
-                    isset($_POST['property-inspection']) && !empty($_POST['property-inspection']) &&
-                    isset($_POST['property-insurance']) && !empty($_POST['property-insurance']) &&
-                    isset($_POST['property-mort-fees']) && !empty($_POST['property-mort-fees']) &&
-                    isset($_POST['property-tax']) && !empty($_POST['property-tax']) &&
-                    isset($_POST['property-assos-fees']) && !empty($_POST['property-assos-fees']) &&
-                    isset($_POST['property-addit-fees']) && !empty($_POST['property-addit-fees']) &&
-                    isset($_POST['property-down-pay']) && !empty($_POST['property-down-pay']) &&
-                    isset($_POST['property-mort-amount']) && !empty($_POST['property-mort-amount']) &&
-                    isset($_POST['property-mort-pay']) && !empty($_POST['property-mort-pay']) &&
-                    isset($_POST['property-monthly-ins']) && !empty($_POST['property-monthly-ins']) &&
-                    isset($_POST['property-description']) && !empty($_POST['property-description'])
-                ) {
+
+                $requiredFields = ['property-id', 'property-location', 'property-bedrooms', 'property-bathrooms', 'property-type', 'property-feet', 'property-listing', 'property-transfer-tax', 'property-legal-fees', 'property-inspection', 'property-insurance', 'property-mort-fees', 'property-tax', 'property-assos-fees', 'property-addit-fees', 'property-down-pay', 'property-mort-amount', 'property-mort-pay', 'property-monthly-ins', 'property-description'];
+
+                foreach ($requiredFields as $field) {
+                    if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                        echo 'Missing fields';
+                        return;
+                    }
+                }
+
                     $this->pm->modifyOne(
                         (int)$_POST['property-id'],
                         $_POST['property-description'],
@@ -125,9 +114,6 @@ class AdminOperationsController extends AbstractController
                         $_POST['property-mort-pay'],
                         $_POST['property-monthly-ins']);
                     $this->redirect('index.php?route=admin-properties');
-                } else {
-                    echo 'Missing fields';
-                }
             } else {
                 echo 'error';
             }
