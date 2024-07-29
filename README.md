@@ -5,6 +5,16 @@ The creation of this project carries the idea of ​​​​applying knowledge 
 >In the past, while working in marketing, I had a lot of experience working with real estate agencies. 
 </br>*So the idea for my project did not take long to arrive.*
 
+**This site is a platform for providing clients with up-to-date information and attracting new clients.**
+
+**Using this website, the agency can:**
+* Receive a sorted list of leads from forms on the website.
+* Receive a list of unprocessed leads and change their status after processing.
+* Download a file with a list of all emails received from forms for further use for marketing purposes.
+* View and edit the list and characteristics of real estate displayed on the site.
+* Add and remove real estate objects to/from the site.
+* View, edit, delete and add users to site management.
+
 ![Estatein Home Page](assets/docs/images/main.png "Home Page Screen")
 
 **[==> View website]() Coming soon...**
