@@ -21,6 +21,8 @@ The creation of this project carries the idea of ​​​​applying knowledge 
 
 **[==> View Figma](https://www.figma.com/design/mkozkfJX2EGUIFcbl43EuD/Real-Estate-Business-Website?node-id=45-2&t=EVNNFlmQPORgXUVz-1)**
 
+**[==> Learn more about the admin panel](./assets/docs/ADMIN.md)**
+
 **[==> View conceptual model of database](./assets/docs/images/sql_model.png)**
 
 ## Summary
