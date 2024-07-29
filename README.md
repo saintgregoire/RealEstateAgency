@@ -11,6 +11,8 @@ The creation of this project carries the idea of ​​​​applying knowledge 
 
 **[==> View Figma](https://www.figma.com/design/mkozkfJX2EGUIFcbl43EuD/Real-Estate-Business-Website?node-id=45-2&t=EVNNFlmQPORgXUVz-1)**
 
+**[==> View conceptual model of database](./assets/docs/images/sql_model.png)**
+
 ## Summary
 
 * [Philosophy](#philosophy)
@@ -28,7 +30,7 @@ I tried to adhere to two main principles:
 
 ## Licence
 
-Was created under the [MIT Licence](./LICENCE)
+Was created under the [MIT Licence](./LICENSE)
 
 ## Tools
 
@@ -43,9 +45,19 @@ Was created under the [MIT Licence](./LICENCE)
 
 ## Installation
 
-To work with this project you will need <img src="https://skillicons.dev/icons?i=git" height="20" alt="git logo"  />**GIT** 
+To work with this project you will need <img src="https://skillicons.dev/icons?i=git" height="20" alt="git logo"  />**GIT**, <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Logo-composer-transparent.png" height="20" alt="composer logo"  />**Composer** and <img src="https://skillicons.dev/icons?i=sass" height="20" alt="sass logo"  />**SASS**
 
  **[==>How to install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)**
+
+ **[==>How to install Composer](https://getcomposer.org/doc/00-intro.md)**
+>
+> **[==>How to install SASS](https://sass-lang.com/install/)**
+>
+> ***OR***
+>
+>If you are using <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519" height="20" alt="vscode logo"  /> VSCode you can use the plugin "Live Sass Compiler"
+>
+><img src="./assets/docs/images/sass_comp.png" width="300" alt="Live Sass Compiler" />
 
 ### Local installation:
 
@@ -89,6 +101,10 @@ To work with this project you will need <img src="https://skillicons.dev/icons?i
 **My PHP version**
 
 *8.2.18* <img src="https://skillicons.dev/icons?i=php" height="20" alt="php logo"  />
+
+**My Composer version**
+
+*2.7.7* <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Logo-composer-transparent.png" height="20" alt="composer logo"  />
 
 **My twig version**
 
