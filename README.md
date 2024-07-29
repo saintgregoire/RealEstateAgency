@@ -55,7 +55,7 @@ To work with this project you will need <img src="https://skillicons.dev/icons?i
 >
 > ***OR***
 >
->If you are using <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519" height="20" alt="vscode logo"  /> VSCode you can use the plugin "Live Sass Compiler"
+>If you use <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519" height="20" alt="vscode logo"  /> VSCode you can use the plugin "Live Sass Compiler"
 >
 ><img src="./assets/docs/images/sass_comp.png" width="300" alt="Live Sass Compiler" />
 
