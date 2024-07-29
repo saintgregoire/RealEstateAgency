@@ -32,6 +32,7 @@ The creation of this project carries the idea of ​​​​applying knowledge 
 * [Tools](#tools)
 * [Installation](#installation)
 * [Versions](#my-versions)
+* [Contacts](#contact-me)
 
 ## Philosophy
 
