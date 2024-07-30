@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/icon16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/icon32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="../assets/icons/icon48.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/RealEstateAgency/assets/icons/icon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/RealEstateAgency/assets/icons/icon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/RealEstateAgency/assets/icons/icon48.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     {% block swiperlink %}{% endblock %}
     <link rel="stylesheet" href="/RealEstateAgency/assets/css/style.min.css" />
@@ -23,7 +23,7 @@
 
         <a href="index.php?route=home">
             <div class="header__logo">
-                <img src="../assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28.5"/>
+                <img src="/RealEstateAgency/assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28.5"/>
             </div>
         </a>
 
@@ -80,7 +80,7 @@
     <section class="email container">
         <h3 class="sr-only">Our team will contact you ASAP</h3>
         <a class="email__logo" href="index.php?route=home">
-            <img src="../assets/img/Logo.png" alt="Estatein agency logo" width="115" height="35">
+            <img src="/RealEstateAgency/assets/img/Logo.png" alt="Estatein agency logo" width="115" height="35">
         </a>
         <form action="index.php?route=subscribe-newsletter" method="POST" class="email__form" novalidate>
             <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
@@ -121,6 +121,6 @@
 </div>
 {% block pop_up %}{% endblock %}
 {% block swiperjs %}{% endblock %}
-<script src="../assets/js/main.js"></script>
+<script src="/RealEstateAgency/assets/js/main.js"></script>
 </body>
 </html>
