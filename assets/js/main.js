@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		if(isEmailOk || isNotEmpty){
 			const form = e.target;
 			const formData = new FormData(form);
-			const link = '/index.php?route=subscribe-newsletter';
+			const link = '/RealEstateAgency/index.php?route=subscribe-newsletter';
 
 			fetch(link, {
 				method: 'POST',
