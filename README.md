@@ -14,6 +14,7 @@ The creation of this project carries the idea of ​​​​applying knowledge 
 * View and edit the list and characteristics of real estate displayed on the site.
 * Add and remove real estate objects to/from the site.
 * View, edit, delete and add users to site management.
+* Access the site from any device.
 
 ![Estatein Home Page](assets/docs/images/main.png "Home Page Screen")
 
