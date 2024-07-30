@@ -18,7 +18,7 @@ The creation of this project carries the idea of ​​​​applying knowledge 
 
 ![Estatein Home Page](assets/docs/images/main.png "Home Page Screen")
 
-**[==> View website]() Coming soon...**
+**[==> View website](https://estatein.alwaysdata.net/)
 
 **[==> View Figma](https://www.figma.com/design/mkozkfJX2EGUIFcbl43EuD/Real-Estate-Business-Website?node-id=45-2&t=EVNNFlmQPORgXUVz-1)**
 
