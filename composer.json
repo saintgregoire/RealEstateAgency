@@ -14,6 +14,6 @@
         "symfony/routing": "^5.4"
     },
     "require-dev": {
-        "symfony/var-dumper": "^5.4"
+        "symfony/var-dumper": "^6.4"
     }
 }
