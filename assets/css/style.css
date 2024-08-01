@@ -2066,6 +2066,7 @@ h1 {
   border-radius: 10px;
   background: #141414;
   overflow-y: auto;
+  z-index: 99999;
 }
 @media (min-width: 768px) {
   .dream__options {
