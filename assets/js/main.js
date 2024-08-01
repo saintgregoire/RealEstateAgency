@@ -4,7 +4,7 @@ function mySwiper(
 	btnRight, 
 	btnLeft, 
 	cards, 
-	clicksSmMd = 5, 
+	clicksSmMd, 
 	clicksLg = clicksSmMd, 
 	clicksXl=clicksLg, 
 	clicksXxl=clicksXl ) {
