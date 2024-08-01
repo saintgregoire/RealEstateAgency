@@ -137,6 +137,7 @@
 // ?-----------------------featured_swiper section--------------
 
 .featured_swiper{
+  position: relative;
 
   & h3{
     @include title-text(1.8rem);
@@ -147,7 +148,10 @@
   }
 
   & .featured__btn_container{
-    justify-content: center;
+    justify-content: space-between;
+    @include vieport-lg{
+      justify-content: center;
+    }
   }
 }
 
