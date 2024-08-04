@@ -56,6 +56,7 @@
     border-radius: $border-radius-sm;
     background: $main-bg;
     overflow-y: auto ;
+    z-index: 99999;
     @include vieport-md{
       height: 17rem;
       bottom: -18rem;
@@ -137,6 +138,7 @@
 // ?-----------------------featured_swiper section--------------
 
 .featured_swiper{
+  position: relative;
 
   & h3{
     @include title-text(1.8rem);
@@ -147,7 +149,10 @@
   }
 
   & .featured__btn_container{
-    justify-content: center;
+    justify-content: space-between;
+    @include vieport-lg{
+      justify-content: center;
+    }
   }
 }
 
