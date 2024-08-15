@@ -50,6 +50,7 @@ Was created under the [MIT Licence](./LICENSE)
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="20" alt="html5 logo"  /> HTML</br>
 <img src="https://skillicons.dev/icons?i=sass" height="20" alt="sass logo"  /> SCSS</br>
+<img src="https://skillicons.dev/icons?i=bootstrap" height="20" alt="bootstrap logo"  /> Bootstrap</br>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="20" alt="javascript logo"  /> JS</br>
 <img src="https://www.svgrepo.com/show/374142/twig.svg" height="20" alt="twig logo"  /> Twig</br>
 <img src="https://skillicons.dev/icons?i=php" height="20" alt="php logo"  /> PHP</br>
