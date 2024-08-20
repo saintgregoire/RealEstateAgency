@@ -215,6 +215,7 @@ h1 {
   bottom: 2%;
   right: 2%;
   opacity: 0.5;
+  transition: all 0.3s ease-in-out;
 }
 @media (min-width: 1920px) {
   .go_top {
@@ -4250,4 +4251,30 @@ h1 {
 }
 .social__terms > a:hover {
   text-decoration: underline;
+}
+
+.error {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 3rem;
+  width: 100%;
+}
+.error__h1 {
+  font-size: 10rem;
+  color: #703BF7;
+}
+.error__h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+}
+.error__p {
+  margin-top: 1em;
+}
+.error__p > a {
+  font-weight: 600;
+  color: #703BF7;
 }

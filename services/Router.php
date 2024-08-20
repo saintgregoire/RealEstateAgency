@@ -111,7 +111,7 @@ class Router{
          $this->aprc->deleteProperty();
      }
      else{
-         $this->pc->home();
+        $this->pc->error();
      }
   }
 

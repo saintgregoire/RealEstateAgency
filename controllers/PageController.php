@@ -181,5 +181,9 @@ class PageController extends AbstractController
         }
     }
 
+    public function error() : void{
+        $this->render('404.html.twig', []);
+    }
+
 
 }

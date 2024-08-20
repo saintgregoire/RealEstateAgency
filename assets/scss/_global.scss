@@ -123,6 +123,7 @@ h1 {
     bottom: 2%;
     right: 2%;
     opacity: .5;
+    transition: all .3s ease-in-out;
     @include vieport-xxl{
       width: 50px;
       height: 50px;
