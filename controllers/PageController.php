@@ -180,6 +180,10 @@ class PageController extends AbstractController
             $this->redirect("index.php?route=properties");
         }
     }
+    
+    public function error() : void{
+        $this->render('404.html.twig', []);
+    }
 
 
 }
