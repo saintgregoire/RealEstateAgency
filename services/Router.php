@@ -26,6 +26,9 @@ class Router{
      if(isset($get['route']) && ($get['route'] === 'home' || $get['route'] === 'go-to-site')){
          $this->pc->home();
      }
+     else if(!isset($get['route']) || empty($get['route'])){
+        $this->pc->home();
+     }
      else if(isset($get['route']) && $get['route'] === 'about'){
          $this->pc->about();
      }
