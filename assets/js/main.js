@@ -9,24 +9,27 @@ function mySwiper(
 	clicksXl=clicksLg, 
 	clicksXxl=clicksXl ) {
 	let counter = 0;
+	let clicksNumber = 0;
+
+	function updateClicksNumber() {
+		const viewportWidth = window.innerWidth;
+
+		if (viewportWidth < 768) {
+			clicksNumber = clicksSmMd;
+		} else if (viewportWidth < 1024) {
+			clicksNumber = clicksLg;
+		} else if (viewportWidth < 1440) {
+			clicksNumber = clicksXl;
+		} else {
+			clicksNumber = clicksXxl;
+		}
+	}
 
 	if (btnRight && btnLeft && cards) {
-		const viewportWidth = window.innerWidth;
-		let clicksNumber = 0;
-		
-			if(viewportWidth < 768){
-				clicksNumber = clicksSmMd;
-			}
-			else if(viewportWidth < 1024){
-				clicksNumber = clicksLg;
-			}
-			else if(viewportWidth < 1440){
-				clicksNumber = clicksXl;
-			}
-			else{
-				clicksNumber = clicksXxl;
-			}
 
+		updateClicksNumber();
+
+		window.addEventListener('resize', updateClicksNumber);
 
 		btnRight.addEventListener('click', ()=>{
 			if(counter === clicksNumber){
