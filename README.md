@@ -85,13 +85,13 @@ To work with this project you will need <img src="https://skillicons.dev/icons?i
 3. Installing dependencies:
 
 **While in the working directory in the terminal command line:**<br/>
-* `composer require vlucas/phpdotenv`
-* `composer require "twig/twig:^3.0"`
-* `composer require --dev symfony/var-dumper`
+* `$ composer require vlucas/phpdotenv`
+* `$ composer require "twig/twig:^3.0"`
+* `$ composer require --dev symfony/var-dumper`
 
 ***In case of adding new PHP files:*** 
 
-`composer dump-autoload` 
+`$ composer dump-autoload` 
 
 >**In my project I connected [Swiper.js](https://swiperjs.com/) and [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/) via cdn. If you need to install via npm:**
 
