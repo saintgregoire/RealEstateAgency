@@ -352,13 +352,15 @@
     border-radius: $border-radius-sm;
     font-size: 1.4rem;
     white-space: nowrap;
+    cursor: pointer;
+    border: 2px solid transparent;
     @include vieport-xxl{
       font-size: 1.8rem;
     }
 
     &:hover{
       background: $main-bg;
-      border: 2px solid $btn-color;
+      border-color: $btn-color;
     }
   }
 
