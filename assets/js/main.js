@@ -4,29 +4,32 @@ function mySwiper(
 	btnRight, 
 	btnLeft, 
 	cards, 
-	clicksSmMd = 5, 
+	clicksSmMd, 
 	clicksLg = clicksSmMd, 
 	clicksXl=clicksLg, 
 	clicksXxl=clicksXl ) {
 	let counter = 0;
+	let clicksNumber = 0;
+
+	function updateClicksNumber() {
+		const viewportWidth = window.innerWidth;
+
+		if (viewportWidth < 768) {
+			clicksNumber = clicksSmMd;
+		} else if (viewportWidth < 1024) {
+			clicksNumber = clicksLg;
+		} else if (viewportWidth < 1440) {
+			clicksNumber = clicksXl;
+		} else {
+			clicksNumber = clicksXxl;
+		}
+	}
 
 	if (btnRight && btnLeft && cards) {
-		const viewportWidth = window.innerWidth;
-		let clicksNumber = 0;
-		
-			if(viewportWidth < 768){
-				clicksNumber = clicksSmMd;
-			}
-			else if(viewportWidth < 1024){
-				clicksNumber = clicksLg;
-			}
-			else if(viewportWidth < 1440){
-				clicksNumber = clicksXl;
-			}
-			else{
-				clicksNumber = clicksXxl;
-			}
 
+		updateClicksNumber();
+
+		window.addEventListener('resize', updateClicksNumber);
 
 		btnRight.addEventListener('click', ()=>{
 			if(counter === clicksNumber){
@@ -344,7 +347,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		if(isEmailOk || isNotEmpty){
 			const form = e.target;
 			const formData = new FormData(form);
-			const link = '/RealEstateAgency/index.php?route=subscribe-newsletter';
+			const link = '/index.php?route=subscribe-newsletter';
 
 			fetch(link, {
 				method: 'POST',
