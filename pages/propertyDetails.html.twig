@@ -78,7 +78,6 @@
           <p class="description__name">
             <img src="../assets/icons/area.svg" alt="Area icon" width="20" height="20">
             Area
-            </svg>
           </p>
           <p class="description__value">{{ property.getSqFeet()|e }}</p>
         </div>
@@ -123,7 +122,7 @@
     </article>
 
     <form action="index.php?route=check-property-lead" method="POST" class="inquire__form" novalidate>
-      <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
+      <input type="hidden" name="csrf-token" id="csrf-token-1" value="{{ csrf_token }}" />
       <fieldset class="inquire__fieldset">
         <label class="inquire__label" for="inquire__first_name">First Name</label>
           <input type="text" name="inquire__first_name" id="inquire__first_name" class="inquire__input" placeholder="Enter First Name">
@@ -357,7 +356,7 @@
 
 {% block swiperjs %}
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- !SWIPER SECOND---------------------------- -->
+  <!-- !SWIPER SECOND -->
   <script>
     const swiper = new Swiper('.property__swiper', {
       // Optional parameters

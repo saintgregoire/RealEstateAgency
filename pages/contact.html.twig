@@ -10,14 +10,12 @@
 {% endblock %}
 
 {% block content %}
-  <main>
-
     <!-- ******SECTION TAKEN FROM PROPERTIES PAGE -->
     <section class="dream dream_contact">
-      <h2 class="sr-only">Contact us</h2>
+      <h1 class="sr-only">Contact us and get the most favorable conditions on the market.</h1>
       <div class="dream__txt dream_contact__txt">
         <div class="container">
-          <h1>Get in Touch with Estatein</h1>
+          <h2>Get in Touch with Estatein</h2>
         <p>Welcome to Estatein's Contact Us page. We're here to assist you with any inquiries, requests, or feedback you may have.</p>
         </div>
       </div>
@@ -25,9 +23,10 @@
 
     <!-- *********SECTION TAKEN FROM HOME PAGE -->
     <section class="services__blocks">
+      <h2 class="sr-only">Contact information Estatein Real Estate Agency</h2>
       <div class="home_top__cards contact__cards">
         <div class="home_top__card contact__card">
-          <img src="../assets/icons/message.png" alt="message icon" width="48" height="48">
+          <img src="../assets/icons/message.png" alt="message icon" loading="lazy" width="48" height="48">
           <p class="home_top__card_desc contact__card_desc">
             <a href="mailto:info@estatein.com">info@estatein.com</a>
           </p>
@@ -39,7 +38,7 @@
         </div>
 
         <div class="home_top__card contact__card">
-          <img src="../assets/icons/phone.png" alt="Phone icon" width="48" height="48">
+          <img src="../assets/icons/phone.png" alt="Phone icon" loading="lazy" width="48" height="48">
           <p class="home_top__card_desc contact__card_desc">
             <a href="tel:+11234567890">+1 (123) 456-7890</a>
           </p>
@@ -49,7 +48,7 @@
         </div>
 
         <div class="home_top__card contact__card">
-          <img src="../assets/icons/position.png" alt="Geo icon" width="48" height="48">
+          <img src="../assets/icons/position.png" loading="lazy" alt="Geo icon" width="48" height="48">
           <p class="home_top__card_desc contact__card_desc">
             <a href="https://maps.app.goo.gl/EwnGb4CFdnhXRG5Z6" target="_blank">Main Headquarters</a>
           </p>
@@ -59,7 +58,7 @@
         </div>
 
         <div class="home_top__card contact__card">
-          <img src="../assets/icons/fire.png" alt="Fire icon" width="48" height="48">
+          <img src="../assets/icons/fire.png" loading="lazy" alt="Fire icon" width="48" height="48">
           <p class="home_top__card_desc contact__card_desc contact__social">
             <a href="https://www.instagram.com/" target="_blank">Instagram</a>
             <a href="https://www.linkedin.com/in/maksym-voznichka/" target="_blank">LinkedIn</a>
@@ -72,16 +71,16 @@
       </div>
     </section>
 
-    <!-- !-------------------SECTION CONNECT -->
+    <!-- !SECTION CONNECT -->
     <section class="connect container">
       <div class="stars">
-        <img src="../assets/icons/star.png" alt="stars icon" width="46" height="20">
+        <img src="../assets/icons/star.png" alt="stars icon" loading="lazy" width="46" height="20">
       </div>
       <h2 class="connect__title">Let's Connect</h2>
       <p>We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein.</p>
 
       <form action="index.php?route=contact" method="POST" class="connect__form" novalidate>
-        <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
+        <input type="hidden" name="csrf-token" id="csrf-token-1" value="{{ csrf_token }}" />
         <fieldset class="connect__fieldset">
           <label for="first_name_conn" class="connect__label">First Name</label>
           <input type="text" class="connect__input" name="first_name_conn" id="first_name_conn" placeholder="Enter First Name">
@@ -113,7 +112,7 @@
 
         <fieldset class="connect__fieldset">
           <label for="hear_conn" class="connect__label">How Did You Hear About Us?</label>
-          <select type="text" class="connect__select" name="hear_conn" id="hear_conn">
+          <select class="connect__select" name="hear_conn" id="hear_conn">
             <option value="" selected hidden>Select</option>
             <option value="recommendation">By recommendation</option>
             <option value="google">Google Ads</option>
@@ -136,10 +135,10 @@
       </form>
     </section>
 
-    <!-- !--------------------SECTION LOCATION -->
+    <!-- !!!!SECTION LOCATION -->
     <section class="location container">
       <div class="stars">
-        <img src="../assets/icons/star.png" alt="stars icon" width="46" height="20">
+        <img src="../assets/icons/star.png" loading="lazy" alt="stars icon" width="46" height="20">
       </div>
       <h2 class="location__title">Discover Our Office Locations</h2>
       <p>Estatein is here to serve you across multiple locations. Whether you're looking to meet our team.</p>
@@ -157,7 +156,7 @@
               </a>
             </div>
             <div class="location__note">
-              <a href="tel:+1 (123) 456-7890">
+              <a href="tel:+11234567890">
                 <i class="fa-solid fa-phone"></i>
                 +1 (123) 456-7890
               </a>
@@ -186,7 +185,7 @@
               </a>
             </div>
             <div class="location__note">
-              <a href="tel:+1 (123) 456-7890">
+              <a href="tel:+11234567890">
                 <i class="fa-solid fa-phone"></i>
                 +1 (123) 456-7890
               </a>
@@ -205,38 +204,37 @@
       </div>
     </section>
 
-    <!-- !--------------------WORLD SECTION -->
+    <!-- !!!!!WORLD SECTION -->
     <section class="world container">
       <h2 class="sr-only">Our life</h2>
       <div class="world__container">
         <div class="world__card">
-          <img src="../assets/img/office.webp" alt="Our office" width="127" height="70">
+          <img src="../assets/img/office.webp" loading="lazy" alt="Our office" width="127" height="70">
         </div>
         <div class="world__card">
-          <img src="../assets/img/team.webp" alt="Our team" width="127" height="70">
+          <img src="../assets/img/team.webp" loading="lazy" alt="Our team" width="127" height="70">
         </div>
         <div class="world__card">
-          <img src="../assets/img/teamWork.webp" alt="Working process" width="127" height="70">
+          <img src="../assets/img/teamWork.webp" loading="lazy" alt="Working process" width="127" height="70">
         </div>
         <div class="world__card">
-          <img src="../assets/img/team2.webp" alt="Our team" width="58.5" height="70">
+          <img src="../assets/img/team2.webp" loading="lazy" alt="Our team" width="59" height="70">
         </div>
         <div class="world__card">
-          <img src="../assets/img/team3.webp" alt="Our team" width="58.5" height="70">
+          <img src="../assets/img/team3.webp" loading="lazy" alt="Our team" width="59" height="70">
         </div>
         <article class="world__card">
           <div class="stars">
-            <img src="../assets/icons/star.png" alt="stars icon" width="46" height="20">
+            <img src="../assets/icons/star.png" loading="lazy" alt="stars icon" width="46" height="20">
           </div>
           <h2 class="world__title">Explore Estatein's World</h2>
           <p>Step inside the world of Estatein, where professionalism meets warmth, and expertise meets passion. Our gallery offers a glimpse into our team and workspaces, inviting you to get to know us better.</p>
         </article>
         <div class="world__card">
-          <img src="../assets/img/client.webp" alt="handshake" width="264" height="150">
+          <img src="../assets/img/client.webp" loading="lazy" alt="handshake" width="264" height="150">
         </div>
       </div>
     </section>
-  </main>
 {% endblock %}
 
 {% block pop_up %}
@@ -244,7 +242,7 @@
   <div class="pop-up {% if formValid is not defined or formValid is same as false %}hidden{% endif %}">
     <article class="pop-up__article">
       <div class="pop-up__logo">
-        <img src="../assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28">
+        <img src="../assets/img/Logo.png" loading="lazy" alt="Logo of Estatein" width="93" height="28">
       </div>
       <h2>Thank you for your submission!</h2>
       <p>Our team at Estatein will review your information and get back to you shortly. </p>
