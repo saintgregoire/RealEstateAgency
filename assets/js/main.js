@@ -341,10 +341,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	const messageParagraphe = document.querySelector('.email__success');
 
 	emailForm.addEventListener('submit', (e) =>{
+		e.preventDefault();
 		const isNotEmpty = inputIsNotEmpty(emailInput, emailForm);
 		const isEmailOk = isEmailInputValid(emailInput, emailForm);
-		e.preventDefault();
-		if(isEmailOk || isNotEmpty){
+		if(!isEmailOk || !isNotEmpty){
+			return;
+		}
 			const form = e.target;
 			const formData = new FormData(form);
 			const link = '/index.php?route=subscribe-newsletter';
@@ -371,7 +373,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 					messageParagraphe.style.color = 'red';
 					messageParagraphe.classList.remove('hidden');
 				})
-		}
 
 	});
 	removeErrorMessage(emailInput, emailForm);

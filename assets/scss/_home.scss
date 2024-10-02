@@ -47,6 +47,7 @@
 
 &__title{
   margin-top: 4rem;
+  @include title-text(2.8rem);
   @include vieport-md{
     font-size: 4.6rem;
   }

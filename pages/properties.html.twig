@@ -10,18 +10,17 @@
 {% endblock %}
 
 {% block content %}
-  <main>
     <section class="dream">
-      <h2 class="sr-only">Just one step to the property of your dream</h2>
+      <h1 class="sr-only">Just one step to the property of your dream</h1>
       <div class="dream__txt">
         <div class="container">
-          <h1>Find Your Dream Property</h1>
+          <h2>Find Your Dream Property</h2>
         <p>Welcome to Estatein, where your dream property awaits in every corner of our beautiful world. Explore our curated selection of properties, each offering a unique story and a chance to redefine your life. With categories to suit every dreamer, your journey </p>
         </div>
       </div>
       <form action="index.php?route=check-property" method="POST" id="searchForm" class="dream__form">
         <input class="dream__search" type="text" name="search" id="search" placeholder="Search For A Property" autocomplete="off">
-        <button type="submit">
+        <button type="submit" aria-label="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
           <span class="dream__span">Find Property</span>
         </button>
@@ -35,7 +34,7 @@
 
     <section class="featured_swiper container">
       <div class="stars">
-        <img src="/RealEstateAgency/assets/icons/star.png" alt="stars icon" width="46" height="20">
+        <img src="/RealEstateAgency/assets/icons/star.png" loading="lazy" alt="stars icon" width="46" height="20">
       </div>
       <h2 class="featured__title">Discover a World of Possibilities</h2>
       <p class="featured__paragraph">Our portfolio of properties is as diverse as your dreams. Explore the following categories to find the perfect property that resonates with your vision of home</p>
@@ -43,21 +42,21 @@
         {% for property in allProperties %}
           <article class="featured__card">
             <div class="featured__card_img">
-              <img src="{{ property.img_url|e }}" alt="{{ property.name|e }}" width="264" height="210">
+              <img src="{{ property.img_url|e }}" alt="{{ property.name|e }}" loading="lazy" width="264" height="210">
             </div>
             <h3>{{ property.name|e }}</h3>
             <p class="featured__card_text">{{ property.description|e }}</p>
             <div class="featured__card_notes">
               <div class="featured__card_note">
-                <img src="/RealEstateAgency/assets/icons/bedroom.svg" alt="bedroom icon" width="20" height="20">
+                <img src="/RealEstateAgency/assets/icons/bedroom.svg" loading="lazy" alt="bedroom icon" width="20" height="20">
                 <p>{{ property.no_bedrooms|e }}-Bedroom</p>
               </div>
               <div class="featured__card_note">
-                <img src="/RealEstateAgency/assets/icons/Bathroom.svg" alt="Bathroom icon" width="20" height="20">
+                <img src="/RealEstateAgency/assets/icons/Bathroom.svg" loading="lazy" alt="Bathroom icon" width="20" height="20">
                 <p>{{ property.no_bathrooms|e }}-Bathroom</p>
               </div>
               <div class="featured__card_note">
-                <img src="/RealEstateAgency/assets/icons/villa.svg" alt="Building icon" width="20" height="20">
+                <img src="/RealEstateAgency/assets/icons/villa.svg" loading="lazy" alt="Building icon" width="20" height="20">
                 <p>{{ property.type|e }}</p>
               </div>
             </div>
@@ -86,12 +85,12 @@
 
     <section class="happen container">
       <div class="stars">
-        <img src="/RealEstateAgency/assets/icons/star.png" alt="stars icon" width="46" height="20">
+        <img src="/RealEstateAgency/assets/icons/star.png" loading="lazy" alt="stars icon" width="46" height="20">
       </div>
       <h2>Let's Make it Happen</h2>
       <p class="happen__paragraph">Ready to take the first step toward your dream property? Fill out the form below, and our real estate wizards will work their magic to find your perfect match. Don't wait; let's embark on this exciting journey together.</p>
       <form action="index.php?route=properties" method="POST" class="js-properties-form" novalidate>
-        <input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
+        <input type="hidden" name="csrf-token" id="csrf-token-1" value="{{ csrf_token }}" />
         <fieldset class="happen__first_name happen__fieldset">
           <label for="first_name" class="happen__label">First Name</label>
           <input type="text" name="first_name" id="first_name" class="happen__input" placeholder="Enter First Name">
@@ -177,7 +176,6 @@
 
       </form>
     </section>
-  </main>
 {% endblock %}
 
 {% block pop_up %}
@@ -185,7 +183,7 @@
   <div class="pop-up {% if formValid is not defined or formValid is same as false %}hidden{% endif %}">
     <article class="pop-up__article">
       <div class="pop-up__logo">
-        <img src="/RealEstateAgency/assets/img/Logo.png" alt="Logo of Estatein" width="93" height="28">
+        <img src="/RealEstateAgency/assets/img/Logo.png" loading="lazy" alt="Logo of Estatein" width="93" height="28">
       </div>
       <h2>Thank you for your submission!</h2>
       <p>Our team at Estatein will review your information and get back to you shortly. </p>
