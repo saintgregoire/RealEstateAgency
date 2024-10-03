@@ -37,7 +37,7 @@ class MediaManager extends AbstractManager
         LIKE :name
         ");
         $parameters = [
-         'name' => '%' . $name . '%'
+        'name' => '%' . $name . '%'
         ];
         $query->execute($parameters);
         $images = $query->fetchAll(PDO::FETCH_ASSOC);

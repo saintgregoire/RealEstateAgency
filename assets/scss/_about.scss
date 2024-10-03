@@ -15,7 +15,7 @@
     width: 100%;
     @include border-grey($border-radius-md);
     overflow: hidden;
-    background: url('../img/AbstractDesign1.png') no-repeat center/cover;
+    background: url('../img/AbstractDesign1.webp') no-repeat center/cover;
     margin-bottom: 2rem;
     @include vieport-lg{
       margin-bottom: 0;

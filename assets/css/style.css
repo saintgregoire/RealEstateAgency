@@ -411,7 +411,7 @@ h1 {
 .header__discover {
   font-size: 1.2rem;
   color: white;
-  background: #191919 url("../img/Abstraction.png") no-repeat center/cover;
+  background: #191919 url("../img/Abstraction.webp") no-repeat center/cover;
 }
 @media (min-width: 768px) {
   .header__discover {
@@ -658,7 +658,7 @@ h1 {
 }
 .home_top__img {
   width: 100%;
-  background: url("../img/AbstractDesign1.png") no-repeat left/cover;
+  background: url("../img/AbstractDesign1.webp") no-repeat left/cover;
   border: 1px solid #262626;
   border-radius: 12px;
   overflow: hidden;
@@ -1337,7 +1337,7 @@ h1 {
   border: 2px solid #262626;
   border-radius: 12px;
   overflow: hidden;
-  background: url("../img/AbstractDesign1.png") no-repeat center/cover;
+  background: url("../img/AbstractDesign1.webp") no-repeat center/cover;
   margin-bottom: 2rem;
 }
 @media (min-width: 1024px) {
@@ -3357,7 +3357,7 @@ h1 {
   }
 }
 .construct .last {
-  background: #191919 url("../img/AbstractDesign1.png") no-repeat center/cover;
+  background: #191919 url("../img/AbstractDesign1.webp") no-repeat center/cover;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -3466,7 +3466,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background: #191919 url("../img/AbstractDesign1.png") no-repeat center/cover;
+  background: #191919 url("../img/AbstractDesign1.webp") no-repeat center/cover;
   border: 2px solid #262626;
   border-radius: 10px;
 }
@@ -3886,7 +3886,7 @@ h1 {
   }
 }
 .world__container {
-  background: #191919 url("../img/AbstractDesign1.png") no-repeat center/cover;
+  background: #191919 url("../img/AbstractDesign1.webp") no-repeat center/cover;
   padding: 2.4rem;
   border: 2px solid #262626;
   border-radius: 12px;
@@ -4005,7 +4005,7 @@ h1 {
 
 .info {
   padding: 5rem 0;
-  background-image: url("../img/Abstract Design_2.png");
+  background-image: url("../img/Abstract Design_2.webp");
   background-position: top -25% left -40%;
   background-repeat: no-repeat;
   background-size: 90%;
