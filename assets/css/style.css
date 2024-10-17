@@ -669,13 +669,13 @@ h1 {
     border-radius: 0;
   }
 }
-.home_top__img > img {
+.home_top__img > picture > img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 @media (min-width: 1024px) {
-  .home_top__img > img {
+  .home_top__img > picture > img {
     height: 100%;
   }
 }

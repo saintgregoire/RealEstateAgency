@@ -5,7 +5,7 @@ Global agency for the selection and sale of real estate.
 {% endblock %}
 
 {% block preload %}
-    <link rel="preload" href="../assets/img/ImageMainOptim.webp" as="image">
+    <link rel="preload" href="../assets/img/ImageMainMobile.webp" as="image">
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,10 @@ Global agency for the selection and sale of real estate.
     <section class="home_top">
         <h1 class="sr-only">The most profitable real estate deals</h1>
         <div class="home_top__img">
-            <img src="../assets/img/ImageMainOptim.webp" alt="Big building" width="354" height="312">
+            <picture>
+                <source srcset="../assets/img/ImageMainDesctop.webp" media="(min-width: 768px)" type="image/webp">
+                <img src="../assets/img/ImageMainMobile.webp" alt="Big building" width="354" height="312">
+            </picture>
             <div class="circle">
                 <img src="../assets/img/Sub.png" alt="Discover your dream property" width="117" height="117">
             </div>
