@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block preload %}
-  <link rel="preload" href="../assets/img/ImageHand.webp" as="image">
+  <link rel="preload" href="../assets/img/ImageHandMobile.webp" as="image">
 {% endblock %}
 
 {% block title %}
@@ -18,7 +18,10 @@
     <section class="journey">
       <h1 class="sr-only">All important information about us</h1>
       <div class="journey__img">
-        <img src="../assets/img/ImageHand.webp" alt="House in your hand" width="312" height="226">
+        <picture>
+          <source srcset="../assets/img/ImageHand.webp" media="(min-width: 760px)" type="image/webp">
+          <img src="../assets/img/ImageHandMobile.webp" alt="House in your hand" width="312" height="226">
+        </picture>
       </div>
 
       <div class="journey__main">

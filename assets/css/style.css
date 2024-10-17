@@ -1347,7 +1347,7 @@ h1 {
     flex: 0 0 45%;
   }
 }
-.journey__img > img {
+.journey__img > picture > img {
   width: 100%;
   object-fit: cover;
   vertical-align: bottom;
